@@ -1,10 +1,30 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.alibaba.arouter'
 
+def releaseTime() {
+    return new Date().format("yyyy_MM_dd", TimeZone.getTimeZone("UTC"))
+}
+
 android {
     compileSdkVersion compileSdk
 
+    signingConfigs {
+        release {
+            storeFile file("../keystores/release.keystore")//keystore的路径
+            storePassword "compon"
+            keyAlias "compon"
+            keyPassword "compon"
+        }
+        debug {
+            storeFile file("../keystores/debug.keystore")
+            storePassword "android"
+            keyAlias "android"
+            keyPassword "android"
+        }
+    }
+
     defaultConfig {
+        applicationId "com.tool.app"
         minSdkVersion minVersion
         targetSdkVersion targetSdk
         versionCode 1
@@ -17,11 +37,27 @@ android {
         }
     }
     buildTypes {
+        debug {
+            // 服务器配置
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            signingConfig signingConfigs.debug
+//            applicationIdSuffix ".debug"
+
+        }
         release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "app_v${variant.versionName}_${releaseTime()}.apk"
+        }
+    }
+
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 
     compileOptions {

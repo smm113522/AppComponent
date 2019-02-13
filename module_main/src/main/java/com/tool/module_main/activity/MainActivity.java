@@ -1,15 +1,19 @@
 package com.tool.module_main.activity;
 
-import android.os.Bundle;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.tool.component.base.BaseActivity;
 import com.tool.module_main.R;
+import com.tool.module_main.R2;
 
-import androidx.annotation.Nullable;
+import butterknife.BindView;
 
 @Route(path = "/main/activity")
 public class MainActivity extends BaseActivity {
+
+    @BindView(R2.id.main)
+    TextView main;
 
     @Override
     public int getLayout() {
@@ -18,12 +22,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
-
+        main.setText("首页添加新的文字");
     }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
 }

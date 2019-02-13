@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.alibaba.arouter'
-//apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion compileSdk

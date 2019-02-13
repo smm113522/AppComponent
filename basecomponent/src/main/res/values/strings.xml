@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">baseComponent</string>
+    <string name="hello">helloworld</string>
+</resources>

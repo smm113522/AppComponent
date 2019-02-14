@@ -37,7 +37,7 @@ public class StartActivity extends BaseActivity {
             case R.id.bt_main:
                 Log.d("ddd", "main");
                 // 1. 应用内简单的跳转(通过URL跳转在'进阶用法'中)
-                ARouter.getInstance().build(MyRoute.meActivity).navigation();
+                ARouter.getInstance().build(MyRoute.splash).navigation();
                 break;
             case R.id.bt_ceshi:
                 Log.d("ddd", "ceshi");

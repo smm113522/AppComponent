@@ -1,5 +1,6 @@
 package com.tool.component.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -18,5 +19,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     public abstract int getLayout();
     public abstract void initView();
+
+    public Activity getActivity(){
+        return this;
+    }
+
 
 }

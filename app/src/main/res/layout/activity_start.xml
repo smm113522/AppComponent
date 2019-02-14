@@ -17,4 +17,10 @@
         android:id="@+id/bt_ceshi"
         android:text="ceshi"/>
 
+    <com.tool.app.view.ButtonView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@mipmap/imge"
+        />
+
 </LinearLayout>

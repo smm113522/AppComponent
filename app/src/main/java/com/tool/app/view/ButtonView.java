@@ -2,12 +2,17 @@ package com.tool.app.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -20,32 +25,28 @@ import com.tool.app.R;
 public class ButtonView extends ImageView {
 
     // 定义画笔
-    private Paint mPaint;
+    private Paint mPaint = new Paint();
     // 用于获取文字的宽和高
-    private Rect mBounds;
-    // 计数值，每点击一次本控件，其值增加1
-    private int mCount;
+    private final RectF mDrawableRect = new RectF();
+
 
     public ButtonView(Context context,AttributeSet attrs){
         super(context, attrs);
         Log.d("view","init");
-        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mBounds = new Rect();
     }
 
-    /*public ButtonView(Context context) {
+    public ButtonView(Context context) {
         super(context);
 //        invalidate();//ondraw
-
 //        requestLayout();//onmesasure
         // 初始化画笔、Rect
 
-    }*/
+    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        Log.d("view", "onmeasure");
+        Log.d("view", "onMeasure");
 
     }
 
@@ -54,65 +55,67 @@ public class ButtonView extends ImageView {
         super.dispatchDraw(canvas);
         Log.d("view", "dispatchDraw");
     }
+    private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
+
+    private static final int DEFAULT_CIRCLE_BACKGROUND_COLOR = Color.BLACK;
+
+    private final Paint mCircleBackgroundPaint = new Paint();
+
+    private int mCircleBackgroundColor = DEFAULT_CIRCLE_BACKGROUND_COLOR;
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Log.d("view", "onDraw");
 
+        super.setScaleType(SCALE_TYPE);
+
         Drawable drawable = getDrawable();
 
         // 将图片转为位图
-        Bitmap mBitmap = ((BitmapDrawable) drawable).getBitmap();
+        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+        Bitmap mBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
 
-        Bitmap cpBitmap = mBitmap.copy(Bitmap.Config.ARGB_8888, true);
-        // 得到画布宽高
-        int width = getWidth();
-        int height = getHeight();
+        Canvas canvas1 = new Canvas(mBitmap);
+        drawable.setBounds(0, 0, canvas1.getWidth(), canvas1.getHeight());
+        drawable.draw(canvas1);
 
-//        Canvas canvas = new Canvas(cpBitmap);
-//        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-//        canvas.drawBitmap(cpBitmap, 0f, 0f, mPaint);
-        // 绘制圆形
+        BitmapShader mBitmapShader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+
+        mPaint.setAntiAlias(true);
+        mPaint.setShader(mBitmapShader);
+
+        int mBitmapHeight = mBitmap.getHeight();
+        int mBitmapWidth = mBitmap.getWidth();
+
+        mDrawableRect.set(calculateBounds());
+
+        float mDrawableRadius = Math.min(mDrawableRect.height() / 2.0f, mDrawableRect.width() / 2.0f);
+
+        mCircleBackgroundPaint.setStyle(Paint.Style.FILL);
+        mCircleBackgroundPaint.setAntiAlias(true);
+        mCircleBackgroundPaint.setColor(mCircleBackgroundColor);
+
+//        canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerY(), mDrawableRadius, mCircleBackgroundPaint);
+
+        canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerY(), mDrawableRadius, mPaint);
+        invalidate();
 //        canvas.drawCircle(width / 2,
 //                height / 2, width / 2,
 //                mPaint);
-        canvas.drawCircle(width / 2,
-                height / 2, width / 2,
-                mPaint);
 
-        Bitmap outputbmp = Bitmap.createBitmap(width,
-                height, Bitmap.Config.ARGB_8888);
-        Canvas canvas1 = new Canvas(outputbmp);// 创建一个相同大小的画布
-        Paint paint = new Paint();// 定义画笔
-        paint.setAntiAlias(true);// 设置抗锯齿
-        paint.setFilterBitmap(true);
-        paint.setDither(true);
-        canvas1.drawARGB(0, 0, 0, 0);
-        canvas1.drawCircle(width / 2,
-                height / 2, width / 2,
-                paint);
+    }
 
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        canvas1.drawBitmap(cpBitmap, 0, 0, paint);
+    private RectF calculateBounds() {
+        int availableWidth  = getWidth() - getPaddingLeft() - getPaddingRight();
+        int availableHeight = getHeight() - getPaddingTop() - getPaddingBottom();
 
-        canvas.drawBitmap(cpBitmap, 0f, 0f, mPaint);
-//
-//        mPaint.setColor(Color.BLUE);
-//        // 绘制一个填充色为蓝色的矩形
-//        canvas.drawRect(0, 0, getWidth(), getHeight(), mPaint);
-//
-//        mPaint.setColor(Color.YELLOW);
-//        mPaint.setTextSize(50);
-//        String text = String.valueOf(mCount);
-//        // 获取文字的宽和高
-//        mPaint.getTextBounds(text, 0, text.length(), mBounds);
-//        float textWidth = mBounds.width();
-//        float textHeight = mBounds.height();
-//
-//        // 绘制字符串
-//        canvas.drawText(text, getWidth() / 2 - textWidth / 2, getHeight() / 2
-//                + textHeight / 2, mPaint);
+        int sideLength = Math.min(availableWidth, availableHeight);
+
+        float left = getPaddingLeft() + (availableWidth - sideLength) / 2f;
+        float top = getPaddingTop() + (availableHeight - sideLength) / 2f;
+
+        return new RectF(left, top, left + sideLength, top + sideLength);
     }
 
     @Override

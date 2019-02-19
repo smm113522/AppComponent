@@ -19,7 +19,9 @@
 
     <com.tool.app.view.ButtonView
         android:layout_width="120dp"
+        android:layout_marginLeft="20dp"
         android:layout_height="120dp"
+        android:scaleType="centerInside"
         android:src="@mipmap/imge"
         />
 

@@ -53,5 +53,7 @@ dependencies {
     api 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     implementation project(':lib_net')
+    api 'com.tencent:mmkv:1.0.17'
+    implementation 'com.github.Dovar66:DToast:1.0.5'
 
 }

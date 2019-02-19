@@ -3,6 +3,8 @@ package com.tool.component.base;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.tool.component.utils.ToastUtil;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
@@ -25,4 +27,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ToastUtil.cancelAll();
+    }
 }

@@ -32,6 +32,7 @@ public class MainActivity extends BaseActivity {
     public void initView() {
         Fragment me = (Fragment) ARouter.getInstance().build(MyRoute.meFragment).navigation();
         Fragment order = (Fragment) ARouter.getInstance().build(MyRoute.orderFragment).navigation();
+
         mBottomBar.init(getSupportFragmentManager(), 750, 1334)
 //                .setImgSize(50, 50)
 //                .setFontSize(28)

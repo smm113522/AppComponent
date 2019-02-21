@@ -29,12 +29,6 @@ android {
 
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 
-    //指定jdk版本
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
 }
 
 dependencies {
@@ -52,7 +46,7 @@ dependencies {
     api 'com.alibaba:arouter-api:1.4.1'
     api 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
-    implementation project(':lib_net')
+    api project(':lib_net')
     api 'com.tencent:mmkv:1.0.17'
     implementation 'com.github.Dovar66:DToast:1.0.5'
 

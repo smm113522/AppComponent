@@ -85,4 +85,5 @@ dependencies {
     implementation project(':module_login')
     implementation project(':module_me')
     implementation project(':module_order')
+    implementation 'com.baidu.mobstat:mtj-sdk-circle:latest.integration'
 }

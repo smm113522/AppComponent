@@ -1,12 +1,12 @@
 package com.tool.net;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.text.TextUtils;
 
 import java.io.IOException;
 
-import androidx.appcompat.app.AlertDialog;
 import io.reactivex.Observer;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;

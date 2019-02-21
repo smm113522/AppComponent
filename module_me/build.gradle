@@ -36,4 +36,5 @@ dependencies {
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
     implementation project(':base_component')
+    implementation project(':lib_net')
 }

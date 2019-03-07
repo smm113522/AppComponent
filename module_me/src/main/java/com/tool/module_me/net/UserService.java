@@ -1,17 +1,13 @@
 package com.tool.module_me.net;
 
-import com.tool.net.BaseResponse;
 import com.tool.module_me.model.BannerEntity;
-import com.tool.module_me.model.User;
+import com.tool.net.BaseResponse;
 
 import java.util.List;
 
 import io.reactivex.Observable;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.Path;
 
 public interface UserService {
 

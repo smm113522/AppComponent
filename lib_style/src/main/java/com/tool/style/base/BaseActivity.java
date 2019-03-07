@@ -1,4 +1,4 @@
-package com.tool.component.base;
+package com.tool.style.base;
 
 import android.app.Activity;
 import android.os.Bundle;

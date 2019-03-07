@@ -1,4 +1,4 @@
-package com.tool.component.base;
+package com.tool.style.base;
 
 import android.app.Application;
 import android.content.Context;

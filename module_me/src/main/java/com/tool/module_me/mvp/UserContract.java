@@ -7,6 +7,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 
 public interface UserContract {
+
     interface View extends BaseView<Presenter> {
 
         void setLoadingIndicator(boolean active);

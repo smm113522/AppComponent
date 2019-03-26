@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.tool.component.BuildConfig;
+import com.tool.style.BuildConfig;
 
 import androidx.multidex.MultiDex;
 

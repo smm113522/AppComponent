@@ -6,12 +6,12 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.tool.component.base.BaseActivity;
 import com.tool.component.route.MyRoute;
 import com.tool.module_main.OneFragment;
 import com.tool.module_main.R;
 import com.tool.module_main.R2;
 import com.tool.module_main.view.BottomTabBar;
+import com.tool.style.base.BaseActivity;
 
 import androidx.fragment.app.Fragment;
 import butterknife.BindView;

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.tool.component.base.BaseActivity;
+import com.tool.style.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

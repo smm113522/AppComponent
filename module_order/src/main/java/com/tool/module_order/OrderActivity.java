@@ -1,7 +1,7 @@
 package com.tool.module_order;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.tool.component.base.BaseActivity;
+import com.tool.style.base.BaseActivity;
 
 @Route(path = "/order/activity")
 public class OrderActivity extends BaseActivity {

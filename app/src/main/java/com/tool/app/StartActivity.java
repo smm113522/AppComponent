@@ -12,9 +12,9 @@ import android.widget.Button;
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.tool.component.base.BaseActivity;
 import com.tool.component.route.MyRoute;
 import com.tool.component.utils.PermissionUtils;
+import com.tool.style.base.BaseActivity;
 
 import java.util.Arrays;
 

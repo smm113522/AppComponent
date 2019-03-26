@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.tool.component.base.BaseActivity;
 import com.tool.component.route.MyRoute;
+import com.tool.style.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

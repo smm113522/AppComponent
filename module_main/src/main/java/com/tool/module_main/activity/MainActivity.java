@@ -10,8 +10,11 @@ import com.tool.component.route.MyRoute;
 import com.tool.module_main.OneFragment;
 import com.tool.module_main.R;
 import com.tool.module_main.R2;
+import com.tool.module_main.bean.ItemBar;
 import com.tool.module_main.view.BottomTabBar;
 import com.tool.style.base.BaseActivity;
+
+import java.util.ArrayList;
 
 import androidx.fragment.app.Fragment;
 import butterknife.BindView;
@@ -33,14 +36,17 @@ public class MainActivity extends BaseActivity {
         Fragment me = (Fragment) ARouter.getInstance().build(MyRoute.meFragment).navigation();
         Fragment order = (Fragment) ARouter.getInstance().build(MyRoute.orderFragment).navigation();
 
+        ArrayList<ItemBar> barList = new ArrayList<>();
+        barList.add(new ItemBar("首页", R.mipmap.ic_common_tab_index_select, R.mipmap.ic_common_tab_index_unselect, OneFragment.class));
+        barList.add(new ItemBar("订单", R.mipmap.ic_common_tab_index_select, R.mipmap.ic_common_tab_index_unselect, order.getClass()));
+        barList.add(new ItemBar("我的", R.mipmap.ic_common_tab_index_select, R.mipmap.ic_common_tab_index_unselect, me.getClass()));
+
         mBottomBar.init(getSupportFragmentManager(), 750, 1334)
 //                .setImgSize(50, 50)
 //                .setFontSize(28)
 //                .setTabPadding(10, 6, 4)
                 .setChangeColor(Color.parseColor("#FF1493"),Color.parseColor("#282828"))
-                .addTabItem("首页", R.mipmap.ic_common_tab_index_select, R.mipmap.ic_common_tab_index_unselect, OneFragment.class)
-                .addTabItem("订单", R.mipmap.ic_common_tab_index_select, R.mipmap.ic_common_tab_index_unselect, order.getClass())
-                .addTabItem("我的", R.mipmap.ic_common_tab_index_select, R.mipmap.ic_common_tab_index_unselect, me.getClass())
+                .addListTabItem(barList)
                 .isShowDivider(false)
                 .setDividerColor(Color.parseColor("#FFFFFFFF"))
                 .setTabBarBackgroundColor(Color.parseColor("#FFB6C1"))

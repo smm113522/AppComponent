@@ -30,6 +30,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.tool.module_main.R;
+import com.tool.module_main.bean.ItemBar;
 import com.tool.module_main.view.custom.CustomFragmentTabHost;
 import com.tool.module_main.view.util.TintUtil;
 
@@ -381,6 +382,27 @@ public class BottomTabBar extends LinearLayout {
 
     public BottomTabBar addTabItem(String name, int imgIdSelect, int imgIdUnSelect, Class fragmentClass) {
         return addTabItem(name, ContextCompat.getDrawable(context, imgIdSelect), ContextCompat.getDrawable(context, imgIdUnSelect), fragmentClass);
+    }
+
+    public BottomTabBar addListTabItem(ArrayList<ItemBar> list) {
+        String name = null;
+        int imgIdSelect = 0;
+        int imgIdUnSelect = 0;
+        Class fragmentClass = null;
+
+        if (list != null){
+            if (!list.isEmpty()){
+                for (int i = 0;i<list.size();i++){
+                    ItemBar itemBar = list.get(i);
+                    name = itemBar.getName();
+                    imgIdSelect = itemBar.getImgIdSelect();
+                    imgIdUnSelect = itemBar.getImgIdUnSelect();
+                    fragmentClass = itemBar.getFragmentClass();
+                    addTabItem(name, ContextCompat.getDrawable(context, imgIdSelect), ContextCompat.getDrawable(context, imgIdUnSelect), fragmentClass);
+                }
+            }
+        }
+        return this;
     }
 
     /**

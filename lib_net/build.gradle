@@ -38,6 +38,8 @@ dependencies {
     //Cookie持久化管理(推荐)
     api 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
     implementation project(':lib_style')
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 //    implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
 
 }

@@ -40,4 +40,9 @@ dependencies {
     api 'com.tencent:mmkv:1.0.17'
     implementation 'com.github.Dovar66:DToast:1.0.5'
 
+    // 基础依赖包
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta01'
+// fragment快速实现
+    implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta01'
+
 }

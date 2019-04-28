@@ -45,4 +45,5 @@ dependencies {
 // fragment快速实现
     implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta01'
 
+
 }

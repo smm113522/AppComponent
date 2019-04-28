@@ -11,15 +11,27 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import butterknife.ButterKnife;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
+
+//    private SwipeBackLayout mSwipeBackLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
         ButterKnife.bind(this);
+
+//        mSwipeBackLayout = getSwipeBackLayout();
+//
+//        setSwipeBackEnable(true);
+//        mSwipeBackLayout = getSwipeBackLayout();
+////         设置滑动方向，可设置EDGE_LEFT, EDGE_RIGHT, EDGE_ALL, EDGE_BOTTOM
+//        mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+
         initView();
     }
     public abstract int getLayout();

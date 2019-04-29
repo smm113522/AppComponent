@@ -1,1 +1,0 @@
-include ':app', ':base_component', ':module_main', ':lib_net', ':module_login', ':module_order', ':module_me', ':lib_style', ':module_shop', ':lib_swipe_back'

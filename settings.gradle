@@ -1,1 +1,1 @@
-include ':app', 'function:lib_common', 'function:lib_style', 'module:module_main'
+include ':app', 'common:lib_common', 'common:lib_style', 'module:module_main', ':camera-card-crop'

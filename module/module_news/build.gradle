@@ -1,16 +1,16 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-
 
 android {
     compileSdkVersion 28
+
 
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
 
@@ -27,10 +27,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation project(path: ':lib:lib_camera-card-crop')
-    implementation project(path: ':common:lib_style')
-
-    implementation project(path: ':module:module_main')
-    implementation project(path: ':module:module_news')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

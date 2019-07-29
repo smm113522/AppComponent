@@ -1,1 +1,9 @@
-include ':app', 'common:lib_common', 'common:lib_style', 'module:module_main', ':camera-card-crop'
+include ':app',
+        //底层
+        'common:lib_common',
+        'common:lib_style', 
+        // lib 使用
+        'lib:lib_camera-card-crop',
+        // 功能
+        'module:module_news',
+        'module:module_main'

@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.alibaba.arouter'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion compileSdk
-    buildToolsVersion buildTools
 
     defaultConfig {
         applicationId "com.kotlin.app"
@@ -12,6 +12,13 @@ android {
         targetSdkVersion targetSdk
         versionCode 1
         versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
+            }
+        }
+
     }
 
     buildTypes {
@@ -24,5 +31,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     implementation project(path: ':common:lib_common')
 }

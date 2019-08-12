@@ -14,9 +14,9 @@ build 配置
 useLibrary 'org.apache.http.legacy'
 
 maven {
-        url 'https://maven.google.com/'
-        name 'Google'
-    }
+    url 'https://maven.google.com/'
+    name 'Google'
+}
     
 为空判断    
 https://blog.csdn.net/cheng9981/article/details/53229310

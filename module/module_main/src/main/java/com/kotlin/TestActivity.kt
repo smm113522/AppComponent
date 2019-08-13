@@ -11,8 +11,6 @@ import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
 import com.btmv.module_main.R
 
-
-
 @Route(path = "/test/activity")
 class TestActivity : AppCompatActivity() {
 

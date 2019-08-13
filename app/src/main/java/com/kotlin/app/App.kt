@@ -2,8 +2,9 @@ package com.kotlin.app
 
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
+import com.code.base.BaseApp
 
-class App : Application() {
+class App : BaseApp() {
 
     override fun onCreate() {
         super.onCreate()

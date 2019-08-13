@@ -3,10 +3,7 @@
     package="com.kotlin.style">
 
     <application>
-        <activity
-            android:name=".BaseActivity"
-            android:label="@string/title_activity_base"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
     </application>
 
 </manifest>

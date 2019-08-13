@@ -7,14 +7,15 @@ android {
     defaultConfig {
         minSdkVersion minVersion
         targetSdkVersion targetSdk
-        versionCode 1
-        versionName "1.0"
 
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+
+
+
     }
 
     buildTypes {
@@ -30,11 +31,14 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     api "com.android.support:appcompat-v7:$support_library_version"
-//    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api project(path: ':common:lib_style')
 //    implementation project(path: ':lib:lib_camera-card-crop')
 //    implementation project(path: ':common:lib_style')
     api 'com.alibaba:arouter-api:1.5.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    /* rxjava */
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api 'io.reactivex.rxjava2:rxjava:2.0.7'
 
 }

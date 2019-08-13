@@ -21,7 +21,7 @@
             <!--</intent-filter>-->
         <!--</activity>-->
 
-        <activity android:name=".OtherActivity"></activity>
+        <activity android:name=".OthersActivity"></activity>
 
     </application>
 

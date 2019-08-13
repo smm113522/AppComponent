@@ -8,8 +8,12 @@ android {
     defaultConfig {
         minSdkVersion minVersion
         targetSdkVersion targetSdk
-        versionCode 3
-        versionName version
+
+
+    }
+
+    dataBinding {
+        enabled = true
     }
 
     buildTypes {

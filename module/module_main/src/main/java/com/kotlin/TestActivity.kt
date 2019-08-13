@@ -10,6 +10,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
 import com.btmv.module_main.R
+import com.code.utils.ToastUtils
 
 @Route(path = "/test/activity")
 class TestActivity : AppCompatActivity() {
@@ -19,6 +20,9 @@ class TestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
+
+        ToastUtils.showToast("hhhh",true)
+
         val uri = "/other/activity"
         ARouter.getInstance().build(uri)
                 .navigation(this, object : NavCallback() {

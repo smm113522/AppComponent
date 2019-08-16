@@ -1,29 +1,32 @@
 package com.kotlin
 
-import android.databinding.DataBindingUtil
-import android.os.Bundle
-import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
 import com.btmv.module_main.R
-import com.code.utils.ToastUtils
+import com.code.base.BaseActivity
+import com.code.utils.RouterPath
+import com.code.utils.ToastsUtils
 
 @Route(path = "/test/activity")
-class TestActivity : AppCompatActivity() {
+class TestActivity : BaseActivity() {
 
-    private val binding: DataBindingUtil? = null
+    override fun getLayout(): Int {
+        return 0
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test)
+    override fun getViewDataLayout(): Int {
+        return R.layout.activity_test
+    }
 
-        ToastUtils.showToast("hhhh",true)
+    override fun initView() {
+        ToastsUtils.showToast("hhhh",true)
 
-        val uri = "/other/activity"
+        var uri = "/other/activity"
+        uri = "/image/activity"
+        uri = RouterPath.ImageCenter.path_image
         ARouter.getInstance().build(uri)
                 .navigation(this, object : NavCallback() {
 
@@ -45,5 +48,7 @@ class TestActivity : AppCompatActivity() {
 
                 })
     }
+
+
 
 }

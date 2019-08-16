@@ -6,5 +6,5 @@ include ':app',
         // lib 使用
 //        'lib:lib_camera-card-crop',
         // 功能
-//        'module:module_news',
+        'module:module_news',
         'module:module_main'

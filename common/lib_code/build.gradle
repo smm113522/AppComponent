@@ -46,7 +46,7 @@ dependencies {
 
     api "com.android.support:appcompat-v7:$support_library_version"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api project(path: ':common:lib_style')
+
 //    implementation project(path: ':lib:lib_camera-card-crop')
 //    implementation project(path: ':common:lib_style')
 

@@ -4,8 +4,8 @@ include ':app',
         'common:lib_style',
         'common:lib_code',
         // lib 使用
-        ':lib_image',
-//        'lib:lib_camera-card-crop',
+        'lib:lib_image',
+        'lib:lib_camera-card-crop',
         // 功能
         'module:module_news',
         'module:module_main'

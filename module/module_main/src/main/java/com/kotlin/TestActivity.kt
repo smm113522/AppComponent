@@ -27,26 +27,28 @@ class TestActivity : BaseActivity() {
         var uri = "/other/activity"
         uri = "/image/activity"
         uri = RouterPath.ImageCenter.path_image
-        ARouter.getInstance().build(uri)
-                .navigation(this, object : NavCallback() {
 
-                    override fun onFound(postcard: Postcard?) {
-                        Log.d("ARouter", "找到了")
-                    }
 
-                    override fun onLost(postcard: Postcard?) {
-                        Log.d("ARouter", "找不到了")
-                    }
-
-                    override fun onArrival(postcard: Postcard) {
-                        Log.d("ARouter", "跳转完了")
-                    }
-
-                    override fun onInterrupt(postcard: Postcard?) {
-                        Log.d("ARouter", "被拦截了")
-                    }
-
-                })
+//        ARouter.getInstance().build(uri)
+//                .navigation(this, object : NavCallback() {
+//
+//                    override fun onFound(postcard: Postcard?) {
+//                        Log.d("ARouter", "找到了")
+//                    }
+//
+//                    override fun onLost(postcard: Postcard?) {
+//                        Log.d("ARouter", "找不到了")
+//                    }
+//
+//                    override fun onArrival(postcard: Postcard) {
+//                        Log.d("ARouter", "跳转完了")
+//                    }
+//
+//                    override fun onInterrupt(postcard: Postcard?) {
+//                        Log.d("ARouter", "被拦截了")
+//                    }
+//
+//                })
     }
 
 

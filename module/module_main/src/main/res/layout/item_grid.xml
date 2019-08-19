@@ -1,39 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tool="http://schemas.android.com/apk/res-auto">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:background="?attr/qmui_s_list_item_bg_with_border_none"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
 
-    <data>
+    <ImageView
+        android:id="@+id/item_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@mipmap/demo"
+        android:contentDescription="Item Icon" />
 
-    </data>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/item_name"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="?attr/qmui_s_list_item_bg_with_border_none"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp">
+        android:layout_height="wrap_content"
+        android:background="@color/qmui_config_color_white"
+        android:gravity="center_horizontal|top"
+        android:textColor="@color/qmui_s_list_item_text_color"
+        android:textSize="18sp"
+        tool:text="ddddddd" />
 
-        <ImageView
-            android:id="@+id/item_icon"
-            android:contentDescription="Item Icon"
-            android:layout_width="wrap_content"
-            android:background="@mipmap/demo"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/item_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/qmui_config_color_white"
-            android:gravity="center_horizontal|top"
-            android:lines="2"
-            tool:text="ddddddd"
-            android:textColor="@color/qmui_s_list_item_text_color"
-            android:textSize="18sp"/>
-
-    </LinearLayout>
-
-</layout>
+</LinearLayout>

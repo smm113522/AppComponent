@@ -1,41 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:textColor="@color/qmui_s_list_item_text_color"
+        android:text="处理" />
 
-        <android.support.v7.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:titleTextAppearance="?attr/titleTextAppearance"
-            android:id="@+id/toolbar"
-            app:contentInsetStart="0dp" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="title"/>
-
-        </android.support.v7.widget.Toolbar>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="48dp"
-                android:gravity="center"
-                android:text="处理" />
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-</layout>
+</LinearLayout>

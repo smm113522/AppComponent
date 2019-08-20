@@ -29,7 +29,7 @@ class MainActivity : BaseActivity() {
 
     override fun initView() {
         mViewPager = findViewById(R.id.pager)
-        mTabSegment = findViewById(R.id.tabs)
+        mTabSegment = this.findViewById(R.id.tabs)
 
         val normalColor = applicationContext.resources.getColor(R.color.qmui_config_color_gray_6)
         val selectColor = applicationContext.resources.getColor(R.color.qmui_config_color_blue)

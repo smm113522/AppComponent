@@ -17,6 +17,17 @@
 package com.kotlin.fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.btmv.module_main.R;
+import com.code.utils.RouterPath;
+import com.kotlin.TestActivity;
+import com.qmuiteam.qmui.util.QMUIViewHelper;
 
 
 /**
@@ -24,16 +35,50 @@ import android.content.Context;
  * @date 2016-10-20
  */
 
-public class HelperComponentsController extends BaseController {
+public class HelperComponentsController extends BaseController implements View.OnClickListener {
 
-    public HelperComponentsController(Context context) {
-        super(context);
-    }
+    private Button mButton;
 
     @Override
     protected String getTitle() {
         return "Helper";
     }
 
+    private HomeControlListener mHomeControlListener;
 
+    public HelperComponentsController(Context context) {
+        super(context);
+        LayoutInflater.from(context).inflate(R.layout.controller_helper, this);
+
+        initTopBar();
+    }
+
+    private void initView() {
+        mButton = (Button) findViewById(R.id.button);
+        mButton.setOnClickListener(this);
+    }
+
+    protected void startFragment(Fragment fragment) {
+        if (mHomeControlListener != null) {
+            mHomeControlListener.startFragment(fragment);
+        }
+    }
+
+    public void setHomeControlListener(HomeControlListener homeControlListener) {
+        mHomeControlListener = homeControlListener;
+    }
+
+    private void initTopBar() {
+        initView();
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.button) {// TODO 19/08/20
+            ARouter.getInstance().build(RouterPath.ImageCenter.path_image).navigation();
+//            Intent intent = new Intent(getContext(), TestActivity.class);
+//            getContext().startActivity(intent);
+        }
+    }
 }

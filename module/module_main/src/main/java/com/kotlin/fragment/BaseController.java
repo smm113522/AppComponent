@@ -18,11 +18,15 @@ package com.kotlin.fragment;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.widget.TextView;
 
 import com.btmv.module_main.R;
 import com.qmuiteam.qmui.util.QMUIViewHelper;
+import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.qmuiteam.qmui.widget.QMUIWindowInsetLayout;
+
 
 /**
  * @author cginechen
@@ -30,6 +34,10 @@ import com.qmuiteam.qmui.widget.QMUIWindowInsetLayout;
  */
 
 public abstract class BaseController extends QMUIWindowInsetLayout {
+
+    RecyclerView mRecyclerView;
+
+    TextView mTopBar;
 
 //    QMUITopBarLayout mTopBar;
 //    RecyclerView mRecyclerView;
@@ -39,7 +47,7 @@ public abstract class BaseController extends QMUIWindowInsetLayout {
 
     public BaseController(Context context) {
         super(context);
-        LayoutInflater.from(context).inflate(R.layout.activity_base, this);
+        LayoutInflater.from(context).inflate(R.layout.activity_base_controller, this);
 
         initTopBar();
 
@@ -58,7 +66,8 @@ public abstract class BaseController extends QMUIWindowInsetLayout {
     protected abstract String getTitle();
 
     private void initTopBar() {
-//        mTopBar.setTitle(getTitle());
+        mTopBar = findViewById(R.id.topbar);
+        mTopBar.setText(getTitle());
 
 
     }
@@ -66,8 +75,6 @@ public abstract class BaseController extends QMUIWindowInsetLayout {
     public interface HomeControlListener {
         void startFragment(Fragment fragment);
     }
-
-
 
 
 }

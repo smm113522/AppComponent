@@ -25,7 +25,7 @@ https://blog.csdn.net/cheng9981/article/details/53229310
 Shadow是一个腾讯自主研发的Android插件框架，经过线上亿级用户量检验
 和360 的插件框架    
 https://github.com/Qihoo360/RePlugin
-
+https://github.com/ManbangGroup/Phantom
 
 open_nsfw_android-master
 
@@ -40,7 +40,7 @@ open_nsfw_android-master
 
 4，bugle 更新。bugle 热更新
 
-5基础 面试，所有尝试
+5，基础 面试，所有尝试
 
 6。mvp
 
@@ -59,3 +59,10 @@ open_nsfw_android-master
 
 13 Frameworks
 
+
+
+新增布局：
+PercentRelativeLayout（百分比相对布局）
+可以通过百分比控制控件的大小。
+PercentFrameLayout（百分比帧布局）
+可以通过百分比控制控件的大小。

@@ -17,6 +17,14 @@
 package com.kotlin.fragment;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.btmv.module_main.R;
+import com.code.utils.RouterPath;
 
 
 /**
@@ -26,14 +34,36 @@ import android.content.Context;
 
 public class HomeComponentsController extends BaseController {
 
-    public HomeComponentsController(Context context) {
-        super(context);
-    }
 
     @Override
     protected String getTitle() {
-        return "Components";
+        return "Home";
     }
+
+    private HomeControlListener mHomeControlListener;
+
+    public HomeComponentsController(Context context) {
+        super(context);
+        LayoutInflater.from(context).inflate(R.layout.activity_base_controller, this);
+
+        initTopBar();
+    }
+
+    protected void startFragment(Fragment fragment) {
+        if (mHomeControlListener != null) {
+            mHomeControlListener.startFragment(fragment);
+        }
+    }
+
+    public void setHomeControlListener(HomeControlListener homeControlListener) {
+        mHomeControlListener = homeControlListener;
+    }
+
+    private void initTopBar() {
+
+
+    }
+
 
 
 }

@@ -59,6 +59,7 @@ public class MyFresco {
     public Bitmap getPicFromNet(final String url) {
         //使用HttpUrlConnction
         final Bitmap[] soure = new Bitmap[0];
+
         Glide.with(BaseApp.Companion.getInstance()).asBitmap().load(url).into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(@NonNull Bitmap bitmap, @Nullable Transition<? super Bitmap> transition) {

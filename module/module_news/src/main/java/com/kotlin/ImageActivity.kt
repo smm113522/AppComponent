@@ -4,7 +4,11 @@ import android.graphics.Bitmap
 import android.widget.Button
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import com.code.base.BaseActivity
+import com.code.base.BaseApp
 import com.code.utils.RouterPath
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
 
@@ -20,8 +24,8 @@ class ImageActivity : BaseActivity() {
     }
 
     lateinit var bt: Button
-    lateinit var image : ImageView
-    lateinit var myFresco : MyFresco
+    lateinit var image: ImageView
+    lateinit var myFresco: MyFresco
     private val pic = "http://www.taopic.com/uploads/allimg/140320/235013-14032020515270.jpg"
 
     override fun initView() {
@@ -30,15 +34,15 @@ class ImageActivity : BaseActivity() {
         myFresco = MyFresco.init(this);
 
 
-
         bt.setOnClickListener {
-            Thread {
-                val bit : Bitmap = myFresco.getPicFromNet(pic)
-                runOnUiThread {
-                    image.setImageBitmap(bit)
-                }
+//            Thread {
+                Glide.with(applicationContext).load(pic).into(image)
+//                val bit: Bitmap = myFresco.loadPic(pic)
+//                runOnUiThread {
+//                    image.setImageBitmap(bit)
+//                }
+//            }.start()
 
-            }.start()
 
         }
     }

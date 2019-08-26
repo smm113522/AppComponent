@@ -17,7 +17,6 @@
 package com.kotlin.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +25,6 @@ import android.widget.Button;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.btmv.module_main.R;
 import com.code.utils.RouterPath;
-import com.kotlin.TestActivity;
-import com.qmuiteam.qmui.util.QMUIViewHelper;
 
 
 /**

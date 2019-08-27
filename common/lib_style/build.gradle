@@ -9,7 +9,6 @@ android {
         minSdkVersion minVersion
         targetSdkVersion targetSdk
 
-
     }
 
     dataBinding {

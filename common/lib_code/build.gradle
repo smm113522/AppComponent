@@ -73,4 +73,7 @@ dependencies {
 
 //    api 'com.jakewharton:butterknife:9.0.0'
 //    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'
+
+    api 'com.qihoo360.replugin:replugin-host-lib:2.2.4'
+    api 'com.liulishuo.filedownloader:library:1.6.9'
 }

@@ -1,4 +1,4 @@
-package com.kotlin
+package com.kotlin.app
 
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat

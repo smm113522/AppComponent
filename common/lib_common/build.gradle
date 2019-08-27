@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.alibaba.arouter'
 
 
 android {
@@ -11,11 +10,6 @@ android {
         minSdkVersion minVersion
         targetSdkVersion targetSdk
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
-            }
-        }
     }
 
     dataBinding {
@@ -33,8 +27,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
-//    api 'com.android.support:appcompat-v7:28.0.0'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api project(path: ':module:module_main')
     api project(path: ':module:module_news')

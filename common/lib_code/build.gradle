@@ -1,11 +1,7 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.alibaba.arouter'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
-//apply plugin: 'com.jakewharton.butterknife'
-
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion compileSdk
@@ -49,7 +45,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+//    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    kapt 'androidx.databinding:databinding-compiler:3.4.0'
+    kapt 'com.google.dagger:dagger-compiler:2.14.1'
+
     api 'com.alibaba:arouter-api:1.5.0'
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

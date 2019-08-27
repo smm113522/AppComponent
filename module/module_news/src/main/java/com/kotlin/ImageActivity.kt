@@ -1,16 +1,11 @@
 package com.kotlin
 
-import android.graphics.Bitmap
 import android.widget.Button
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.transition.Transition
 import com.code.base.BaseActivity
-import com.code.base.BaseApp
 import com.code.utils.RouterPath
-import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
 
 @Route(path = RouterPath.ImageCenter.path_image)
 class ImageActivity : BaseActivity() {

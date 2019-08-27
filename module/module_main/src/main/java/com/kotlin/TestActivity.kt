@@ -26,8 +26,8 @@ class TestActivity : BaseActivity() {
 
         var uri = "/other/activity"
         uri = "/image/activity"
-        uri = RouterPath.ImageCenter.path_image
-
+        uri = "/app/replugin"
+//        uri = RouterPath.ImageCenter.path_image
 
         ARouter.getInstance().build(uri)
                 .navigation(this, object : NavCallback() {

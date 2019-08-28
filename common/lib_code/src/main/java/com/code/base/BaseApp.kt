@@ -6,6 +6,12 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.code.BuildConfig
 import com.qihoo360.replugin.RePlugin
 import com.qihoo360.replugin.RePluginApplication
+import com.qihoo360.replugin.sdk.HostCallbacks
+import com.qihoo360.replugin.RePluginCallbacks
+import com.qihoo360.replugin.sdk.HostEventCallbacks
+import com.qihoo360.replugin.RePluginConfig
+import com.qihoo360.replugin.sdk.PluginConfig
+import com.qihoo360.replugin.sdk.PluginManager
 
 
 open class BaseApp : RePluginApplication() {
@@ -13,11 +19,6 @@ open class BaseApp : RePluginApplication() {
     companion object {
         private var instance: Application? = null
         fun getInstance() = instance!!
-    }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
-        RePlugin.enableDebugger(base, BuildConfig.DEBUG)
     }
 
     override fun onCreate() {
@@ -31,9 +32,8 @@ open class BaseApp : RePluginApplication() {
         ARouter.init(this)       // 尽可能早，推荐在Application中初始化
 
         //1、设置AppKey
-//        PluginConfig.setAppKey("你⾃自⼰己的AppKey");
-//        PluginManager.init(instance);
-
+        PluginConfig.setAppKey("qh1uzr0mp2zi");
+        PluginManager.init(getApplicationContext());
 
     }
 
@@ -52,7 +52,24 @@ open class BaseApp : RePluginApplication() {
 
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        RePlugin.enableDebugger(base, BuildConfig.DEBUG)
+    }
 
+    override fun createConfig(): RePluginConfig {
+        val config = RePluginConfig()
+        config.isUseHostClassIfNotFound = true
+        config.verifySign = !BuildConfig.DEBUG
+        //2、设置回调
+        config.eventCallbacks = HostEventCallbacks(this)
+        return config
+    }
+
+    override fun createCallbacks(): RePluginCallbacks {
+        //3、设置回调
+        return HostCallbacks(this)
+    }
 
 
 }

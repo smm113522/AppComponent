@@ -17,6 +17,10 @@
         android:theme="@style/AppTheme" >
 
 
+        <service android:name="com.qihoo360.replugin.sdk.log.LogService" />
+        <service android:name="com.liulishuo.filedownloader.services.FileDownloadService$SharedMainProcessService" />
+        <service android:name="com.liulishuo.filedownloader.services.FileDownloadService$SeparateProcessService" android:process=":filedownloader" />
+
     </application>
 
 </manifest>

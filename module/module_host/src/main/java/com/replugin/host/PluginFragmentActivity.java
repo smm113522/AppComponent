@@ -2,9 +2,7 @@ package com.replugin.host;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.qihoo360.replugin.RePlugin;
 
@@ -17,7 +15,7 @@ import com.qihoo360.replugin.RePlugin;
  * 没有成功
  */
 
-public class PluginFragmentActivity extends FragmentActivity {
+public class PluginFragmentActivity extends AppCompatActivity {
 
 
     @Override
@@ -46,17 +44,18 @@ public class PluginFragmentActivity extends FragmentActivity {
 
         //代码使用插件Fragment
         ClassLoader d1ClassLoader = RePlugin.fetchClassLoader(pluginName);//获取插件的ClassLoader
-        try {
-            Fragment fragment = d1ClassLoader.loadClass("com.kotlin.replugin.DemoFragment")
-                    .asSubclass(Fragment.class).newInstance();//使用插件的Classloader获取指定Fragment实例
-            getSupportFragmentManager().beginTransaction().add(R.id.container2, fragment).commit();//添加Fragment到UI
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Fragment fragment = d1ClassLoader.loadClass("com.kotlin.replugin.DemoFragment")
+//                    .asSubclass(Fragment.class).newInstance();//使用插件的Classloader获取指定Fragment实例
+//            getSupportFragmentManager().beginTransaction().add(R.id.container2, fragment).commit();//添加Fragment到UI
+            getSupportFragmentManager().beginTransaction().add(R.id.container2, new PluginFragment()).commit();//添加Fragment到UI
+//        } catch (InstantiationException e) {
+//            e.printStackTrace();
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }

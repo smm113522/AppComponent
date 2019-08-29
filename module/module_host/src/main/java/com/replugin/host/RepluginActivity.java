@@ -7,11 +7,9 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AlertDialog;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.code.base.BaseActivity;
@@ -53,6 +51,9 @@ public class RepluginActivity extends BaseActivity implements View.OnClickListen
         if (pi != null) {
             // Fetch "New Version" plugin
             PluginInfo newPi = pi.getPendingUpdate();
+            int v = pi.getVersion();
+
+//            int v1 = pi.getParentInfo().getVersion();
             if (newPi != null) {
 
                 new AlertDialog.Builder(RepluginActivity.this)

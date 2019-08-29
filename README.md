@@ -68,3 +68,10 @@ PercentFrameLayout（百分比帧布局）
 可以通过百分比控制控件的大小。
 
 1
+mvvm
+
+https://blog.csdn.net/xuexiangjys/article/details/79735123
+
+demo
+https://github.com/googlesamples/android-architecture-components
+

@@ -30,6 +30,7 @@ public class DemoFragment extends Fragment {
         /**
          * 需要注意不能使用inflater及container因为他们的Context是宿主的
          */
-        return LayoutInflater.from(RePlugin.getPluginContext()).inflate(R.layout.main_fragment, container, false);
+//        return LayoutInflater.from(RePlugin.getPluginContext()).inflate(R.layout.main_fragment, container, false);
+        return LayoutInflater.from(getActivity()).inflate(R.layout.main_fragment, container, false);
     }
 }

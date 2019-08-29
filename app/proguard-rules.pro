@@ -19,3 +19,13 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+# ---------------------------------------------
+# **不要改动**
+# 插件框架、崩溃后台等需要
+-repackageclasses 'replugin'
+-allowaccessmodification
+
+-renamesourcefileattribute replugin
+-keepattributes SourceFile,LineNumberTable

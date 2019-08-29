@@ -15,7 +15,7 @@
             android:value="replugin" />
         <meta-data
             android:name="com.qihoo360.plugin.version.ver"
-            android:value="5" />
+            android:value="6" />
 
 
         <activity android:name=".MainActivity">

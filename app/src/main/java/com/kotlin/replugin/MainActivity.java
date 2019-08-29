@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         mClickBt = (Button) findViewById(R.id.bt_click);
         mClickBt.setOnClickListener(this);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.content, new DemoFragment()).commit();//添加Fragment到UI
     }
 
     @Override

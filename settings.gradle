@@ -1,4 +1,4 @@
-include ':app', ':module_pdf',
+include ':app',
         //底层
         'common:lib_common',
         'common:lib_style',
@@ -7,6 +7,7 @@ include ':app', ':module_pdf',
         'lib:lib_camera-card-crop',
         'lib:lib_image',
         // 功能
+        'module:module_pdf',
         'module:module_host',
         'module:module_news',
         'module:module_main'

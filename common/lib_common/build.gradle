@@ -28,8 +28,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api project(path: ':module:module_main')
-    api project(path: ':module:module_news')
-    api project(path: ':module:module_host')
-    api project(path: ':module_pdf')
+
+    if (isModule.toBoolean()){
+        api project(path: ':common:lib_code')
+    } else {
+        api project(path: ':module:module_main')
+        api project(path: ':module:module_news')
+        api project(path: ':module:module_host')
+        api project(path: ':module:module_pdf')
+    }
+
 }

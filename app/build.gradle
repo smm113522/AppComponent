@@ -33,6 +33,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            if (!isModule.toBoolean()) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    exclude 'module/**'
+                }
+            } else {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            }
+
+        }
+    }
+
 }
 
 // ATTENTION!!! Must be PLACED AFTER "android{}" to read the applicationId
@@ -63,6 +78,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 //    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     kapt 'com.alibaba:arouter-compiler:1.2.2'
-    kapt 'androidx.databinding:databinding-compiler:3.4.0'
+//    kapt 'androidx.databinding:databinding-compiler:3.4.0'
     implementation project(path: ':common:lib_common')
 }

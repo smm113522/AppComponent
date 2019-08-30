@@ -79,5 +79,9 @@ dependencies {
 //    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     kapt 'com.alibaba:arouter-compiler:1.2.2'
 //    kapt 'androidx.databinding:databinding-compiler:3.4.0'
-    implementation project(path: ':common:lib_common')
+    if (isModule.toBoolean()){
+        implementation project(path: ':common:lib_code')
+    } else {
+        implementation project(path: ':common:lib_common')
+    }
 }

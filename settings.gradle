@@ -1,4 +1,4 @@
-include ':app',
+include ':app', ':module_pdf',
         //底层
         'common:lib_common',
         'common:lib_style',

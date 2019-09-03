@@ -10,5 +10,6 @@ include ':app',
         'module:module_pdf',
         'module:module_host',
         'module:module_news',
+        'module:module_mvvm',
         'module:module_main'
 

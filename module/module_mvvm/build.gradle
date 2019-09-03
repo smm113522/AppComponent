@@ -1,14 +1,21 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.alibaba.arouter'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 
 android {
     compileSdkVersion compileSdk
 
     defaultConfig {
         minSdkVersion minVersion
-        targetSdkVersion targetSdk
+        targetSdkVersion compileSdk
 
     }
 
@@ -21,20 +28,20 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
     }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+//    kapt 'androidx.databinding:databinding-compiler:3.4.0'
+//    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     if (isModule.toBoolean()){
         api project(path: ':common:lib_style')
     } else {
-        api project(path: ':module:module_main')
-        api project(path: ':module:module_news')
-        api project(path: ':module:module_host')
-        api project(path: ':module:module_pdf')
-        api project(path: ':module:module_mvvm')
+        api project(path: ':common:lib_code')
     }
-
 }

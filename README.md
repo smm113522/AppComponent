@@ -72,6 +72,33 @@ mvvm
 
 https://blog.csdn.net/xuexiangjys/article/details/79735123
 
+图片显示
+
+
+<ImageView
+    android:layout_width="280dp"
+    android:layout_height="140dp"
+    android:src="@mipmap/ic_launcher"
+    binding:url="@{viewModel.entity.img}"
+    binding:placeholderRes="@{R.mipmap.ic_launcher_round}"
+    />
+                
+                
+public final class ViewAdapter {
+    @BindingAdapter(value = {"url", "placeholderRes"}, requireAll = false)
+    public static void setImageUri(ImageView imageView, String url, int placeholderRes) {
+        if (!TextUtils.isEmpty(url)) {
+            //使用Glide框架加载图片
+            Glide.with(imageView.getContext())
+                    .load(url)
+                    .apply(new RequestOptions().placeholder(placeholderRes))
+                    .into(imageView);
+        }
+    }
+}
+
+
+
 demo
 https://github.com/googlesamples/android-architecture-components
 

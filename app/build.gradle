@@ -12,16 +12,21 @@ android {
         applicationId "com.kotlin.app"
         minSdkVersion minVersion
         targetSdkVersion targetSdk
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "3.0"
 
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [ AROUTER_MODULE_NAME : project.getName() ]
             }
         }
+        // 开启multidex
+        multiDexEnabled true
+    }
 
-
+    // recommend
+    dexOptions {
+        jumboMode = true
     }
 
     dataBinding {
@@ -67,6 +72,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 //    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     kapt 'com.alibaba:arouter-compiler:1.2.2'
+
 //    kapt 'androidx.databinding:databinding-compiler:3.4.0'
     if (isModule.toBoolean()){
         implementation project(path: ':common:lib_code')
@@ -74,3 +80,6 @@ dependencies {
         implementation project(path: ':common:lib_common')
     }
 }
+
+// 依赖插件脚本
+apply from: 'tinker-support.gradle'

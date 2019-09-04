@@ -102,3 +102,11 @@ public final class ViewAdapter {
 demo
 https://github.com/googlesamples/android-architecture-components
 
+
+## bug 热修复 和热更新
+https://github.com/BuglyDevTeam/Bugly-Android-Demo
+tinker-support 打包
+
+
+
+

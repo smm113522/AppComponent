@@ -6,5 +6,7 @@
 
         <activity android:name=".RepluginActivity"></activity>
         <activity android:name=".PluginFragmentActivity"></activity>
+
+
     </application>
 </manifest>

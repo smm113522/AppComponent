@@ -71,4 +71,10 @@ dependencies {
     implementation files('libs/download.jar')
     implementation files('libs/RePluginSdk-1.2.0.jar')
 
+    implementation "com.android.support:multidex:1.0.1"
+    api 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    //1. 指定tinker依赖版本（注：应用升级1.3.5版本起，不再内置tinker）
+    //2.为了便于解答问题，这里的tinker版本建议跟随此处demo设置，如果微信更新了tinker版本，bugly会定期同步更新
+    implementation 'com.tencent.tinker:tinker-android-lib:1.9.13'
+
 }

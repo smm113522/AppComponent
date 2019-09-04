@@ -12,6 +12,7 @@ import com.kotlin.fragment.HomeComponentsController
 import com.kotlin.fragment.BaseController
 import com.qmuiteam.qmui.widget.QMUITabSegment
 import com.qmuiteam.qmui.widget.QMUIViewPager
+import com.tencent.bugly.beta.Beta
 import java.util.*
 
 class MainActivity : BaseActivity() {
@@ -28,6 +29,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
+        Beta.checkUpgrade()
         mViewPager = findViewById(R.id.pager)
         mTabSegment = this.findViewById(R.id.tabs)
 

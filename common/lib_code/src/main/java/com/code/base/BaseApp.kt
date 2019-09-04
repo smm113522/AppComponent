@@ -2,6 +2,7 @@ package com.code.base
 
 import android.app.Application
 import android.content.Context
+import android.support.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.code.BuildConfig
 import com.qihoo360.replugin.RePlugin
@@ -12,6 +13,7 @@ import com.qihoo360.replugin.sdk.HostEventCallbacks
 import com.qihoo360.replugin.RePluginConfig
 import com.qihoo360.replugin.sdk.PluginConfig
 import com.qihoo360.replugin.sdk.PluginManager
+import com.tencent.bugly.beta.Beta
 
 
 open class BaseApp : RePluginApplication() {
@@ -55,6 +57,11 @@ open class BaseApp : RePluginApplication() {
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
         RePlugin.enableDebugger(base, BuildConfig.DEBUG)
+
+        // you must install multiDex whatever tinker is installed!
+        MultiDex.install(base)
+        // TODO: 安装tinker
+        Beta.installTinker(this)
     }
 
     override fun createConfig(): RePluginConfig {

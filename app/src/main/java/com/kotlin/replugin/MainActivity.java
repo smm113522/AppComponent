@@ -1,13 +1,16 @@
 package com.kotlin.replugin;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+
+import com.qihoo360.replugin.RePlugin;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends Activity {
 
     private Button mClickBt;
 
@@ -15,25 +18,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
+//        initView();
     }
 
     private void initView() {
-        mClickBt = (Button) findViewById(R.id.bt_click);
-        mClickBt.setOnClickListener(this);
+//        mClickBt = (Button) findViewById(R.id.bt_click);
+//        mClickBt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this, "测试", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-        getSupportFragmentManager().beginTransaction().add(R.id.content, new DemoFragment()).commit();//添加Fragment到UI
+//        getSupportFragmentManager().beginTransaction().add(R.id.content, new DemoFragment()).commit();//添加Fragment到UI
+
+//        LinearLayout contentView = RePlugin.fetchViewByLayoutName("replugin", "main_fragment", null);
+//        if (contentView == null) {
+//            Toast.makeText(this, "from_demo1 Not Found", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.bt_click:
-                // TODO 19/08/28
-                Toast.makeText(getApplicationContext(), "测试", Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                break;
-        }
-    }
+
 }

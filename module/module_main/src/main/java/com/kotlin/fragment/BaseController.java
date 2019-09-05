@@ -42,7 +42,8 @@ public abstract class BaseController extends QMUIWindowInsetLayout {
 //    QMUITopBarLayout mTopBar;
 //    RecyclerView mRecyclerView;
 
-    private HomeControlListener mHomeControlListener;
+    private ControlListener mControlListener;
+
     private int mDiffRecyclerViewSaveStateId = QMUIViewHelper.generateViewId();
 
     public BaseController(Context context) {
@@ -54,13 +55,13 @@ public abstract class BaseController extends QMUIWindowInsetLayout {
     }
 
     protected void startFragment(Fragment fragment) {
-        if (mHomeControlListener != null) {
-            mHomeControlListener.startFragment(fragment);
+        if (mControlListener != null) {
+            mControlListener.startFragment(fragment);
         }
     }
 
-    public void setHomeControlListener(HomeControlListener homeControlListener) {
-        mHomeControlListener = homeControlListener;
+    public void setHomeControlListener(ControlListener homeControlListener) {
+        mControlListener = homeControlListener;
     }
 
     protected abstract String getTitle();
@@ -72,7 +73,7 @@ public abstract class BaseController extends QMUIWindowInsetLayout {
 
     }
 
-    public interface HomeControlListener {
+    public interface ControlListener {
         void startFragment(Fragment fragment);
     }
 

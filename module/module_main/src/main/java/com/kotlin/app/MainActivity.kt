@@ -10,6 +10,7 @@ import com.code.base.BaseActivity
 import com.kotlin.fragment.HelperComponentsController
 import com.kotlin.fragment.HomeComponentsController
 import com.kotlin.fragment.BaseController
+import com.kotlin.fragment.OtherComponentsController
 import com.qmuiteam.qmui.widget.QMUITabSegment
 import com.qmuiteam.qmui.widget.QMUIViewPager
 import com.tencent.bugly.beta.Beta
@@ -60,7 +61,7 @@ class MainActivity : BaseActivity() {
                 .addTab(util)
                 .addTab(lab)
 
-        val listener = object : BaseController.HomeControlListener {
+        val listener = object : BaseController.ControlListener {
             override fun startFragment(fragment: Fragment) {
 //                HomeController.startFragment(fragment)
             }
@@ -76,7 +77,7 @@ class MainActivity : BaseActivity() {
         homeUtilController.setHomeControlListener(listener)
         mPages!![Pager.UTIL] = homeUtilController
 
-        val homeLabController = HomeComponentsController(applicationContext)
+        val homeLabController = OtherComponentsController(applicationContext)
         homeLabController.setHomeControlListener(listener)
         mPages!![Pager.LAB] = homeLabController
 

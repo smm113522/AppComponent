@@ -41,7 +41,7 @@ public class HelperComponentsController extends BaseController implements View.O
         return "Helper";
     }
 
-    private HomeControlListener mHomeControlListener;
+    private ControlListener mHomeControlListener;
 
     public HelperComponentsController(Context context) {
         super(context);
@@ -61,7 +61,7 @@ public class HelperComponentsController extends BaseController implements View.O
         }
     }
 
-    public void setHomeControlListener(HomeControlListener homeControlListener) {
+    public void setHomeControlListener(ControlListener homeControlListener) {
         mHomeControlListener = homeControlListener;
     }
 

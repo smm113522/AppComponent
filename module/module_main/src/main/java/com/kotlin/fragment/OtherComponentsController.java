@@ -28,7 +28,7 @@ import com.btmv.module_main.R;
  * @date 2016-10-20
  */
 
-public class HomeComponentsController extends BaseController {
+public class OtherComponentsController extends BaseController {
 
 
     @Override
@@ -38,10 +38,10 @@ public class HomeComponentsController extends BaseController {
 
     private ControlListener mHomeControlListener;
 
-    public HomeComponentsController(Context context) {
+    public OtherComponentsController(Context context) {
         super(context);
 
-        LayoutInflater.from(context).inflate(R.layout.activity_base_controller, this);
+        LayoutInflater.from(context).inflate(R.layout.controller_other, this);
 
         initTopBar();
     }
@@ -52,7 +52,7 @@ public class HomeComponentsController extends BaseController {
         }
     }
 
-    public void setHomeControlListener(ControlListener homeControlListener) {
+    public void setControlListener(ControlListener homeControlListener) {
         mHomeControlListener = homeControlListener;
     }
 

@@ -18,7 +18,9 @@ package com.kotlin.fragment;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.widget.TextView;
 
 import com.btmv.module_main.R;
 
@@ -30,7 +32,8 @@ import com.btmv.module_main.R;
 
 public class HomeComponentsController extends BaseController {
 
-
+    private TextView topbar;
+    private RecyclerView recyclerView;
     @Override
     protected String getTitle() {
         return "Home";

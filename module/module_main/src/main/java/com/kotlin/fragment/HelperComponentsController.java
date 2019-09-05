@@ -75,8 +75,8 @@ public class HelperComponentsController extends BaseController implements View.O
         if (v.getId() == R.id.button) {// TODO 19/08/20
 //            ARouter.getInstance().build(RouterPath.ImageCenter.path_image).navigation();
 //            ARouter.getInstance().build("/other/activity").navigation();
-//            ARouter.getInstance().build("/app/replugin").navigation();
-            ARouter.getInstance().build("/pdf/activity").navigation();
+            ARouter.getInstance().build("/app/replugin").navigation();
+//            ARouter.getInstance().build("/pdf/activity").navigation();
 
 //            Intent intent = new Intent(getContext(), TestActivity.class);
 //            getContext().startActivity(intent);

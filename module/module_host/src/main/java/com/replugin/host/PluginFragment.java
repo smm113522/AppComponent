@@ -15,9 +15,7 @@ public class PluginFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-
-//        return inflater.inflate(R.layout.activity_plugin_fragment,container,false);
-        return LayoutInflater.from(getActivity()).inflate(R.layout.activity_plugin_fragment,container,false);
+        return inflater.inflate(R.layout.fragment_pugin,container,false);
+//        return LayoutInflater.from(getActivity()).inflate(R.layout.fragment_pugin,container,false);
     }
 }

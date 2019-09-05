@@ -1,9 +1,14 @@
 package com.replugin.host;
 
+import android.content.ComponentName;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
+import com.qihoo360.i.Factory2;
 import com.qihoo360.replugin.RePlugin;
 
 /**
@@ -15,7 +20,7 @@ import com.qihoo360.replugin.RePlugin;
  * 没有成功
  */
 
-public class PluginFragmentActivity extends AppCompatActivity {
+public class PluginFragmentActivity extends FragmentActivity {
 
 
     @Override
@@ -40,15 +45,40 @@ public class PluginFragmentActivity extends AppCompatActivity {
         //注册一个全局Hook用于拦截系统对XX类的寻找定向到Demo1中的XX类主要是用于在xml中可以直接使用插件中的类
 //        RePlugin.registerHookingClass("com.kotlin.replugin.DemoFragment",
 //                RePlugin.createComponentName(pluginName, "com.kotlin.replugin.DemoFragment"), null);
+
+//        String source = "com.kotlin.replugin.DemoFragment";
+//
+//        ComponentName componentName = RePlugin.createComponentName(pluginName,"com.kotlin.replugin.DemoFragment");
+//
+//        String plugin = componentName.getPackageName();
+//        String type = componentName.getClassName();
+//        Class c = null;
+//
+//        boolean d = Factory2.registerDynamicClass(source, plugin,type,c);
+
         setContentView(R.layout.activity_plugin_fragment);
 
+//        View view = RePlugin.fetchViewByLayoutName("com.kotlin.replugin", "main_fragment" , null);
         //代码使用插件Fragment
-        ClassLoader d1ClassLoader = RePlugin.fetchClassLoader(pluginName);//获取插件的ClassLoader
+        ClassLoader d1ClassLoader = RePlugin.fetchClassLoader("replugin");//获取插件的ClassLoader
+        try {
+            Fragment fragment = d1ClassLoader.loadClass("com.kotlin.replugin.DemoCodeFragment")
+                    .asSubclass(Fragment.class).newInstance();//使用插件的Classloader获取指定Fragment实例
+            getSupportFragmentManager().beginTransaction().add(R.id.container2, fragment).commit();//添加Fragment到UI
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
 //        try {
 //            Fragment fragment = d1ClassLoader.loadClass("com.kotlin.replugin.DemoFragment")
 //                    .asSubclass(Fragment.class).newInstance();//使用插件的Classloader获取指定Fragment实例
 //            getSupportFragmentManager().beginTransaction().add(R.id.container2, fragment).commit();//添加Fragment到UI
-            getSupportFragmentManager().beginTransaction().add(R.id.container2, new PluginFragment()).commit();//添加Fragment到UI
+//            getSupportFragmentManager().beginTransaction().add(R.id.container2, new PluginFragment()).commit();//添加Fragment到UI
 //        } catch (InstantiationException e) {
 //            e.printStackTrace();
 //        } catch (IllegalAccessException e) {

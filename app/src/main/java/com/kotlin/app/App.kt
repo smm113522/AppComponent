@@ -27,11 +27,11 @@ class App : BaseApp() {
 
         val builder = Config.ConfigBuilder()
                 .setAppContext(this)
-                .setAppName("apm_demo")
+                .setAppName("kotlin_demo")
                 .setRuleRequest(RuleSyncRequest())
                 .setUpload(CollectDataSyncUpload())
                 .setAppVersion("0.0.1")
-                .setApmid("qh1uzr0mp2zi")
+                .setApmid("phoa7kmj9fpa")
         Client.attach(builder.build())
         Client.startWork()
     }

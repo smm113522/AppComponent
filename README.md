@@ -119,6 +119,37 @@ https://blog.csdn.net/z2wenfa/article/details/52873009
 
 
 
+https://github.com/ArmanSar/SwipeLayout
+https://p.codekk.com/detail/Android/Adnan865/MultiShapeBlurView
+https://p.codekk.com/detail/Android/KunMinX/Linkage-RecyclerView
+https://p.codekk.com/detail/Android/forvv231/EasyScollImage
+
+https://github.com/vinc3m1/RoundedImageView/blob/master/roundedimageview/src/main/java/com/makeramen/roundedimageview/RoundedImageView.java
+
+
+
+String[] strings = new String[]{PermissionConstants.STORAGE};
+XPermission.create(getContext(), strings)
+    .callback(new XPermission.SimpleCallback() {
+        @Override
+        public void onGranted() {
+            //save bitmap to album.
+            XPopupUtils.saveBmpToAlbum(getContext(), imageLoader, urls.get(position));
+        }
+        @Override
+        public void onDenied() {
+            Toast.makeText(getContext(), "没有保存权限，保存功能无法使用！", Toast.LENGTH_SHORT).show();
+        }
+    }).request();                           
+                    
+                    
+lib 是所有 lib 
+
+modules 是里面功能文件   
+
+common 公共部分     
+
+
 
 
 

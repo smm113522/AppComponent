@@ -4,9 +4,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'replugin-host-gradle'
+apply plugin: 'argusapm'
 
 android {
     compileSdkVersion compileSdk
+
+    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.kotlin.app"

@@ -32,8 +32,10 @@ import com.btmv.module_main.R;
 
 public class HomeComponentsController extends BaseController {
 
-    private TextView topbar;
-    private RecyclerView recyclerView;
+    public HomeComponentsController(Context context) {
+        super(context);
+    }
+
     @Override
     protected String getTitle() {
         return "Home";
@@ -41,13 +43,6 @@ public class HomeComponentsController extends BaseController {
 
     private ControlListener mHomeControlListener;
 
-    public HomeComponentsController(Context context) {
-        super(context);
-
-        LayoutInflater.from(context).inflate(R.layout.activity_base_controller, this);
-
-        initTopBar();
-    }
 
     protected void startFragment(Fragment fragment) {
         if (mHomeControlListener != null) {
@@ -58,12 +53,6 @@ public class HomeComponentsController extends BaseController {
     public void setHomeControlListener(ControlListener homeControlListener) {
         mHomeControlListener = homeControlListener;
     }
-
-    private void initTopBar() {
-
-
-    }
-
 
 
 }

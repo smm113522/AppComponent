@@ -39,9 +39,6 @@ public abstract class BaseController extends QMUIWindowInsetLayout {
 
     TextView mTopBar;
 
-//    QMUITopBarLayout mTopBar;
-//    RecyclerView mRecyclerView;
-
     private ControlListener mControlListener;
 
     private int mDiffRecyclerViewSaveStateId = QMUIViewHelper.generateViewId();
@@ -69,7 +66,7 @@ public abstract class BaseController extends QMUIWindowInsetLayout {
     private void initTopBar() {
         mTopBar = findViewById(R.id.topbar);
         mTopBar.setText(getTitle());
-
+        mRecyclerView = findViewById(R.id.recyclerView);
 
     }
 

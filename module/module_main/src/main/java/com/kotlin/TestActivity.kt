@@ -12,14 +12,7 @@ import com.code.utils.ToastsUtils
 
 @Route(path = "/test/activity")
 class TestActivity : BaseActivity() {
-
-    override fun getLayout(): Int {
-        return 0
-    }
-
-    override fun getViewDataLayout(): Int {
-        return R.layout.activity_test
-    }
+    override fun getLayoutId(): Int = R.layout.activity_test
 
     override fun initView() {
         ToastsUtils.showToast("hhhh",true)

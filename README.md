@@ -149,8 +149,9 @@ modules 是里面功能文件
 
 common 公共部分     
 
+kotlin 基础学习
 
-
+https://www.kotlincn.net/docs/reference/android-overview.html
 
 
 

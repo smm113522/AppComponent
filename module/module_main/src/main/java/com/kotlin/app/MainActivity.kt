@@ -1,145 +1,45 @@
 package com.kotlin.app
 
-import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.PagerAdapter
-import android.view.View
-import android.view.ViewGroup
+import android.graphics.Color
 import com.btmv.module_main.R
 import com.code.base.BaseActivity
-import com.kotlin.fragment.HelperComponentsController
-import com.kotlin.fragment.HomeComponentsController
-import com.kotlin.fragment.BaseController
-import com.kotlin.fragment.OtherComponentsController
-import com.qmuiteam.qmui.widget.QMUITabSegment
-import com.qmuiteam.qmui.widget.QMUIViewPager
+import com.kotlin.view.BottomTabBar
+import com.kotlin.view.bean.ItemBar
 import com.tencent.bugly.beta.Beta
-import java.util.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    lateinit var mViewPager : QMUIViewPager
-    lateinit var mTabSegment: QMUITabSegment
+    override fun getLayoutId(): Int = R.layout.activity_main
 
-    override fun getLayout(): Int {
-        return R.layout.activity_main
-    }
-
-    override fun getViewDataLayout(): Int {
-        return 0
-    }
+    var listBar = ArrayList<ItemBar>();
 
     override fun initView() {
+        //更新jar 包
         Beta.checkUpgrade()
-        mViewPager = findViewById(R.id.pager)
-        mTabSegment = this.findViewById(R.id.tabs)
-
-        val normalColor = applicationContext.resources.getColor(R.color.qmui_config_color_gray_6)
-        val selectColor = applicationContext.resources.getColor(R.color.qmui_config_color_blue)
-        mTabSegment.setDefaultNormalColor(normalColor)
-        mTabSegment.setDefaultSelectedColor(selectColor)
 
 
-        val component = QMUITabSegment.Tab(
-                ContextCompat.getDrawable(applicationContext, R.mipmap.icon_tabbar_component),
-                ContextCompat.getDrawable(applicationContext, R.mipmap.icon_tabbar_component_selected),
-                "Components", false
-        )
 
-        val util = QMUITabSegment.Tab(
-                ContextCompat.getDrawable(applicationContext, R.mipmap.icon_tabbar_component),
-                ContextCompat.getDrawable(applicationContext, R.mipmap.icon_tabbar_component_selected),
-                "Helper", false
-        )
-        val lab = QMUITabSegment.Tab(
-                ContextCompat.getDrawable(applicationContext, R.mipmap.icon_tabbar_component),
-                ContextCompat.getDrawable(applicationContext, R.mipmap.icon_tabbar_component_selected),
-                "Lab", false
-        )
-        mTabSegment.setHasIndicator(false)
-        mTabSegment.addTab(component)
-                .addTab(util)
-                .addTab(lab)
 
-        val listener = object : BaseController.ControlListener {
-            override fun startFragment(fragment: Fragment) {
-//                HomeController.startFragment(fragment)
-            }
-        }
-
-        mPages = HashMap()
-
-        val homeComponentsController = HomeComponentsController(applicationContext)
-        homeComponentsController.setHomeControlListener(listener)
-        mPages!![Pager.COMPONENT] = homeComponentsController
-
-        val homeUtilController = HelperComponentsController(applicationContext)
-        homeUtilController.setHomeControlListener(listener)
-        mPages!![Pager.UTIL] = homeUtilController
-
-        val homeLabController = OtherComponentsController(applicationContext)
-        homeLabController.setHomeControlListener(listener)
-        mPages!![Pager.LAB] = homeLabController
-
-        mViewPager.adapter = mPagerAdapter
-        mTabSegment.setupWithViewPager(mViewPager, false)
 
     }
 
-    internal enum class Pager {
-        COMPONENT, UTIL, LAB;
+    fun initBar(list: ArrayList<ItemBar>){
 
+        bottom_bar.init(supportFragmentManager, 750.0, 1334.0)
+                .setImgSize(44.0, 44.0)
+                .setFontSize(22.0)
+                .setTabPadding(16.0, 8.0, 8.0)
+                .setChangeColor(Color.parseColor("#2879B8"), Color.parseColor("#666666"))
+                .addListTabItem(list)
+                .isShowDivider(true)
+                .setDividerColor(Color.parseColor("#20000000"))
+                .setTabBarBackgroundColor(Color.parseColor("#FFFFFFFF"))
+                .setCurrentTab(0)
 
-        companion object {
-
-            fun getPagerFromPositon(position: Int): Pager {
-                when (position) {
-                    0 -> return COMPONENT
-                    1 -> return UTIL
-                    2 -> return LAB
-                    else -> return COMPONENT
-                }
-            }
-        }
     }
 
-    private var mPages: HashMap<Pager, BaseController>? = null
 
-    private val mPagerAdapter = object : PagerAdapter() {
-
-        private var mChildCount = 0
-
-        override fun isViewFromObject(view: View, `object`: Any): Boolean {
-            return view === `object`
-        }
-
-        override fun getCount(): Int {
-            return mPages!!.size
-        }
-
-        override
-        fun instantiateItem(container: ViewGroup, position: Int): Any {
-            val page = mPages!![Pager.getPagerFromPositon(position)]
-            val params = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-            container.addView(page, params)
-            return page!!
-        }
-
-        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-            container.removeView(`object` as View)
-        }
-
-        override fun getItemPosition(`object`: Any): Int {
-            return if (mChildCount == 0) {
-                PagerAdapter.POSITION_NONE
-            } else super.getItemPosition(`object`)
-        }
-
-        override fun notifyDataSetChanged() {
-            mChildCount = count
-            super.notifyDataSetChanged()
-        }
-    }
 
 
 }

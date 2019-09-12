@@ -7,16 +7,10 @@ import com.bumptech.glide.Glide
 import com.code.base.BaseActivity
 import com.code.utils.RouterPath
 
-@Route(path = RouterPath.ImageCenter.path_image)
+@Route(path = RouterPath.path_image_activity)
 class ImageActivity : BaseActivity() {
 
-    override fun getLayout(): Int {
-        return R.layout.activity_image
-    }
-
-    override fun getViewDataLayout(): Int {
-        return 0
-    }
+    override fun getLayoutId(): Int = R.layout.activity_image
 
     lateinit var bt: Button
     lateinit var image: ImageView

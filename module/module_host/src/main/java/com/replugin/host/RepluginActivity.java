@@ -28,16 +28,6 @@ public class RepluginActivity extends BaseActivity implements View.OnClickListen
     private Button mPerformanceBt;
 
     @Override
-    public int getLayout() {
-        return R.layout.activity_replugin;
-    }
-
-    @Override
-    public int getViewDataLayout() {
-        return 0;
-    }
-
-    @Override
     public void initView() {
 
         mPushBt = (Button) findViewById(R.id.bt_push);
@@ -145,5 +135,10 @@ public class RepluginActivity extends BaseActivity implements View.OnClickListen
         } else if (i == R.id.bt_performance) {// TODO 19/08/27
             startActivity(new Intent(RepluginActivity.this, PluginFragmentActivity.class));
         }
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_replugin;
     }
 }

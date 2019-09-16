@@ -10,5 +10,7 @@ object RouterPath {
     const val path_mvvm_activity = "/mvvm/activity"
     // web
     const val path_web_activity = "/web/activity"
+    //
+    const val path_replugin_activity = "/app/replugin"
 
 }

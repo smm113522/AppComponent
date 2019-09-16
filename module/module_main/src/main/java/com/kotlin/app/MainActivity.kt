@@ -1,8 +1,11 @@
 package com.kotlin.app
 
 import android.graphics.Color
+import android.support.annotation.ColorInt
 import com.btmv.module_main.R
 import com.code.base.BaseActivity
+import com.kotlin.fragment.MainFragment
+import com.kotlin.fragment.OtherFragment
 import com.kotlin.view.BottomTabBar
 import com.kotlin.view.bean.ItemBar
 import com.tencent.bugly.beta.Beta
@@ -12,17 +15,23 @@ class MainActivity : BaseActivity() {
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
-    var listBar = ArrayList<ItemBar>();
+    var listBar = ArrayList<ItemBar>()
 
     override fun initView() {
         //更新jar 包
         Beta.checkUpgrade()
 
+        listBar.add(ItemBar("控件",R.mipmap.icon_tabbar_component_selected,
+                R.mipmap.icon_tabbar_component,MainFragment.newInstance().javaClass))
 
+        listBar.add(ItemBar("组件",R.mipmap.icon_tabbar_component_selected,
+                R.mipmap.icon_tabbar_component,OtherFragment.newInstance().javaClass))
 
-
+        initBar(listBar)
 
     }
+    var defulte_color : Int = R.color.main_bt_default
+    var press_color : Int = R.color.main_bt_press
 
     fun initBar(list: ArrayList<ItemBar>){
 

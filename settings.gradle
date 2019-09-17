@@ -13,5 +13,6 @@ include ':app',
         'module:module_mvvm',
         'module:module_mvp',
         'module:module_hotfix',
+        'module:module_video',
         'module:module_main'
 

@@ -22,9 +22,6 @@ import com.alibaba.android.arouter.launcher.ARouter
  *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
  *           ░     ░ ░      ░  ░
  *
- * Created by guoyang on 2018/9/19.
- * github https://github.com/GuoYangGit
- * QQ:352391291
  */
 
 
@@ -44,6 +41,11 @@ object NavigationUtil {
 
     fun toImageActivity() {
         ARouter.getInstance().build(RouterPath.path_image_activity)
+                .navigation()
+    }
+
+    fun toActivity(path: String) {
+        ARouter.getInstance().build(path)
                 .navigation()
     }
 

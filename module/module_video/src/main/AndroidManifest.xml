@@ -1,8 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kotlin.app" >
-
+    package="com.kotlin.video" >
 
     <application>
-        <activity android:name=".HotfixActivity"></activity>
+
+        <activity android:name=".VideoActivity"></activity>
+
     </application>
+
 </manifest>

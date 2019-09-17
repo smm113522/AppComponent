@@ -22,7 +22,6 @@ class ImageActivity : BaseActivity() {
         image = findViewById(R.id.iv_load)
         myFresco = MyFresco.init(this);
 
-
         bt.setOnClickListener {
 //            Thread {
                 Glide.with(applicationContext).load(pic).into(image)

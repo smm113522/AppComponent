@@ -1,4 +1,4 @@
-package com.kotlin.app;
+package com.kotlin.hotfix;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.code.base.BaseActivity;

@@ -4,7 +4,7 @@
 
     <application android:theme="@style/AppTheme">
 
-        <activity android:name="com.kotlin.app.MainActivity">
+        <activity android:name="com.kotlin.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.kotlin.app
+package com.kotlin
 
 import android.graphics.Color
 import android.support.annotation.ColorInt

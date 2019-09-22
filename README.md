@@ -27,6 +27,7 @@ Shadow是一个腾讯自主研发的Android插件框架，经过线上亿级用�
 https://github.com/Qihoo360/RePlugin
 https://github.com/Qihoo360/DroidPlugin
 https://github.com/ManbangGroup/Phantom
+https://blog.csdn.net/calvin_zhou/article/details/78459099
 
 open_nsfw_android-master
 

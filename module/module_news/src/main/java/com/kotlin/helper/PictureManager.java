@@ -1,19 +1,48 @@
 package com.kotlin.helper;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
 
 import static android.app.Activity.RESULT_OK;
+
+/**
+ *
+ *  // 照相
+ *             PictureManager.getInstance()
+ *                     .with(this)
+ *                     .setCallback(object : OnPictureCallback<String> {
+ *                         override fun onCompleted(result: String?) {
+ *                             Log.d("dddd", result)//
+ *                             Glide.with(applicationContext).load(result).into(image)
+ *                         }
+ *
+ *                         override fun onError(errorMsg: Throwable?) {
+ *
+ *                         }
+ *                     }).startPhotoCamera()
+ * // 选择图库
+ *             PictureManager.getInstance()
+ *                     .with(this)
+ *                     .setCallback(object : OnPictureCallback<String> {
+ *                         override fun onCompleted(result: String?) {
+ *                             Log.d("dddd", result)//
+ *                             Glide.with(applicationContext).load(result).into(image)
+ *                         }
+ *
+ *                         override fun onError(errorMsg: Throwable?) {
+ *
+ *                         }
+ *                     }).startPhotograph()
+ *
+ */
 
 public class PictureManager extends PictureStrategy {
 

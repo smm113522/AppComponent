@@ -30,14 +30,15 @@ class ImageActivity : BaseActivity() {
         image = findViewById(R.id.iv_load)
         myFresco = MyFresco.init(this);
 
-        PermissionUtils.requestMorePermissions(this,permissions,1)
+        PermissionUtils.requestMorePermissions(this, permissions, 1)
 
         bt.setOnClickListener {
+            // 照相
             PictureManager.getInstance()
                     .with(this)
-                    .setCallback(object : OnPictureCallback<String>{
+                    .setCallback(object : OnPictureCallback<String> {
                         override fun onCompleted(result: String?) {
-                            Log.d("dddd",result)//
+                            Log.d("dddd", result)//
                             Glide.with(applicationContext).load(result).into(image)
                         }
 
@@ -45,6 +46,19 @@ class ImageActivity : BaseActivity() {
 
                         }
                     }).startPhotoCamera()
+// 选择图库
+            PictureManager.getInstance()
+                    .with(this)
+                    .setCallback(object : OnPictureCallback<String> {
+                        override fun onCompleted(result: String?) {
+                            Log.d("dddd", result)//
+                            Glide.with(applicationContext).load(result).into(image)
+                        }
+
+                        override fun onError(errorMsg: Throwable?) {
+
+                        }
+                    }).startPhotograph()
 
         }
     }
@@ -55,6 +69,6 @@ class ImageActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        PictureManager.getInstance().with(this).onActivityResult(requestCode,resultCode,data)
+        PictureManager.getInstance().with(this).onActivityResult(requestCode, resultCode, data)
     }
 }

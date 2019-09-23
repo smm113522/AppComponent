@@ -115,13 +115,19 @@ public class PictureManager extends PictureStrategy {
         imageUri = Uri.fromFile(imageFile);
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            //第二个参数为 包名.fileprovider
-            imageUri = FileProvider.getUriForFile(context, "com.kotlin.app.fileprovider", imageFile);
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        }
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-        context.startActivityForResult(intent, CAMERA_REQUEST_CODE);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            //第二个参数为 包名.fileprovider
+//            imageUri = FileProvider.getUriForFile(context, "com.kotlin.app.fileprovider", imageFile);
+//            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        }
+//        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//        context.startActivityForResult(intent, CAMERA_REQUEST_CODE);
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri); //指定图片输出地址
+
+//        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+
+        context.startActivityForResult(intent, CAMERA_REQUEST_CODE); //启动照相
 
     }
 

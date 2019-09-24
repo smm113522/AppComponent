@@ -44,5 +44,7 @@ object RouterPath {
     const val path_kotlin_activity = "/kotlin/activity"
     // pdf
     const val path_pdf_activity = "/pdf/activity"
+    // html
+    const val path_html_activity = "/html/activity"
 
 }

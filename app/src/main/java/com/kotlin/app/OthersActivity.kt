@@ -29,10 +29,10 @@ class OthersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_other)
-        var a: String? = "abc"
-        println(a!!.length)     //输出3
-        val b: String? = null
-        b!!                     //抛出空指针异常
+//        var a: String? = "abc"
+//        println(a!!.length)     //输出3
+//        val b: String? = null
+//        b!!                     //抛出空指针异常
 
 
     }

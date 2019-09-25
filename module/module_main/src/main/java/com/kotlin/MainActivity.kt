@@ -30,8 +30,6 @@ class MainActivity : BaseActivity() {
         initBar(listBar)
 
     }
-    var defulte_color : Int = R.color.main_bt_default
-    var press_color : Int = R.color.main_bt_press
 
     fun initBar(list: ArrayList<ItemBar>){
 

@@ -36,7 +36,7 @@ dependencies {
         api project(path: ':module:module_pdf')
         api project(path: ':module:module_mvvm')
         api project(path: ':module:module_mvp')
-//        api project(path: ':module:module_video')
+        api project(path: ':module:module_video')
         api project(path: ':module:module_hotfix')
     }
 

@@ -15,6 +15,9 @@ import android.text.TextUtils
 import com.kotlin.html.module.MainItem
 import com.kotlin.html.module.MovieDetails
 
+/**
+ * https://www.cnblogs.com/yueshutong/p/9381530.html
+ */
 
 @Route(path = RouterPath.path_html_activity)
 class HtmlActivity : BaseActivity() {
@@ -155,6 +158,9 @@ class HtmlActivity : BaseActivity() {
         return list
     }
 
+    /**
+     * 目前没有做完
+     */
     fun getMovieDetails(html: String): MovieDetails {
 
         val doc = Jsoup.parseBodyFragment(html)

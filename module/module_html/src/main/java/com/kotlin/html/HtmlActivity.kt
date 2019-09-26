@@ -5,16 +5,23 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.code.base.BaseActivity
 import com.code.utils.CameraThreadPool
 import com.code.utils.RouterPath
+import com.kotlin.html.module.Classification
 import kotlinx.android.synthetic.main.activity_html.*
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import android.system.Os.link
+import android.R.attr
+import com.kotlin.html.module.MainItem
 
 
 @Route(path = RouterPath.path_html_activity)
 class HtmlActivity : BaseActivity() {
 
+    private val TAG = "HtmlActivity"
+
     override fun getLayoutId(): Int = R.layout.activity_html
     var url = "https://www.hdwan.net"
+    var url1 = "https://www.hdwan.net/page/1"
 
     override fun initView() {
         bt_get_home.setOnClickListener {
@@ -22,17 +29,84 @@ class HtmlActivity : BaseActivity() {
         }
     }
 
+    var html = "";
     fun getHtmlHome() {
         CameraThreadPool.execute {
 
-            var homeDocument : Document = Jsoup.connect(url).get()
-            Log.e("一、HTML內容", homeDocument.toString());
+            var homeDocument: Document = Jsoup.connect(url).get()
+            Log.e(TAG, homeDocument.toString());
 
-            var html:String = homeDocument.html();
+            html = homeDocument.html();
+            var list = getListClassification(html)
+            Log.e(TAG, list.toString())
 
+        }
+    }
+
+    fun getListClassification(html: String): List<Classification> {
+        var list = ArrayList<Classification>();
+        val doc = Jsoup.parseBodyFragment(html)
+        val body = doc.body()
+
+        list.add(Classification("首页", url))
+
+        val document = Jsoup.parse(body.html())
+//        var elements = document.getElementsByClass("mainmenus container")
+//
+//        var tensorflow = elements.html();
+//        val document1 = Jsoup.parse(tensorflow)
+//        var elementClass = document1.getElementsByClass("mainmenu")
+//
+//        var tensorflow1 = elementClass.html();
+//        val document2 = Jsoup.parse(tensorflow1)
+//        var elementClass1 = document2.getElementsByClass("topnav")
+//
+//        var tensorflow2 = elementClass1.html();
+//        val document3 = Jsoup.parse(tensorflow2)
+//
+//        var elementClass2 = document3.getElementsByClass("menu")
+
+        var elements = document.getElementsByClass("mainmenus container")
+                .select("div.mainmenu")
+                .select("div.topnav")
+                .select("div.menu")
+
+        val document4 = Jsoup.parse(elements.html())
+        val links = document4.getElementsByTag("a")
+        for (it in links) {
+            val linkHref = it.attr("href")
+            val linkText = it.text()
+
+            list.add(Classification(linkText, linkHref))
+        }
+
+
+        return list
+
+    }
+
+    fun getListItem(html: String): List<MainItem> {
+        var list = ArrayList<MainItem>();
+        val doc = Jsoup.parseBodyFragment(html)
+        val body = doc.body()
+
+        val document = Jsoup.parse(body.html())
+
+        var elements = document.getElementsByClass("mainmenus container")
+                .select("div.mainmenu")
+                .select("div.topnav")
+                .select("div.menu")
+
+        val document4 = Jsoup.parse(elements.html())
+        val links = document4.getElementsByTag("a")
+        for (it in links) {
+            val linkHref = it.attr("href")
+            val linkText = it.text()
 
         }
 
+
+        return list
 
     }
 

@@ -12,11 +12,14 @@ import com.code.utils.PermissionUtils
 import com.code.utils.RouterPath
 import com.kotlin.helper.OnPictureCallback
 import com.kotlin.helper.PictureManager
+import com.zwy.nsfw.api.NsfwHelper
 
 @Route(path = RouterPath.path_image_activity)
 class ImageActivity : BaseActivity() {
 
     override fun getLayoutId(): Int = R.layout.activity_image
+
+    private var nsfwHelper: NsfwHelper? = null
 
     lateinit var bt: Button
     lateinit var image: ImageView
@@ -32,20 +35,22 @@ class ImageActivity : BaseActivity() {
 
         PermissionUtils.requestMorePermissions(this, permissions, 1)
 
+        initNsfwHelper()
+
         bt.setOnClickListener {
             // 照相
-            PictureManager.getInstance()
-                    .with(this)
-                    .setCallback(object : OnPictureCallback<String> {
-                        override fun onCompleted(result: String?) {
-                            Log.d("dddd", result)//
-                            Glide.with(applicationContext).load(result).into(image)
-                        }
-
-                        override fun onError(errorMsg: Throwable?) {
-
-                        }
-                    }).startPhotoCamera()
+//            PictureManager.getInstance()
+//                    .with(this)
+//                    .setCallback(object : OnPictureCallback<String> {
+//                        override fun onCompleted(result: String?) {
+//                            Log.d("dddd", result)//
+//                            Glide.with(applicationContext).load(result).into(image)
+//                        }
+//
+//                        override fun onError(errorMsg: Throwable?) {
+//
+//                        }
+//                    }).startPhotoCamera()
 // 选择图库
             PictureManager.getInstance()
                     .with(this)
@@ -53,6 +58,11 @@ class ImageActivity : BaseActivity() {
                         override fun onCompleted(result: String?) {
                             Log.d("dddd", result)//
                             Glide.with(applicationContext).load(result).into(image)
+
+                            nsfwHelper?.scanBitmap(null, NsfwHelper.OnScanBitmapListener { sfw, nsfw ->
+
+
+                            })
                         }
 
                         override fun onError(errorMsg: Throwable?) {
@@ -61,6 +71,10 @@ class ImageActivity : BaseActivity() {
                     }).startPhotograph()
 
         }
+    }
+
+    private fun initNsfwHelper() {
+        nsfwHelper = NsfwHelper.getInstance(this, true, 4)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

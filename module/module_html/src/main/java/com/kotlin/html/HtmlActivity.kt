@@ -11,7 +11,9 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import android.system.Os.link
 import android.R.attr
+import android.text.TextUtils
 import com.kotlin.html.module.MainItem
+import com.kotlin.html.module.MovieDetails
 
 
 @Route(path = RouterPath.path_html_activity)
@@ -22,11 +24,14 @@ class HtmlActivity : BaseActivity() {
     override fun getLayoutId(): Int = R.layout.activity_html
     var url = "https://www.hdwan.net"
     var url1 = "https://www.hdwan.net/page/1"
+    var urlDetails = "https://www.hdwan.net/44685.html"
 
     override fun initView() {
         bt_get_home.setOnClickListener {
-            getHtmlHome()
+
         }
+        getHtmlHome()
+
     }
 
     var html = "";
@@ -37,8 +42,16 @@ class HtmlActivity : BaseActivity() {
             Log.e(TAG, homeDocument.toString());
 
             html = homeDocument.html();
-            var list = getListClassification(html)
-            Log.e(TAG, list.toString())
+//            var list = getListClassification(html)
+//            Log.e(TAG, list.toString())
+
+            var main_list = getListItem(html)
+            Log.e(TAG, main_list.toString())
+
+            var detailsDocument: Document = Jsoup.connect(urlDetails).get()
+
+            var movieDetails = getMovieDetails(detailsDocument.html())
+            Log.e(TAG, movieDetails.toString())
 
         }
     }
@@ -69,7 +82,7 @@ class HtmlActivity : BaseActivity() {
         var elements = document.getElementsByClass("mainmenus container")
                 .select("div.mainmenu")
                 .select("div.topnav")
-                .select("div.menu")
+                .select("ul.menu")
 
         val document4 = Jsoup.parse(elements.html())
         val links = document4.getElementsByTag("a")
@@ -92,21 +105,87 @@ class HtmlActivity : BaseActivity() {
 
         val document = Jsoup.parse(body.html())
 
-        var elements = document.getElementsByClass("mainmenus container")
-                .select("div.mainmenu")
-                .select("div.topnav")
-                .select("div.menu")
-
+        var elements = document.getElementsByClass("container")
+                .select("div.mainleft")
+                .select("ul#post_container")
+        Log.e(TAG, elements.html())
         val document4 = Jsoup.parse(elements.html())
-        val links = document4.getElementsByTag("a")
+        val links = document4.getElementsByTag("li")
         for (it in links) {
-            val linkHref = it.attr("href")
-            val linkText = it.text()
+            Log.e(TAG, it.toString())
+            var mainItem = MainItem("","","",
+                    "","","",false, emptyList())
+            var setting = it.getElementsByClass("sticky").text()
+            mainItem.setting = !TextUtils.isEmpty(setting)// 是否置顶
+
+            var thumbnail = it.getElementsByClass("thumbnail").html()
+            val docThum = Jsoup.parse(thumbnail)
+            val elementa = docThum.getElementsByTag("a")
+
+            mainItem.url = elementa.attr("href")
+
+            val elements = docThum.getElementsByTag("img")
+            mainItem.name = docThum.title()
+
+            mainItem.imageUrl = elements.attr("src")
+
+            mainItem.timeString = it.getElementsByClass("info_date info_ico").text()
+            mainItem.lookNum = it.getElementsByClass("info_views info_ico").text()
+            mainItem.commentNum = it.getElementsByClass("info_comment info_ico").get(0).text()
+
+            // 分类
+            var classification = it.getElementsByClass("info_category info_ico").html()
+            val doc = Jsoup.parse(classification)
+            val links = doc.getElementsByTag("a")
+            var list1 = ArrayList<Classification>();
+
+            for (it in links) {
+                val linkHref = it.attr("href")
+                val linkText = it.text()
+
+                list1.add(Classification(linkText, linkHref))
+            }
+
+            mainItem.classification = list1
+
+            list.add(mainItem)
 
         }
 
-
         return list
+    }
+
+    fun getMovieDetails(html: String): MovieDetails {
+
+        val doc = Jsoup.parseBodyFragment(html)
+        val body = doc.body()
+
+        val document = Jsoup.parse(body.html())
+
+        var elements = document.getElementsByClass("container")
+                .select("div.mainleft")
+
+        var movieDetails = MovieDetails("","","","","",
+                emptyList(), "","","")
+
+
+        val document1 = Jsoup.parse(elements.html())
+        movieDetails.author = document1.getElementsByClass("info_author info_ico").text()
+
+        var download = document1.getElementsByClass("dw-box dw-box-download");
+//        var download = document1.getElementsByClass("dw-box dw-box-download");
+        movieDetails.download_bt = download.html()
+
+        elements = document1.select("div#post_content")
+        var d = elements.get(0)
+
+        val ele = d.getElementsByTag("img")
+        movieDetails.title = ele.attr("alt")
+
+        movieDetails.imageUrl = ele.attr("src")
+
+
+        return movieDetails
 
     }
 

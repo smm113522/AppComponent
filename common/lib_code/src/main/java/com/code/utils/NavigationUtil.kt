@@ -27,6 +27,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 
 object NavigationUtil {
 
+    // 跳转到 web 页面
     fun toWebActivity(url: String, title: String) {
         ARouter.getInstance().build(RouterPath.path_web_activity)
                 .withString("url", url)

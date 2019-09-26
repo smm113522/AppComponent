@@ -2,6 +2,7 @@ package com.kotlin
 
 import android.Manifest
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
@@ -51,17 +52,19 @@ class ImageActivity : BaseActivity() {
 //
 //                        }
 //                    }).startPhotoCamera()
-// 选择图库
+            // 选择图库
             PictureManager.getInstance()
                     .with(this)
                     .setCallback(object : OnPictureCallback<String> {
                         override fun onCompleted(result: String?) {
                             Log.d("dddd", result)//
                             Glide.with(applicationContext).load(result).into(image)
+                            var options : BitmapFactory.Options = BitmapFactory.Options();
+                            options.inJustDecodeBounds = true;
+                            var bitmap = BitmapFactory.decodeFile(result, options);
 
-                            nsfwHelper?.scanBitmap(null, NsfwHelper.OnScanBitmapListener { sfw, nsfw ->
-
-
+                            nsfwHelper?.scanBitmap(bitmap, { sfw, nsfw ->
+                                System.out.println("sfw" + sfw + "nsfw=" + nsfw)
                             })
                         }
 

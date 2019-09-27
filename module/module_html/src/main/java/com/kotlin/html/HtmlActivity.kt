@@ -27,7 +27,7 @@ class HtmlActivity : BaseActivity() {
     override fun getLayoutId(): Int = R.layout.activity_html
     var url = "https://www.hdwan.net"
     var url1 = "https://www.hdwan.net/page/1"
-    var urlDetails = "https://www.hdwan.net/44685.html"
+    var urlDetails = "https://www.hdwan.net/44091.html"
 
     override fun initView() {
         bt_get_home.setOnClickListener {
@@ -174,22 +174,50 @@ class HtmlActivity : BaseActivity() {
         var movieDetails = MovieDetails("","","","","",
                 emptyList(), "","","")
 
-
         val document1 = Jsoup.parse(elements.html())
         movieDetails.author = document1.getElementsByClass("info_author info_ico").text()
+        //时间
+//        movieDetails.author = document1.getElementsByClass("info_date info_ico").text()
+        //看的人数
+//        movieDetails.author = document1.getElementsByClass("info_views info_ico").text()
+        //评论数
+//        movieDetails.author = document1.getElementsByClass("info_comment info_ico").text()
+        //分类集合
+//        movieDetails.author = document1.getElementsByClass("info_category info_ico").text()
+//        var list1 = ArrayList<Classification>()
+//        val links = Jsoup.parse(document1.getElementsByClass("info_category info_ico").html()).getElementsByTag("a")
+//        for (it in links) {
+//            val linkHref = it.attr("href")
+//            val linkText = it.text()
+//
+//            list1.add(Classification(linkText, linkHref))
+//        }
+        //end
 
+        // 下载地址 bt
         var download = document1.getElementsByClass("dw-box dw-box-download");
-//        var download = document1.getElementsByClass("dw-box dw-box-download");
-        movieDetails.download_bt = download.html()
 
+        val document11 = Jsoup.parse(download.html())
+        var download21 = document11.getElementsByTag("a")
+
+        movieDetails.download_bt = download21.attr("href")
+        // 下载地址 magnetic
+        var download1 = document1.getElementsByClass("dw-box dw-box-tip");
+
+        val document2 = Jsoup.parse(download1.html())
+        var download2 = document2.getElementsByTag("a")
+
+        movieDetails.download_magnetic = download2.attr("href")
+//        end
         elements = document1.select("div#post_content")
+
         var d = elements.get(0)
 
         val ele = d.getElementsByTag("img")
         movieDetails.title = ele.attr("alt")
 
+        // 封面图片
         movieDetails.imageUrl = ele.attr("src")
-
 
         return movieDetails
 

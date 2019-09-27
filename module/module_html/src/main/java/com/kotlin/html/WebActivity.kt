@@ -11,10 +11,9 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 class WebActivity : BaseActivity() {
 
     @Autowired
-    var url: String = ""
-
+    @JvmField var url: String? = null
     @Autowired
-    var title: String = ""
+    @JvmField var title: String? = null
 
     override fun getLayoutId(): Int = R.layout.activity_web
 

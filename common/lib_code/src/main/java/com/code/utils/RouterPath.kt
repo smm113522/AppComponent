@@ -46,5 +46,9 @@ object RouterPath {
     const val path_pdf_activity = "/pdf/activity"
     // html
     const val path_html_activity = "/html/activity"
+    // test 测试
+    const val path_test_activity = "/test/activity"
+    //service 服务测试
+    const val path_service_activity = "/service/activity"
 
 }

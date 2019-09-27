@@ -14,8 +14,8 @@ import com.kotlin.service.IDownloadeInter
 import kotlinx.android.synthetic.main.activity_test.*
 
 
-@Route(path = RouterPath.path_test_activity)
-class TestActivity : BaseActivity() {
+@Route(path = RouterPath.path_service_activity)
+class ServiceActivity : BaseActivity() {
 
     override fun getLayoutId(): Int = R.layout.activity_test
 
@@ -52,10 +52,9 @@ class TestActivity : BaseActivity() {
     override fun initView() {
 
         var mSocketIntent = Intent(this, DownloadService::class.java)
-        bindService(mSocketIntent, connection, BIND_AUTO_CREATE)
+        bindService(mSocketIntent, connection, BIND_AUTO_CREATE);//获取到Socket服务实例
 
         bt_begin.setOnClickListener {
-//            bindService(connection)
             downloadBinder.service.start()
         }
 
@@ -63,11 +62,7 @@ class TestActivity : BaseActivity() {
             downloadBinder.service.stop()
         }
 
-        bt_other.setOnClickListener {
-//            unbindService(connection)
-            var serviceActivity = Intent(this,ServiceActivity::class.java)
-            startActivity(serviceActivity)
-        }
+//        tv_txt.text = "dddd"
 
     }
 

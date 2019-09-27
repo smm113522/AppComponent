@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.btmv.module_main.R
+import com.code.utils.NavigationUtil
+import com.code.utils.RouterPath
+import kotlinx.android.synthetic.main.controller_other.*
 
 class OtherFragment : Fragment(){
 
@@ -22,7 +25,11 @@ class OtherFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        button.setOnClickListener {
 
+            NavigationUtil.toActivity(RouterPath.path_test_activity)
+
+        }
 
 
     }

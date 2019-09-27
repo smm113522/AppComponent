@@ -4,11 +4,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="50dp"
+    <Button
+        android:id="@+id/bt_begin"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:gravity="center"
         android:textColor="@color/qmui_s_list_item_text_color"
-        android:text="处理" />
+        android:text="开始" />
+
+    <Button
+        android:id="@+id/bt_end"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:textColor="@color/qmui_s_list_item_text_color"
+        android:text="结束" />
+
+    <Button
+        android:id="@+id/bt_other"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:textColor="@color/qmui_s_list_item_text_color"
+        android:text="另一个activity" />
+
+    <TextView
+        android:id="@+id/tv_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前获取的数据">
+
+    </TextView>
 
 </LinearLayout>

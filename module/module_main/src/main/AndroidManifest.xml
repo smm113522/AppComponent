@@ -11,6 +11,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.kotlin.TestActivity"></activity>
+
+        <service android:name="com.kotlin.service.DownloadService"></service>
+
+        <activity android:name="com.kotlin.ServiceActivity"></activity>
 
     </application>
 

@@ -116,8 +116,8 @@ class HtmlActivity : BaseActivity() {
         val links = document4.getElementsByTag("li")
         for (it in links) {
             Log.e(TAG, it.toString())
-            var mainItem = MainItem("","","",
-                    "","","",false, emptyList())
+            var mainItem = MainItem("", "", "",
+                    "", "", "", false, emptyList())
             var setting = it.getElementsByClass("sticky").text()
             mainItem.setting = !TextUtils.isEmpty(setting)// 是否置顶
 
@@ -171,8 +171,8 @@ class HtmlActivity : BaseActivity() {
         var elements = document.getElementsByClass("container")
                 .select("div.mainleft")
 
-        var movieDetails = MovieDetails("","","","","",
-                emptyList(), "","","")
+        var movieDetails = MovieDetails("", "", "", "", "",
+                emptyList(), "", "", "")
 
         val document1 = Jsoup.parse(elements.html())
         movieDetails.author = document1.getElementsByClass("info_author info_ico").text()
@@ -202,7 +202,7 @@ class HtmlActivity : BaseActivity() {
 
         movieDetails.download_bt = download21.attr("href")
         // 下载地址 magnetic
-        var download1 = document1.getElementsByClass("dw-box dw-box-tip");
+        var download1 = document1.getElementsByClass("dw-box dw-box-warning");
 
         val document2 = Jsoup.parse(download1.html())
         var download2 = document2.getElementsByTag("a")
@@ -210,8 +210,25 @@ class HtmlActivity : BaseActivity() {
         movieDetails.download_magnetic = download2.attr("href")
 //        end
         elements = document1.select("div#post_content")
+        Log.e(TAG, elements.toString())
 
         var d = elements.get(0)
+        Log.e(TAG, d.toString())
+
+//        var d1 = elements.get(1)
+//        Log.e(TAG, d1.toString())
+//
+//        var d2 = elements.get(2)
+//        Log.e(TAG, d2.toString())
+//
+//        var d3 = elements.get(3)
+//        Log.e(TAG, d3.toString())
+//
+//        var d4 = elements.get(4)
+//        Log.e(TAG, d4.toString())
+//
+//        var d5 = elements.get(5)
+//        Log.e(TAG, d5.toString())
 
         val ele = d.getElementsByTag("img")
         movieDetails.title = ele.attr("alt")

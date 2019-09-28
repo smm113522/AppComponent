@@ -1,4 +1,4 @@
-package com.kotlin;
+package com.kotlin.image.utils;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -18,6 +18,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SizeReadyCallback;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
+//import com.kotlin.transformation.BlurTransformation;
+//import com.kotlin.transformation.CropCircleTransformation;
 
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
@@ -36,8 +38,8 @@ public class GlideUtils {
 
         Glide.with(activity).load(url)
                 .apply(options)
-                .apply(bitmapTransform(new CropCircleTransformation()))
-                .apply(bitmapTransform(new BlurTransformation( 25, 4)))
+//                .apply(bitmapTransform(new CropCircleTransformation()))
+//                .apply(bitmapTransform(new BlurTransformation( 25, 4)))
                 .into(imageView);
 
 

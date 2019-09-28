@@ -1,4 +1,4 @@
-package com.kotlin;
+package com.kotlin.transformation;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,11 +9,7 @@ import com.bumptech.glide.load.engine.Resource;
 
 import java.security.MessageDigest;
 
-class BlurTransformation implements Transformation<Bitmap> {
-
-    public BlurTransformation(int i, int i1) {
-
-    }
+class CropCircleTransformation implements Transformation<Bitmap> {
 
     @NonNull
     @Override

@@ -32,19 +32,6 @@ public class MyDiskCache {
             Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
             return bitmap;
         }
-        PictureManager.getInstance()
-                .with(null)
-                .setCallback(new OnPictureCallback<String>() {
-            @Override
-            public void onCompleted(String result) {
-
-            }
-
-            @Override
-            public void onError(Throwable errorMsg) {
-
-            }
-        });
         return null;
     }
 }

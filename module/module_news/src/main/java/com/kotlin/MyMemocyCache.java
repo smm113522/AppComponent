@@ -6,8 +6,8 @@ import android.util.LruCache;
 
 public class MyMemocyCache {
     //内存大小的1/8
-//    private long size = Environment.getDataDirectory().getUsableSpace();
-    private long size = 1000000;
+    private long size = Environment.getDataDirectory().getUsableSpace();
+//    private long size = 1000000;
     private LruCache<String, Bitmap> lruCache = new LruCache<>((int) (size / 8));
 
     //取出图片

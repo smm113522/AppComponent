@@ -79,7 +79,8 @@ public class RepluginActivity extends BaseActivity implements View.OnClickListen
         int i = v.getId();
         if (i == R.id.bt_push) {// TODO 19/08/27
 
-            final ProgressDialog pd = ProgressDialog.show(RepluginActivity.this, "Installing...", "Please wait...", true, true);
+            final ProgressDialog pd = ProgressDialog.show(RepluginActivity.this, "加载中...",
+                    "请等待...", true, true);
             // FIXME: 仅用于安装流程演示 2017/7/24
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
@@ -116,7 +117,7 @@ public class RepluginActivity extends BaseActivity implements View.OnClickListen
                             Intent intent = new Intent();
                             intent.setComponent(new ComponentName("replugin",
                                     "com.kotlin.replugin.MainActivity"));
-                            RePlugin.startActivity(RepluginActivity.this, intent, "replugin", "com.kotlin.replugin.MainActivity");
+                            boolean start = RePlugin.startActivity(RepluginActivity.this, intent, "replugin", "com.kotlin.replugin.MainActivity");
                             Toast.makeText(getApplicationContext(), "没有更新数据", Toast.LENGTH_SHORT).show();
                         }
 
@@ -130,11 +131,15 @@ public class RepluginActivity extends BaseActivity implements View.OnClickListen
             Intent intent = new Intent();
             intent.setComponent(new ComponentName("flutter_app",
                     "com.example.flutter_app.MainActivity"));
-            RePlugin.startActivity(RepluginActivity.this, intent, "flutter_app", "com.example.flutter_app.MainActivity");
-
+            boolean start = RePlugin.startActivity(RepluginActivity.this, intent, "flutter_app", "com.example.flutter_app.MainActivity");
+            if (start){
+                finish();
+            }else {
+                startActivity(new Intent(RepluginActivity.this, PluginFragmentActivity.class));
+            }
 
         } else if (i == R.id.bt_performance) {// TODO 19/08/27
-            startActivity(new Intent(RepluginActivity.this, PluginFragmentActivity.class));
+
         }
     }
 

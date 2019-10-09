@@ -2,8 +2,10 @@ package com.kotlin.app
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.code.utils.RouterPath
+import kotlinx.android.synthetic.main.activity_other.*
 
 /**
  * kotlin 基础
@@ -33,6 +35,16 @@ class OthersActivity : AppCompatActivity() {
 //        println(a!!.length)     //输出3
 //        val b: String? = null
 //        b!!                     //抛出空指针异常
+
+        bt_ju.setOnClickListener {
+            finish()
+        }
+
+        tv_title.text = "dddddddceshi "
+
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+//        recyclerView.adapter
 
 
     }

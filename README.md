@@ -33,20 +33,20 @@ open_nsfw_android-master
 
 ## 计划
 
-1. 首页其他功能查看 类似 腾讯ui 一样。
+1. 首页其他功能查看 类似 腾讯ui 一样。做成gridview 效果了。。。。。
 
-2。图片 glide 处理
+2。图片 glide 处理  
 
-3。检黄
+3。检黄 /////完成。。。。
 
 
-4，bugle 更新。bugle 热更新
+4，bugle 更新。bugle 热更新 完成。。。。
 
-5，基础 面试，所有尝试
+5，基础 面试，所有尝试  
 
-6。mvp
+6。mvp      mvvm
 
-7。网络获取
+7。网络获取 /////
 
 8。Rxjava
 
@@ -157,6 +157,45 @@ common 公共部分
 kotlin 基础学习
 
 https://www.kotlincn.net/docs/reference/android-overview.html
+
+
+https://github.com/Justson/AgentWeb
+
+implementation 'me.jessyan:autosize:1.1.2'
+
+kotlin 获取请求
+compile 'com.ohmerhe.kolley:kolley:0.3.1'
+
+
+
+111111111111111111111111111111111111111111111111111111111111
+java web 权限问题  后台和vue 界面
+用户管理
+角色管理
+权限管理
+
+kotlin 语法和基础
+listview
+个人界面
+登录
+
+flutter 开发界面
+登录
+界面
+
+22222222222222222222222222222222222222222222222222222222222222
+
+webphp 界面
+
+自己的网站
+
+github 中 smm113522
+
+
+
+
+
+
 
 
 

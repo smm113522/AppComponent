@@ -36,8 +36,16 @@ class App : BaseApp() {
         Client.startWork()
     }
 
+    companion object{
+        var app : App? = null
+        fun getInstance(): App? {
+            return app
+        }
+    }
+
     override fun onCreate() {
         super.onCreate()
+        app = this
         TinkerUtils.onCreate(this)
     }
 

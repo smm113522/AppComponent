@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.code.utils.RouterPath
+import com.kotlin.app.adapter.OtherAdapter
 import kotlinx.android.synthetic.main.activity_other.*
 
 /**
@@ -44,7 +45,9 @@ class OthersActivity : AppCompatActivity() {
 
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-//        recyclerView.adapter
+
+        var list = listOf("2","3","4","5")
+        recyclerView.adapter = OtherAdapter(list)
 
 
     }
@@ -54,6 +57,7 @@ class OthersActivity : AppCompatActivity() {
     }
 
     fun getName1(id: Int, name: String) = "yes"
+
 
     companion object {
         // b 不可以修改

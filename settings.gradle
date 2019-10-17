@@ -8,6 +8,7 @@ include ':app',
         'lib:lib_image',
         // 功能
         'module:module_pdf',
+        'module:module_apt',
         'module:module_host',
         'module:module_news',
         'module:module_mvvm',

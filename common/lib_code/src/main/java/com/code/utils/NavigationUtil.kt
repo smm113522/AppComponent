@@ -36,13 +36,7 @@ object NavigationUtil {
     }
 
     fun toMainActivity() {
-        ARouter.getInstance().build(RouterPath.path_main_activity)
-                .navigation()
-    }
-
-    fun toImageActivity() {
-        ARouter.getInstance().build(RouterPath.path_image_activity)
-                .navigation()
+        toActivity(RouterPath.path_main_activity)
     }
 
     fun toActivity(path: String) {

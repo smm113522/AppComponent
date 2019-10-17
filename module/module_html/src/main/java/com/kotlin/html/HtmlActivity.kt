@@ -12,6 +12,7 @@ import org.jsoup.nodes.Document
 import android.system.Os.link
 import android.R.attr
 import android.text.TextUtils
+import com.code.utils.NavigationUtil
 import com.kotlin.html.module.MainItem
 import com.kotlin.html.module.MovieDetails
 
@@ -31,7 +32,7 @@ class HtmlActivity : BaseActivity() {
 
     override fun initView() {
         bt_get_home.setOnClickListener {
-
+            NavigationUtil.toWebActivity("http://www.baidu.com","baidu")
         }
         getHtmlHome()
 
@@ -239,5 +240,9 @@ class HtmlActivity : BaseActivity() {
         return movieDetails
 
     }
+
+    /***
+     * 模拟登录
+     */
 
 }

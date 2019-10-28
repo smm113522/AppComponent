@@ -1,41 +1,65 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.alibaba.arouter'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+
+
+def releaseTime() {
+    return new Date().format("yyyy_MM_dd", TimeZone.getTimeZone("UTC"))
+}
+
 
 android {
     compileSdkVersion compileSdk
 
     defaultConfig {
-        applicationId "com.kotlin.app"
         minSdkVersion minVersion
         targetSdkVersion targetSdk
+        applicationId "com.ck.driver.trucall"
         versionCode 1
         versionName "1.0"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
-            }
-        }
-
+        resValue "string", "app_name", "闯客行司机版"
 
     }
-
-    dataBinding {
-        enabled = true
-    }
-
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    // recommend
+    dexOptions {
+        jumboMode = true
+//        incremental true
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    sourceSets {
+        main {
+            assets.srcDirs = ['src/main/assets', 'src/main/assets/']
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
 }
+
+apply plugin: 'replugin-host-gradle'
+
+repluginHostConfig {
+    useAppCompat = true
+
+    // 可以在这里自定义常驻进程的名字
+    // persistentName = ":XXXXService"
+}
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
-    implementation project(path: ':common:lib_common')
+    implementation project(path: ':lib:lib_common')
 }

@@ -50,5 +50,7 @@ object RouterPath {
     const val path_test_activity = "/test/activity"
     //service 服务测试
     const val path_service_activity = "/service/activity"
+    // aop 部分
+    const val path_apt_activity = "/apt/activity"
 
 }

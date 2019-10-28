@@ -4,8 +4,10 @@ import android.app.Service;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 
 import com.code.utils.NavigationUtil;
+import com.code.utils.RouterPath;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -17,7 +19,7 @@ import java.lang.reflect.Method;
 @Aspect
 public class MyAspect {
 
-    @Around("execution(@com.kotlin.apt * *(..))")
+    @Around("execution(@com.kotlin.apt.MyRoute * *(..))")
     public void aroundJoinPoint(final ProceedingJoinPoint joinPoint) {
 
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
@@ -37,7 +39,18 @@ public class MyAspect {
         } else if (object instanceof Service) {
             context = (Service) object;
         }
-        NavigationUtil.INSTANCE.toActivity(path);
+
+        try {
+            if (!TextUtils.isEmpty(path)) {
+                Object result = joinPoint.proceed();  //执行注解的方法
+
+            }else {
+                NavigationUtil.INSTANCE.toActivity(RouterPath.path_kotlin_activity);
+            }
+
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 
 }

@@ -39,6 +39,7 @@ dependencies {
         api project(path: ':module:module_video')
         api project(path: ':module:module_hotfix')
         api project(path: ':module:module_html')
+        api project(path: ':module:module_apt')
     }
 
 }

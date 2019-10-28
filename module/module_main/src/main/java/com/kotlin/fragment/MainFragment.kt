@@ -43,6 +43,7 @@ class MainFragment : Fragment(){
         listMain.add(MainHome(R.mipmap.ic_launcher,"hotfix",RouterPath.path_hotfix_activity))
         listMain.add(MainHome(R.mipmap.ic_launcher,"mvp",RouterPath.path_mvp_activity))
         listMain.add(MainHome(R.mipmap.icon_tabbar_component_selected,"html",RouterPath.path_html_activity))
+        listMain.add(MainHome(R.mipmap.icon_tabbar_component_selected,"aop",RouterPath.path_apt_activity))
 
         var adapter = MainAdapter(listMain,activity!!.applicationContext)
 

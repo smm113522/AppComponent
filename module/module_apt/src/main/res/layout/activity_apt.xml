@@ -5,16 +5,18 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/bt_get_home"
+        android:id="@+id/bt_to_cs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="获取首页"></Button>
+        android:onClick="ButtonCS"
+        android:text="测试"></Button>
 
     <Button
         android:id="@+id/bt_get_classification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="获取分类"></Button>
+
+        android:text="其他测试"></Button>
 
 
 

@@ -63,6 +63,6 @@ dependencies {
     } else {
         api project(path: ':common:lib_code')
     }
-
+    implementation 'org.aspectj:aspectjrt:1.8.9'
 
 }

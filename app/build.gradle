@@ -11,6 +11,15 @@ android {
 
     useLibrary 'org.apache.http.legacy'
 
+    signingConfigs {
+        release {
+            storeFile file("kotlin.keystore")//keystore的路径
+            storePassword "kotlin"
+            keyAlias "kotlin"
+            keyPassword "kotlin"
+        }
+    }
+
     defaultConfig {
         applicationId "com.kotlin.app"
         minSdkVersion minVersion
@@ -38,8 +47,15 @@ android {
 
     buildTypes {
         release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            signingConfig signingConfigs.release
+//            applicationIdSuffix ".dev"
         }
     }
 

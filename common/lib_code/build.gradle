@@ -78,5 +78,5 @@ dependencies {
     implementation 'com.tencent.tinker:tinker-android-lib:1.9.13'
 
 //    implementation 'com.ohmerhe.kolley:kolley:0.3.1'
-
+    implementation 'com.alipay.euler:andfix:0.4.0@aar'
 }

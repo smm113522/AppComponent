@@ -5,6 +5,7 @@ import android.content.Context
 import android.support.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.code.BuildConfig
+import com.code.utils.AndFIxUtils
 import com.qihoo360.replugin.RePlugin
 import com.qihoo360.replugin.RePluginApplication
 import com.qihoo360.replugin.sdk.HostCallbacks
@@ -36,6 +37,8 @@ open class BaseApp : RePluginApplication() {
         //1、设置AppKey
         PluginConfig.setAppKey("qh1uzr0mp2zi");
         PluginManager.init(getApplicationContext());
+
+        AndFIxUtils.init(applicationContext)
 
     }
 

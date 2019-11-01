@@ -19,8 +19,19 @@
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.GET_TASKS" />
 
+    <!-- 必选-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 允许程序录制音频 -->
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!-- 可选-->
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" /> <!-- 获取logcat日志 -->
+
     <application
         android:name=".BaseApplication"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme">
 
 
@@ -59,6 +70,18 @@
             android:name="BaiduMobAd_WIFI_LOCATION"
             android:value="true" />
 
+        <!-- 可选-->
+        <activity android:name="com.pgyersdk.feedback.FeedbackActivity"/>
+        <!-- Jar 包集成的方式 必填 -->
+<!--        <provider-->
+<!--            android:name="com.pgyersdk.PgyerProvider"-->
+<!--            android:authorities="${applicationId}.com.pgyer.provider"-->
+<!--            android:exported="false"/>-->
+        <!-- 必填 -->
+        <meta-data
+            android:name="PGYER_APPID"
+            android:value="${PGYER_APPID}" >
+        </meta-data>
 
     </application>
 

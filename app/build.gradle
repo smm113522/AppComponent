@@ -19,7 +19,8 @@ android {
 
         manifestPlaceholders = [
                 "BaiduMobAd_STAT_ID" : "7dd9a9dca9",
-                "BaiduMobAd_CHANNEL" : "Baidu Market"
+                "BaiduMobAd_CHANNEL" : "Baidu Market",
+                "PGYER_APPID" : "4b6e8877dfcc2462bedb37dcf66b6d87"
         ]
 
     }

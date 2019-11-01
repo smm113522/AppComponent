@@ -5,11 +5,14 @@ import android.content.Context;
 import android.content.res.Configuration;
 
 import com.baidu.mobstat.StatService;
+import com.pgyersdk.PgyerActivityManager;
+import com.pgyersdk.crash.PgyCrashManager;
+import com.pgyersdk.crash.PgyerCrashObservable;
+import com.pgyersdk.crash.PgyerObserver;
 import com.qihoo360.mobilesafe.core.BuildConfig;
 import com.qihoo360.replugin.RePlugin;
 
 public class BaseApplication extends Application {
-
 
     @Override
     public void attachBaseContext(Context base) {
@@ -25,6 +28,16 @@ public class BaseApplication extends Application {
         RePlugin.App.onCreate();
 
         StatService.start(this);
+
+        PgyCrashManager.register();
+
+        PgyerCrashObservable.get().attach(new PgyerObserver() {
+            @Override
+            public void receivedCrash(Thread thread, Throwable throwable) {
+
+            }
+        });
+        PgyerActivityManager.set(this);
     }
 
     @Override

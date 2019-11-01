@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'mtj-circle-plugin'
 
 def releaseTime() {
     return new Date().format("yyyy_MM_dd", TimeZone.getTimeZone("UTC"))
@@ -17,6 +16,11 @@ android {
         versionName "1.0"
 
         resValue "string", "app_name", "闯客行"
+
+        manifestPlaceholders = [
+                "BaiduMobAd_STAT_ID" : "7dd9a9dca9",
+                "BaiduMobAd_CHANNEL" : "Baidu Market"
+        ]
 
     }
     buildTypes {
@@ -47,15 +51,6 @@ android {
         abortOnError false
     }
 
-    MtjCirclePluginConfig {
-        // 设置appkey
-        appkey = '7dd9a9dca9'
-        // 设置debug 开关，如果需要查看日志则打开开关，为避免影响性能建议上线前关闭（设置为false）
-        debug = false
-        // 默认启动此插件，如果开发者不需要可以禁用（设置为false）
-        enabled = true
-    }
-
 }
 
 apply plugin: 'replugin-host-gradle'
@@ -71,4 +66,5 @@ repluginHostConfig {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':lib:lib_common')
+
 }

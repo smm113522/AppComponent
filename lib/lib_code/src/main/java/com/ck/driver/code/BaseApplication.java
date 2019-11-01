@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 
+import com.baidu.mobstat.StatService;
+import com.qihoo360.mobilesafe.core.BuildConfig;
 import com.qihoo360.replugin.RePlugin;
 
 public class BaseApplication extends Application {
@@ -21,6 +23,8 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         RePlugin.App.onCreate();
+
+        StatService.start(this);
     }
 
     @Override

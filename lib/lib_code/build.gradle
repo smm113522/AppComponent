@@ -34,7 +34,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     api 'com.qihoo360.replugin:replugin-host-lib:2.3.3'
     api project(path: ':lib:lib_style')
+    implementation files('libs/Baidu_Mtj_android_3.9.5.8.jar')
 }

@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.bumptech.glide.Glide
 import com.code.base.BaseActivity
@@ -14,6 +15,7 @@ import com.code.utils.RouterPath
 import com.kotlin.helper.OnPictureCallback
 import com.kotlin.helper.PictureManager
 import com.zwy.nsfw.api.NsfwHelper
+import kotlinx.android.synthetic.main.activity_image.*
 
 @Route(path = RouterPath.path_image_activity)
 class ImageActivity : BaseActivity() {
@@ -26,6 +28,10 @@ class ImageActivity : BaseActivity() {
     lateinit var image: ImageView
     lateinit var myFresco: MyFresco
     private val pic = "http://www.taopic.com/uploads/allimg/140320/235013-14032020515270.jpg"
+
+    val tvcs by lazy{
+        tv_cs;
+    }
 
     private val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
@@ -74,6 +80,8 @@ class ImageActivity : BaseActivity() {
                     }).startPhotograph()
 
         }
+
+        tvcs.text = stringFromJNI()
     }
 
     private fun initNsfwHelper() {
@@ -88,4 +96,15 @@ class ImageActivity : BaseActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         PictureManager.getInstance().with(this).onActivityResult(requestCode, resultCode, data)
     }
+
+    external fun stringFromJNI(): String
+
+    companion object {
+
+        // Used to load the 'native-lib' library on application startup.
+        init {
+            System.loadLibrary("native-lib")
+        }
+    }
+
 }

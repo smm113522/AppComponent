@@ -6,6 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="视频转换mp3"></TextView>
+
+        <Button
+            android:id="@+id/bt_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取文件"></Button>
+
+        <TextView
+            android:id="@+id/tv_file_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="显示文件路径"></TextView>
+
+        <Button
+            android:id="@+id/bt_encoder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="转换"></Button>
+
+        <Button
+            android:id="@+id/bt_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="播放mp3"></Button>
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/sample_text"
         android:layout_width="wrap_content"

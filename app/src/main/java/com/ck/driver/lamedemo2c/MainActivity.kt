@@ -1,7 +1,5 @@
 package com.ck.driver.lamedemo2c
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
@@ -9,9 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.thl.filechooser.FileChooser
 import com.thl.filechooser.FileInfo
 import kotlinx.android.synthetic.main.activity_main.*
-import androidx.annotation.NonNull
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -81,13 +76,18 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+        tv_mp3_file_path.text = add(1,3).toString() + "////"
     }
 
     /**
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
      */
+    // 静态注册
     external fun stringFromJNI(): String
+    // 动态注册
+    external fun add(a: Int, b: Int): Int
 
     companion object {
 

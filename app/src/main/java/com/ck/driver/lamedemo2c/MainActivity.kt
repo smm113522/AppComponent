@@ -7,7 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.thl.filechooser.FileChooser
 import com.thl.filechooser.FileInfo
 import kotlinx.android.synthetic.main.activity_main.*
-
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
                             override fun onFileChoosen(filePath: String) {
                                 path_source = filePath
                                 tv_file_path.text = path_source
+
                             }
                         })
 
@@ -75,9 +77,20 @@ class MainActivity : AppCompatActivity() {
         bt_player.setOnClickListener {
 
         }
+        /**
+         * 图片转换
+         */
+        bt_gauss.setOnClickListener {
+//            val bitmap =
+//                BitmapFactory.decodeResource(this.getResources(),R.mipmap.test)
 
+            val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.test)
+            gaussBlur(bitmap)
+            //把Bitmap对象设置给iv2
+            iv_gauss.setImageBitmap(bitmap);
+        }
 
-        tv_mp3_file_path.text = add(1,3).toString() + "////"
+        tv_mp3_file_path.text = add(1,3).toString() + "////-----测试"
     }
 
     /**
@@ -88,6 +101,8 @@ class MainActivity : AppCompatActivity() {
     external fun stringFromJNI(): String
     // 动态注册
     external fun add(a: Int, b: Int): Int
+
+    external fun gaussBlur(bitmap: Bitmap)
 
     companion object {
 

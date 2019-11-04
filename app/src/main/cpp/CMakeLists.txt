@@ -6,6 +6,7 @@ SET(CMAKE_CXX_FLAGS "-Wno-error=format-security -Wno-error=pointer-sign")
 #设置生成的so动态库最后输出的路径
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI})
 
+
 #include_directories (${PROJECT_SOURCE_DIR}/libmp3lame)
 
 #当前cmakelists.txt所在目录的所有.c .cpp源文件
@@ -28,4 +29,5 @@ add_library(native-lib SHARED ${SRC_LIST})
 
 find_library(log-lib log)
 
-target_link_libraries(native-lib ${log-lib})
+#target_link_libraries(native-lib ${log-lib})
+target_link_libraries(native-lib -ljnigraphics ${log-lib})

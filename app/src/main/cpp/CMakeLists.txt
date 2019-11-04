@@ -26,5 +26,6 @@ add_library(native-lib SHARED native-lib.cpp ${SRC_LIST})
 find_library(log-lib log)
 
 #target_link_libraries(native-lib ${log-lib})
+# 加上下面这一行 为了处理bitmap
 target_link_libraries(native-lib -ljnigraphics ${log-lib})
 

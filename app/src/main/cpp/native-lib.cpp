@@ -164,3 +164,136 @@ Java_com_ck_driver_lamedemo2c_MainActivity_getVersion(
 //    return env->NewStringUTF("1111");
 }
 
+
+#include "lame/lame.h"
+
+static lame_global_flags *gfp = NULL;
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_ck_driver_lametomp3_LameMp3_lameInit(JNIEnv *env, jclass type, jint inSampleRate,
+                                              jint outChannelNum, jint outSampleRate,
+                                              jint outBitRate,
+                                              jint quality) {
+    if (gfp != NULL) {
+        lame_close(gfp);
+        gfp = NULL;
+    }
+    //  初始化
+    gfp = lame_init();
+//    LOGI("初始化lame库完成");
+    //配置参数
+    lame_set_in_samplerate(gfp, inSampleRate);
+    lame_set_num_channels(gfp, outChannelNum);
+    lame_set_out_samplerate(gfp, outSampleRate);
+    lame_set_brate(gfp, outBitRate);
+    lame_set_quality(gfp, quality);
+    lame_init_params(gfp);
+//    LOGI("配置lame参数完成");
+}
+
+extern "C"
+JNIEXPORT jint JNICALL
+Java_com_ck_driver_lametomp3_LameMp3_lameFlush(JNIEnv *env, jclass type, jbyteArray mp3buf_) {
+//    jbyte *mp3buf = (*env)->GetByteArrayElements(env, mp3buf_, NULL);
+//    jsize len = (*env)->GetArrayLength(env, mp3buf_);
+//    int resut = lame_encode_flush(gfp, mp3buf, len);
+//    (*env)->ReleaseByteArrayElements(env, mp3buf_, mp3buf, 0);
+//    LOG_I("写入mp3数据到文件，返回结果=%d", resut);
+//    return resut;
+
+    jbyte *mp3buf = env->GetByteArrayElements(mp3buf_, NULL);
+    jsize len = env->GetArrayLength(mp3buf_);
+//    unsigned char *mp3buffer;
+    int resut = lame_encode_flush(gfp, reinterpret_cast<unsigned char *>(mp3buf), len);
+    env->ReleaseByteArrayElements(mp3buf_, mp3buf, 0);
+//    LOG_I("写入mp3数据到文件，返回结果=%d", resut);
+    return resut;
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_ck_driver_lametomp3_LameMp3_lameClose(JNIEnv *env, jclass type) {
+    lame_close(gfp);
+    gfp = NULL;
+//    LOGI("释放lame资源");lameEncodeByByte
+}
+
+extern "C"
+JNIEXPORT jint JNICALL
+Java_com_ck_driver_lametomp3_LameMp3_lameEncode(JNIEnv *env, jclass type, jshortArray letftBuf_,
+                                                jshortArray rightBuf_, jint sampleRate,
+                                                jbyteArray mp3Buf_) {
+    if (letftBuf_ == NULL || mp3Buf_ == NULL) {
+//        LOGI("letftBuf和rightBuf 或mp3Buf_不能为空");
+        return -1;
+    }
+    jshort *letftBuf = NULL;
+    jshort *rightBuf = NULL;
+    if (letftBuf_ != NULL) {
+        letftBuf = env->GetShortArrayElements(letftBuf_, NULL);
+    }
+    if (rightBuf_ != NULL) {
+        rightBuf = env->GetShortArrayElements(rightBuf_, NULL);
+    }
+    jbyte *mp3Buf = env->GetByteArrayElements(mp3Buf_, NULL);
+    jsize readSizes = env->GetArrayLength(mp3Buf_);
+    // 编码
+    int result = lame_encode_buffer(gfp, letftBuf, rightBuf, sampleRate,
+                                    reinterpret_cast<unsigned char *>(mp3Buf), readSizes);
+
+    // 释放资源
+    if (letftBuf_ != NULL) {
+        env->ReleaseShortArrayElements(letftBuf_, letftBuf, 0);
+    }
+    if (rightBuf_ != NULL) {
+        env->ReleaseShortArrayElements(rightBuf_, rightBuf, 0);
+    }
+    env->ReleaseByteArrayElements(mp3Buf_, mp3Buf, 0);
+//    LOG_I("编码pcm为mp3，数据长度=%d", result);
+    return result;
+}
+
+
+#include <Mp3Encoder.cpp>
+
+Mp3Encoder *encoder = NULL;
+
+extern "C"
+JNIEXPORT jboolean JNICALL
+Java_com_ck_driver_lametomp3_LameMp3_encodeFile(
+        JNIEnv *env, jclass clazz, jstring wavFilePath, jstring mp3FilePath) {
+
+    const char *pcmPath = env->GetStringUTFChars(wavFilePath, 0);
+    const char *mp3Path = env->GetStringUTFChars(mp3FilePath, 0);
+
+    encoder = new Mp3Encoder();
+    encoder->Init(pcmPath, 2, 128, 44100, mp3Path);
+
+    env->ReleaseStringUTFChars(wavFilePath, pcmPath);
+    env->ReleaseStringUTFChars(mp3FilePath, mp3Path);
+
+//    lame_t lame = lame_init();
+//    lame_set_in_samplerate(lame, 16000);   // 采样率，必须与录制时的相同，并且要转换成MP3的话，必须双通道录制
+//    lame_set_VBR(lame, vbr_default);
+//    lame_init_params(lame);
+
+    encoder->Encode();
+
+    encoder->Destory();
+
+}
+
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_ck_driver_lametomp3_LameMp3_encode(JNIEnv *env, jobject instance) {
+    encoder->Encode();
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_ck_driver_lametomp3_LameMp3_destroy(JNIEnv *env, jobject instance) {
+    encoder->Destory();
+}
+

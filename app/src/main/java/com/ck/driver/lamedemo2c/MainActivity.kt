@@ -9,11 +9,20 @@ import com.thl.filechooser.FileInfo
 import kotlinx.android.synthetic.main.activity_main.*
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.media.AudioFormat
+import android.media.MediaPlayer
+import android.net.Uri
+import android.text.TextUtils
+import com.ck.driver.lametomp3.LameMp3
+import com.ck.driver.lametomp3.Mp3Recorder
+import java.io.File
+
 
 class MainActivity : AppCompatActivity() {
 
     var path_source = ""// 获取 file 的路径
     var mp3_path_source = "" // 文件mp3的路径
+    var mp3Recorder: Mp3Recorder? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +39,10 @@ class MainActivity : AppCompatActivity() {
         })
 
         // Example of a call to a native method
-        sample_text.text = stringFromJNI()// 测试native 里面的方法
+        // 测试native 里面的方法
+        sample_text.text =
+            stringFromJNI() + "｜1 + 3 = " + add(1, 3).toString() + "｜lame版本：v" + getVersion()
+
         /**
          * 获取文件
          */
@@ -64,18 +76,84 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
+
+        mp3Recorder = Mp3Recorder()
+
         /**
          * 转换文件
          */
         bt_encoder.setOnClickListener {
+            if (TextUtils.isEmpty(path_source)) {
+                Toast.makeText(this, "请选择文件", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            mp3_path_source =
+                Mp3Recorder.ROOTPATH + File.separator + "/Download/" + System.currentTimeMillis() + ".mp3"
+
+            var wavFile = File(path_source)
+            var mp3File = File(mp3_path_source)
+
+            if (!wavFile.exists()) {
+                Toast.makeText(this, "音频文件不存在", Toast.LENGTH_SHORT).show();
+                return@setOnClickListener;
+            }
+
+            if (mp3File.exists()) {
+                mp3File.delete();
+            }
+
+            val wavPath = wavFile.toString()
+            val mp3Path = mp3File.toString()
+
+            Thread(Runnable {
+
+                LameMp3.encodeFile(wavPath, mp3Path)
+
+                runOnUiThread {
+                    tv_mp3_file_path.text = mp3_path_source
+                    Toast.makeText(this@MainActivity, "转码成功", Toast.LENGTH_SHORT).show()
+                }
+
+            }).start()
+
+//            requestPermissins(object : PermissionUtils.OnPermissionListener {
+//                override fun onPermissionGranted() {
+//                    if (!mp3Recorder?.isRecording()!!) {
+//                        mp3Recorder?.startMp3Record()
+//                        bt_encoder.setText("停止录音")
+//                    } else {
+//                        mp3Recorder?.stopMp3Record()
+//                        bt_encoder.setText("开始录音")
+//                    }
+//                }
+//
+//                override fun onPermissionDenied(deniedPermissions: Array<String>) {
+//
+//                }
+//            })
 
 
         }
+        var isStop = false
         /**
          * 播放mp3
          */
         bt_player.setOnClickListener {
-
+            if (TextUtils.isEmpty(path_source)) {
+                Toast.makeText(this, "请选择文件", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            var mediaPlayer = MediaPlayer()
+            if (!isStop) {
+                isStop = true
+                mediaPlayer = MediaPlayer.create(this, Uri.fromFile(File(path_source)))
+                mediaPlayer.start()
+                mediaPlayer.isLooping = false
+            }
+            // 播放完成
+            mediaPlayer.setOnCompletionListener {
+                isStop = false
+            }
         }
         /**
          * 图片转换
@@ -90,7 +168,7 @@ class MainActivity : AppCompatActivity() {
             iv_gauss.setImageBitmap(bitmap);
         }
         //测试
-        tv_mp3_file_path.text = add(1, 3).toString() + "////-----测试" + getVersion()
+//        tv_mp3_file_path.text = add(1, 3).toString() + "////-----测试版本：" + getVersion()
     }
 
     /**
@@ -124,6 +202,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
         val permissions = arrayOf(
+            "android.permission.RECORD_AUDIO",
             "android.permission.READ_EXTERNAL_STORAGE",
             "android.permission.WRITE_EXTERNAL_STORAGE"
         )

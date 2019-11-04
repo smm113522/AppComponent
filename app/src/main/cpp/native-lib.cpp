@@ -151,8 +151,6 @@ Java_com_ck_driver_lamedemo2c_MainActivity_gaussBlur(JNIEnv *env, jobject /* thi
     AndroidBitmap_unlockPixels(env, bmp);//解锁
 }
 
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,"%s",__VA_ARGS__)
-
 /**
  * lame 中环境是否搭建好
  */
@@ -165,3 +163,4 @@ Java_com_ck_driver_lamedemo2c_MainActivity_getVersion(
     return env->NewStringUTF(get_lame_version());
 //    return env->NewStringUTF("1111");
 }
+

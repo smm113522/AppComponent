@@ -14,3 +14,7 @@ aux_source_directory(lame SRC_LIST)
 
 参考
 https://github.com/jiangdongguo/Lame4Mp3
+
+
+学习里面怎么获取java 里面到方法和示例代码
+https://blog.csdn.net/afei__/article/details/81016413#1-jclass-findclass-const-char-name-

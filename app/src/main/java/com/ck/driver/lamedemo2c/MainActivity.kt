@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
          * 图片转换
          */
         bt_gauss.setOnClickListener {
-//            val bitmap =
+            //            val bitmap =
 //                BitmapFactory.decodeResource(this.getResources(),R.mipmap.test)
 
             val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.test)
@@ -89,8 +89,8 @@ class MainActivity : AppCompatActivity() {
             //把Bitmap对象设置给iv2
             iv_gauss.setImageBitmap(bitmap);
         }
-
-        tv_mp3_file_path.text = add(1,3).toString() + "////-----测试"
+        //测试
+        tv_mp3_file_path.text = add(1, 3).toString() + "////-----测试" + getVersion()
     }
 
     /**
@@ -99,10 +99,16 @@ class MainActivity : AppCompatActivity() {
      */
     // 静态注册
     external fun stringFromJNI(): String
+
     // 动态注册
     external fun add(a: Int, b: Int): Int
 
+    // 图片模糊处理
     external fun gaussBlur(bitmap: Bitmap)
+
+    // 获取lame 的版本
+    external fun getVersion(): String
+
 
     companion object {
 

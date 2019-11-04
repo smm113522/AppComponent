@@ -2,6 +2,8 @@
 #include <string>
 #include <tgmath.h>
 #include <android/bitmap.h>
+#include "lame/lame.h"
+
 /**
  * 静态注册
  */
@@ -64,15 +66,13 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
  */
 #define PI 3.14
 
-void gaussBlur1(int* pix, int w, int h, int radius)
-{
+void gaussBlur1(int *pix, int w, int h, int radius) {
     float sigma = (float) (1.0 * radius / 2.57);
-    float deno  = (float) (1.0 / (sigma * sqrt(2.0 * PI)));
-    float nume  = (float) (-1.0 / (2.0 * sigma * sigma));
-    float* gaussMatrix = (float*)malloc(sizeof(float)* (radius + radius + 1));
+    float deno = (float) (1.0 / (sigma * sqrt(2.0 * PI)));
+    float nume = (float) (-1.0 / (2.0 * sigma * sigma));
+    float *gaussMatrix = (float *) malloc(sizeof(float) * (radius + radius + 1));
     float gaussSum = 0.0;
-    for (int i = 0, x = -radius; x <= radius; ++x, ++i)
-    {
+    for (int i = 0, x = -radius; x <= radius; ++x, ++i) {
         float g = (float) (deno * exp(1.0 * nume * x * x));
         gaussMatrix[i] = g;
         gaussSum += g;
@@ -80,20 +80,16 @@ void gaussBlur1(int* pix, int w, int h, int radius)
     int len = radius + radius + 1;
     for (int i = 0; i < len; ++i)
         gaussMatrix[i] /= gaussSum;
-    int* rowData  = (int*)malloc(w * sizeof(int));
-    int* listData = (int*)malloc(h * sizeof(int));
-    for (int y = 0; y < h; ++y)
-    {
+    int *rowData = (int *) malloc(w * sizeof(int));
+    int *listData = (int *) malloc(h * sizeof(int));
+    for (int y = 0; y < h; ++y) {
         memcpy(rowData, pix + y * w, sizeof(int) * w);
-        for (int x = 0; x < w; ++x)
-        {
+        for (int x = 0; x < w; ++x) {
             float r = 0, g = 0, b = 0;
             gaussSum = 0;
-            for (int i = -radius; i <= radius; ++i)
-            {
+            for (int i = -radius; i <= radius; ++i) {
                 int k = x + i;
-                if (0 <= k && k <= w)
-                {
+                if (0 <= k && k <= w) {
                     //得到像素点的rgb值
                     int color = rowData[k];
                     int cr = (color & 0x00ff0000) >> 16;
@@ -105,25 +101,21 @@ void gaussBlur1(int* pix, int w, int h, int radius)
                     gaussSum += gaussMatrix[i + radius];
                 }
             }
-            int cr = (int)(r / gaussSum);
-            int cg = (int)(g / gaussSum);
-            int cb = (int)(b / gaussSum);
+            int cr = (int) (r / gaussSum);
+            int cg = (int) (g / gaussSum);
+            int cb = (int) (b / gaussSum);
             pix[y * w + x] = cr << 16 | cg << 8 | cb | 0xff000000;
         }
     }
-    for (int x = 0; x < w; ++x)
-    {
+    for (int x = 0; x < w; ++x) {
         for (int y = 0; y < h; ++y)
             listData[y] = pix[y * w + x];
-        for (int y = 0; y < h; ++y)
-        {
+        for (int y = 0; y < h; ++y) {
             float r = 0, g = 0, b = 0;
             gaussSum = 0;
-            for (int j = -radius; j <= radius; ++j)
-            {
+            for (int j = -radius; j <= radius; ++j) {
                 int k = y + j;
-                if (0 <= k && k <= h)
-                {
+                if (0 <= k && k <= h) {
                     int color = listData[k];
                     int cr = (color & 0x00ff0000) >> 16;
                     int cg = (color & 0x0000ff00) >> 8;
@@ -134,9 +126,9 @@ void gaussBlur1(int* pix, int w, int h, int radius)
                     gaussSum += gaussMatrix[j + radius];
                 }
             }
-            int cr = (int)(r / gaussSum);
-            int cg = (int)(g / gaussSum);
-            int cb = (int)(b / gaussSum);
+            int cr = (int) (r / gaussSum);
+            int cg = (int) (g / gaussSum);
+            int cb = (int) (b / gaussSum);
             pix[y * w + x] = cr << 16 | cg << 8 | cb | 0xff000000;
         }
     }
@@ -157,4 +149,19 @@ Java_com_ck_driver_lamedemo2c_MainActivity_gaussBlur(JNIEnv *env, jobject /* thi
     gaussBlur1(data, info.width, info.height, 80);
     /****************************************************/
     AndroidBitmap_unlockPixels(env, bmp);//解锁
+}
+
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,"%s",__VA_ARGS__)
+
+/**
+ * lame 中环境是否搭建好
+ */
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_ck_driver_lamedemo2c_MainActivity_getVersion(
+        JNIEnv *env,
+        jobject /* this */) {
+    //把 lame版本号返回给java
+    return env->NewStringUTF(get_lame_version());
+//    return env->NewStringUTF("1111");
 }

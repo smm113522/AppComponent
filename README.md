@@ -193,6 +193,20 @@ github 中 smm113522
 
 
 
+## kotlin 基础和正在开始
+
+12月开始计划。。。
+
+https://www.bilibili.com/video/av32291420/?p=1
+
+源码在评论中
+mac 里面
+/Users/mac/Desktop/视频ndk
+
+
+
+
+
 
 
 

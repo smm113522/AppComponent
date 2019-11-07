@@ -6,6 +6,7 @@ include ':app',
         // lib 使用
         'lib:lib_camera-card-crop',
         'lib:lib_image',
+        'lib:lib_dynamicload',
         // 功能
         'module:module_pdf',
         'module:module_apt',

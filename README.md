@@ -111,6 +111,8 @@ tinker-support 打包
 
 https://github.com/Qihoo360/DroidPlugin
 
+https://github.com/singwhatiwanna/dynamic-load-apk
+
 
 适配
 https://www.jianshu.com/p/1302ad5a4b04
@@ -165,6 +167,9 @@ implementation 'me.jessyan:autosize:1.1.2'
 
 kotlin 获取请求
 compile 'com.ohmerhe.kolley:kolley:0.3.1'
+
+android 广告
+https://ssp.ohmobi.com/#/finance/index
 
 
 

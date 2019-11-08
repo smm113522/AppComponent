@@ -1,4 +1,4 @@
-package com.kotlin.mvp.view
+package com.kotlin.mvp.vidget
 
 import android.content.Context
 import android.util.AttributeSet

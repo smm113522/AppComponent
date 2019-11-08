@@ -3,7 +3,7 @@ package com.kotlin.mvp.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.kotlin.mvp.view.MvpItemView
+import com.kotlin.mvp.vidget.MvpItemView
 import java.util.ArrayList
 
 class MvpAdapter : RecyclerView.Adapter<MvpAdapter.MvpViewHolder>() {
@@ -19,7 +19,7 @@ class MvpAdapter : RecyclerView.Adapter<MvpAdapter.MvpViewHolder>() {
     }
 
     override fun onBindViewHolder(viewHolder: MvpViewHolder, position: Int) {
-        var mvpView:MvpItemView = viewHolder.itemView as MvpItemView
+        var mvpView: MvpItemView = viewHolder.itemView as MvpItemView
         var data = list[position]
         mvpView.setData(data)
     }

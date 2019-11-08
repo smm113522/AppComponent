@@ -2,8 +2,8 @@ package com.kotlin.mvp.net
 
 interface ResponseHandler<T> {
 
-    fun onError(msg: String?)
+    fun onErrorData(msg: String?)
 
-    fun onSuccess(result: T)
+    fun onSuccessData(result: T)
 
 }

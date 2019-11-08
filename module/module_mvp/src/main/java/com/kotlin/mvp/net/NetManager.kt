@@ -30,7 +30,12 @@ class NetManager private constructor(){
              * 子线程里面
              */
             override fun onFailure(call: Call, e: IOException) {
-                mRequest.handler.onError(e?.message)
+
+                ThreadUtils.runOnMainThread(object : Runnable {
+                    override fun run() {
+                        mRequest.handler.onError(e?.message)
+                    }
+                })
             }
 
             override fun onResponse(call: Call, response: Response) {

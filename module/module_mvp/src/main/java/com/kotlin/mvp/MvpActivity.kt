@@ -67,11 +67,11 @@ class MvpActivity : AppCompatActivity(), MvpView {
 
         MvpRequest(object : ResponseHandler<Categories> {
 
-            override fun onError(msg: String?) {
-                onError(msg)
+            override fun onErrorData(msg: String?) {
+                onError(msg + "1")
             }
 
-            override fun onSuccess(result: Categories) {
+            override fun onSuccessData(result: Categories) {
                 onError(result.toString())
             }
 
@@ -84,12 +84,12 @@ class MvpActivity : AppCompatActivity(), MvpView {
         ToastsUtils.showToastOnUiThread(this, txt)
     }
 
-    override fun loadRefreshSucess(list:ArrayList<String>) {
+    override fun loadRefreshSucess(list: ArrayList<String>) {
         adapter.loadData(list)
         swipelayout.isRefreshing = false
     }
 
-    override fun loadMoreSucess(list:ArrayList<String>) {
+    override fun loadMoreSucess(list: ArrayList<String>) {
         adapter.loadMoreData(list)
     }
 

@@ -2,7 +2,6 @@ package com.kotlin.mvp;
 
 import android.graphics.Color
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -11,6 +10,9 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.code.utils.RouterPath;
 import com.code.utils.ToastsUtils
 import com.kotlin.mvp.adapter.MvpAdapter
+import com.kotlin.mvp.bean.Categories
+import com.kotlin.mvp.model.MvpRequest
+import com.kotlin.mvp.net.ResponseHandler
 import com.kotlin.mvp.presenter.impl.MvpPresenterImpl
 import com.kotlin.mvp.view.MvpView
 import kotlinx.android.synthetic.main.activity_mvp.*
@@ -21,6 +23,7 @@ class MvpActivity : AppCompatActivity(), MvpView {
     val adapter by lazy {
         MvpAdapter()
     }
+
     val mvpPresenter by lazy {
         MvpPresenterImpl(this)
     }
@@ -61,6 +64,19 @@ class MvpActivity : AppCompatActivity(), MvpView {
             }
 
         });
+
+        MvpRequest(object : ResponseHandler<Categories> {
+
+            override fun onError(msg: String?) {
+                onError(msg)
+            }
+
+            override fun onSuccess(result: Categories) {
+                onError(result.toString())
+            }
+
+        }).exeute()
+
 
     }
 

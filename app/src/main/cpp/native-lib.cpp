@@ -278,9 +278,9 @@ Java_com_ck_driver_lametomp3_LameMp3_encodeFile(
 //    lame_set_VBR(lame, vbr_default);
 //    lame_init_params(lame);
 
-    encoder->Encode();
-
-    encoder->Destory();
+//    encoder->Encode();
+//
+//    encoder->Destory();
 
 }
 

@@ -55,12 +55,21 @@ android {
 }
 
 dependencies {
+//    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     kapt 'com.alibaba:arouter-compiler:1.2.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    if (isModule.toBoolean()){
+    if (isModule.toBoolean()) {
         api project(path: ':common:lib_style')
     } else {
         api project(path: ':common:lib_code')
     }
+    // 下载用的
+//    implementation files('libs/jlibtorrent-1.2.2.0.jar')
+//    implementation files('libs/jlibtorrent-android-arm64-1.2.2.0.jar')
+//    implementation files('libs/jlibtorrent-android-arm-1.2.2.0.jar')
+//    implementation files('libs/jlibtorrent-android-x86-1.2.2.0.jar')
+//    implementation files('libs/jlibtorrent-android-x86_64-1.2.2.0.jar')
+    // 播放用的
+    implementation 'com.shuyu:GSYVideoPlayer:6.0.1'
 }

@@ -43,6 +43,6 @@ ext {
     buildTools = '28.0.2'
     compileSdk = 28
     targetSdk = 28
-    minVersion = 15
+    minVersion = 19
 
 }

@@ -1,9 +1,6 @@
 package com.kotlin.mvp.net
 
-import android.util.Log
-import android.widget.Toast
 import com.kotlin.mvp.utils.ThreadUtils
-import kotlinx.android.synthetic.main.activity_net.*
 import okhttp3.*
 import java.io.IOException
 
@@ -33,7 +30,7 @@ class NetManager private constructor(){
 
                 ThreadUtils.runOnMainThread(object : Runnable {
                     override fun run() {
-                        mRequest.handler.onError(e?.message)
+                        mRequest.handler.onErrorData(e?.message)
                     }
                 })
             }
@@ -45,7 +42,7 @@ class NetManager private constructor(){
 
                 ThreadUtils.runOnMainThread(object : Runnable {
                     override fun run() {
-                        mRequest.handler.onSuccess(parseResult)
+                        mRequest.handler.onSuccessData(parseResult)
                     }
                 })
             }

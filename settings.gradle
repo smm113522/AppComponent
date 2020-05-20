@@ -3,7 +3,6 @@ include ':app',
         'common:lib_common',
         'common:lib_style',
         'common:lib_code',
-        'common:lib_module',
         // lib 使用
         'lib:lib_camera-card-crop',
         'lib:lib_image',

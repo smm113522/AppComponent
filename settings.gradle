@@ -19,3 +19,4 @@ include ':app',
         'module:module_html',
         'module:module_main'
 
+include ':module:module_image'

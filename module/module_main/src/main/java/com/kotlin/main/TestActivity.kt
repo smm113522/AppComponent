@@ -1,4 +1,4 @@
-package com.kotlin
+package com.kotlin.main
 
 import android.content.ComponentName
 import android.content.Intent
@@ -6,11 +6,10 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.btmv.module_main.R
 import com.code.base.BaseActivity
 import com.code.utils.RouterPath
-import com.kotlin.service.DownloadService
-import com.kotlin.service.IDownloadeInter
+import com.kotlin.main.service.DownloadService
+import com.kotlin.main.service.IDownloadeInter
 import kotlinx.android.synthetic.main.activity_test.*
 
 
@@ -65,7 +64,7 @@ class TestActivity : BaseActivity() {
 
         bt_other.setOnClickListener {
 //            unbindService(connection)
-            var serviceActivity = Intent(this,ServiceActivity::class.java)
+            var serviceActivity = Intent(this, ServiceActivity::class.java)
             startActivity(serviceActivity)
         }
 

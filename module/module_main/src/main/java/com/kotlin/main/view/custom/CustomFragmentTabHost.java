@@ -1,4 +1,4 @@
-package com.kotlin.view.custom;
+package com.kotlin.main.view.custom;
 
 /**
  * Created by hjm on 2017/2/19/019.

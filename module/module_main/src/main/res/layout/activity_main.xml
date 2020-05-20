@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:hjm="http://schemas.android.com/tools">
 
-    <com.kotlin.view.BottomTabBar
+    <com.kotlin.main.view.BottomTabBar
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,6 +21,6 @@
         hjm:tab_selected_color="#2784E7"
         hjm:tab_unselected_color="#282828">
 
-    </com.kotlin.view.BottomTabBar>
+    </com.kotlin.main.view.BottomTabBar>
 
 </com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>

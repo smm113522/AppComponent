@@ -3,8 +3,6 @@ package com.kotlin.app
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import com.alibaba.android.arouter.facade.annotation.Route
-import com.code.utils.RouterPath
 import com.kotlin.app.adapter.OtherAdapter
 import kotlinx.android.synthetic.main.activity_other.*
 
@@ -12,7 +10,6 @@ import kotlinx.android.synthetic.main.activity_other.*
  * kotlin 基础
  */
 
-@Route(path = RouterPath.path_kotlin_activity)
 class OthersActivity : AppCompatActivity() {
 
     //val/var 变量名: 变量类型 = 表达式

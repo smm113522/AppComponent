@@ -8,15 +8,14 @@ apply plugin: 'com.alibaba.arouter'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-if (!isModule.toBoolean()) {
-    apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-kapt'
 
-    kapt {
-        arguments {
-            arg("AROUTER_MODULE_NAME", project.getName())
-        }
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
     }
 }
+
 
 android {
     compileSdkVersion compileSdk
@@ -64,14 +63,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     if (isModule.toBoolean()) {
-//        api 'com.alibaba:arouter-api:1.5.0'
-        api project(path: ':common:lib_style')
-//        api project(path: ':common:lib_code')
+        api project(path: ':common:lib_code')
     } else {
-        kapt 'com.alibaba:arouter-compiler:1.2.2'
         api project(path: ':common:lib_code')
     }
     // 下载用的

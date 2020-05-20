@@ -1,13 +1,10 @@
-package com.kotlin
+package com.kotlin.main
 
 import android.graphics.Color
-import android.support.annotation.ColorInt
-import com.btmv.module_main.R
 import com.code.base.BaseActivity
-import com.kotlin.fragment.MainFragment
-import com.kotlin.fragment.OtherFragment
-import com.kotlin.view.BottomTabBar
-import com.kotlin.view.bean.ItemBar
+import com.kotlin.main.fragment.MainFragment
+import com.kotlin.main.fragment.OtherFragment
+import com.kotlin.main.view.bean.ItemBar
 import com.tencent.bugly.beta.Beta
 import kotlinx.android.synthetic.main.activity_main.*
 

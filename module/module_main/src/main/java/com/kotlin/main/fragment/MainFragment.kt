@@ -1,4 +1,4 @@
-package com.kotlin.fragment
+package com.kotlin.main.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,10 +7,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.btmv.module_main.R
 import com.code.utils.RouterPath
-import com.kotlin.adapter.MainAdapter
-import com.kotlin.bean.MainHome
+import com.kotlin.main.R
+import com.kotlin.main.adapter.MainAdapter
+import com.kotlin.main.bean.MainHome
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment(){

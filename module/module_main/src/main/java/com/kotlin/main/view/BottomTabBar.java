@@ -1,4 +1,4 @@
-package com.kotlin.view;
+package com.kotlin.main.view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -29,10 +29,10 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 
-import com.btmv.module_main.R;
-import com.kotlin.view.bean.ItemBar;
-import com.kotlin.view.custom.CustomFragmentTabHost;
-import com.kotlin.view.util.TintUtil;
+import com.kotlin.main.R;
+import com.kotlin.main.view.bean.ItemBar;
+import com.kotlin.main.view.custom.CustomFragmentTabHost;
+import com.kotlin.main.view.util.TintUtil;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

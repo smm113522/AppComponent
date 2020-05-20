@@ -1,4 +1,4 @@
-package com.kotlin.adapter
+package com.kotlin.main.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.btmv.module_main.R
 import com.code.utils.NavigationUtil
-import com.kotlin.bean.MainHome
+import com.kotlin.main.R
+import com.kotlin.main.bean.MainHome
 
 
 class MainAdapter(val datas: List<MainHome>, val context: Context) : RecyclerView.Adapter<MainAdapter.MainHolder>() {

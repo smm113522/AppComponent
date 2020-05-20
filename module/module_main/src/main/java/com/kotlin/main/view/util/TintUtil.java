@@ -1,4 +1,4 @@
-package com.kotlin.view.util;
+package com.kotlin.main.view.util;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

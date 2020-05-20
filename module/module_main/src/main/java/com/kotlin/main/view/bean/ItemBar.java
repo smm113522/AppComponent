@@ -1,4 +1,4 @@
-package com.kotlin.view.bean;
+package com.kotlin.main.view.bean;
 
 public class ItemBar {
     String name ;

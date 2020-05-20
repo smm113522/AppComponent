@@ -1,4 +1,4 @@
-if (isModule.toBoolean()){
+if (isModule.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
@@ -7,11 +7,14 @@ if (isModule.toBoolean()){
 apply plugin: 'com.alibaba.arouter'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
+if (!isModule.toBoolean()) {
+    apply plugin: 'kotlin-kapt'
+
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
     }
 }
 
@@ -57,22 +60,18 @@ android {
         }
     }
 
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    kapt 'com.alibaba:arouter-compiler:1.2.2'
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     if (isModule.toBoolean()) {
-        api 'com.alibaba:arouter-api:1.5.0'
-//        api project(path: ':common:lib_style')
-        api project(path: ':common:lib_code')
+//        api 'com.alibaba:arouter-api:1.5.0'
+        api project(path: ':common:lib_style')
+//        api project(path: ':common:lib_code')
     } else {
+        kapt 'com.alibaba:arouter-compiler:1.2.2'
         api project(path: ':common:lib_code')
     }
     // 下载用的
@@ -82,5 +81,5 @@ dependencies {
 //    implementation files('libs/jlibtorrent-android-x86-1.2.2.0.jar')
 //    implementation files('libs/jlibtorrent-android-x86_64-1.2.2.0.jar')
     // 播放用的
-    implementation 'com.shuyu:GSYVideoPlayer:6.0.1'
+//    implementation 'com.shuyu:GSYVideoPlayer:6.0.1'
 }

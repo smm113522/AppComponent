@@ -14,8 +14,9 @@ include ':app',
         'module:module_news',
         'module:module_mvvm',
         'module:module_mvp',
+        'module:module_jetpack',
         'module:module_hotfix',
         'module:module_video',
         'module:module_html',
         'module:module_main'
-
+include ':common:lib_module'

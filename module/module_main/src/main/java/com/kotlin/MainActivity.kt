@@ -21,17 +21,17 @@ class MainActivity : BaseActivity() {
         //更新jar 包
         Beta.checkUpgrade()
 
-        listBar.add(ItemBar("控件",R.mipmap.icon_tabbar_component_selected,
-                R.mipmap.icon_tabbar_component,MainFragment.newInstance().javaClass))
+        listBar.add(ItemBar("控件", R.mipmap.icon_tabbar_component_selected,
+                R.mipmap.icon_tabbar_component, MainFragment.newInstance().javaClass))
 
-        listBar.add(ItemBar("组件",R.mipmap.icon_tabbar_component_selected,
-                R.mipmap.icon_tabbar_component,OtherFragment.newInstance().javaClass))
+        listBar.add(ItemBar("组件", R.mipmap.icon_tabbar_component_selected,
+                R.mipmap.icon_tabbar_component, OtherFragment.newInstance().javaClass))
 
         initBar(listBar)
 
     }
 
-    fun initBar(list: ArrayList<ItemBar>){
+    fun initBar(list: ArrayList<ItemBar>) {
 
         bottom_bar.init(supportFragmentManager, 750.0, 1334.0)
                 .setImgSize(44.0, 44.0)
@@ -45,8 +45,6 @@ class MainActivity : BaseActivity() {
                 .setCurrentTab(0)
 
     }
-
-
 
 
 }

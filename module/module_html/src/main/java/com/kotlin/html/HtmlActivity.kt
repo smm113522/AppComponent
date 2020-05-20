@@ -9,8 +9,6 @@ import com.kotlin.html.module.Classification
 import kotlinx.android.synthetic.main.activity_html.*
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import android.system.Os.link
-import android.R.attr
 import android.text.TextUtils
 import com.code.utils.NavigationUtil
 import com.kotlin.html.module.MainItem

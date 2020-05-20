@@ -59,11 +59,11 @@ dependencies {
     kapt 'com.alibaba:arouter-compiler:1.2.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     if (isModule.toBoolean()){
+        implementation 'com.alibaba:arouter-api:1.5.0'
         api project(path: ':common:lib_style')
     } else {
         api project(path: ':common:lib_code')
     }
-
 //    implementation 'com.github.florent37:retrojsoup:1.0.4'
 //    implementation 'com.github.florent37:rxjsoup:1.0.4'
 //    kapt 'com.github.florent37:retrojsoup-compiler:1.0.4'

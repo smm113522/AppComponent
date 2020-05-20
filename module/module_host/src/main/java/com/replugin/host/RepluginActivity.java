@@ -17,11 +17,12 @@ import com.code.utils.RouterPath;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.model.PluginInfo;
 
+
 /**
  * 插件化部分测试。。可以从后台进行添加
  */
 
-@Route(path = RouterPath.path_replugin_activity)
+//@Route(path = RouterPath.path_replugin_activity)
 public class RepluginActivity extends BaseActivity implements View.OnClickListener {
 
     private Button mPushBt;

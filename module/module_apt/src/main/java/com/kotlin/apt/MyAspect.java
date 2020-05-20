@@ -6,8 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 
-import com.code.utils.NavigationUtil;
-import com.code.utils.RouterPath;
+
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -45,7 +44,7 @@ public class MyAspect {
                 Object result = joinPoint.proceed();  //执行注解的方法
 
             }else {
-                NavigationUtil.INSTANCE.toActivity(RouterPath.path_kotlin_activity);
+
             }
 
         } catch (Throwable throwable) {

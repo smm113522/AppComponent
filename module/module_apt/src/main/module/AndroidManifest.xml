@@ -2,15 +2,12 @@
     package="com.kotlin.apt" >
 
     <application>
-
-        <activity android:name=".MvpActivity">
+        <activity android:name=".AptActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
-
 </manifest>

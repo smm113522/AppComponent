@@ -1,9 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kotlin.mvp" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.kotlin.video">
 
-    <application>
+    <application >
 
-        <activity android:name=".MvpActivity">
+        <activity android:name=".VideoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

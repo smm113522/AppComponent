@@ -3,10 +3,8 @@ package com.kotlin.video
 import android.Manifest
 import android.content.pm.ActivityInfo
 import android.view.View
-import com.alibaba.android.arouter.facade.annotation.Route
 import com.code.base.BaseActivity
 import com.code.utils.PermissionUtils
-import com.code.utils.RouterPath
 import com.shuyu.gsyvideoplayer.GSYVideoManager
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import kotlinx.android.synthetic.main.activity_video.*
@@ -16,14 +14,16 @@ import kotlinx.android.synthetic.main.activity_video.*
  * 和下载功能
  */
 
-@Route(path = RouterPath.path_video_activity)
-class VideoActivity : BaseActivity() {
+//@Route(path = RouterPath.path_video_activity)
+public class VideoActivity : BaseActivity() {
 
     override fun getLayoutId(): Int = R.layout.activity_video
 
     private val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
     var orientationUtils: OrientationUtils? = null
+
     override fun initView() {
         PermissionUtils.requestMorePermissions(this, permissions, 1)
 

@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kotlin.mvp" >
+    package="com.kotlin.html" >
 
     <application>
 
-        <activity android:name=".MvpActivity">
+        <activity android:name=".HtmlActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

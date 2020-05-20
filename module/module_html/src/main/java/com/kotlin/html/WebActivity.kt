@@ -1,7 +1,6 @@
 package com.kotlin.html
 
 import android.graphics.Bitmap
-import android.text.Layout
 import android.view.KeyEvent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView

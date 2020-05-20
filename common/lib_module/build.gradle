@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api project(path: ':module:module_main')
+    api project(path: ':module:module_news')
+    api project(path: ':module:module_host')
+    api project(path: ':module:module_pdf')
+    api project(path: ':module:module_mvvm')
+    api project(path: ':module:module_mvp')
+    api project(path: ':module:module_video')
+    api project(path: ':module:module_hotfix')
+    api project(path: ':module:module_html')
+    api project(path: ':module:module_apt')
+}

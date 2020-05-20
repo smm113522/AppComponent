@@ -8,9 +8,9 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ck.consumer_app.pdf.pdfview.PDFView;
 import com.ck.consumer_app.pdf.pdfview.listener.OnPageChangeListener;
-import com.code.utils.RouterPath;
-
-@Route(path = RouterPath.path_pdf_activity)
+//import com.code.utils.RouterPath;
+//
+//@Route(path = RouterPath.path_pdf_activity)
 public class PdfActivity extends AppCompatActivity {
 
     public String path = "https://storage.googleapis.com/applied-dl/SciPy_Tokyo.pdf";

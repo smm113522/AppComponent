@@ -94,9 +94,9 @@ dependencies {
 
 //    kapt 'androidx.databinding:databinding-compiler:3.4.0'
     if (isModule.toBoolean()){
-        implementation project(path: ':common:lib_code')
-    } else {
         implementation project(path: ':common:lib_common')
+    } else {
+        implementation project(path: ':common:lib_module')
     }
 }
 

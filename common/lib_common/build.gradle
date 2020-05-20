@@ -27,19 +27,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    if (isModule.toBoolean()){
-        api project(path: ':common:lib_style')
-    } else {
-        api project(path: ':module:module_main')
-        api project(path: ':module:module_news')
-        api project(path: ':module:module_host')
-        api project(path: ':module:module_pdf')
-        api project(path: ':module:module_mvvm')
-        api project(path: ':module:module_mvp')
-        api project(path: ':module:module_video')
-        api project(path: ':module:module_hotfix')
-        api project(path: ':module:module_html')
-        api project(path: ':module:module_apt')
-    }
-
+    api project(path: ':common:lib_code')
 }

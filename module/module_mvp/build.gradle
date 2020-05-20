@@ -60,6 +60,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     if (isModule.toBoolean()){
+        implementation 'com.alibaba:arouter-api:1.5.0'
         api project(path: ':common:lib_style')
     } else {
         api project(path: ':common:lib_code')

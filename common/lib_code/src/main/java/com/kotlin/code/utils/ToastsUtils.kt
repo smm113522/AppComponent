@@ -6,7 +6,7 @@ import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import com.code.R
+import com.kotlin.code.R
 import com.kotlin.code.base.BaseApp
 
 object ToastsUtils {

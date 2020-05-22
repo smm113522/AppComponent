@@ -4,7 +4,8 @@ import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
-import com.code.BuildConfig
+import com.kotlin.code.BuildConfig
+
 
 open class BaseApp : Application() {
 

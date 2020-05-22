@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.code.utils.NavigationUtil
+import com.kotlin.code.utils.NavigationUtil
 import com.kotlin.main.R
 import com.kotlin.main.bean.MainHome
 

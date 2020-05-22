@@ -1,9 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kotlin.video" >
+    package="com.kotlin.module" >
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application>
 
-        <activity android:name=".DemoActivity"></activity>
 
     </application>
 

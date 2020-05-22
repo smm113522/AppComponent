@@ -21,3 +21,4 @@ include ':app',
         'module:module_main'
 
 include ':module:module_image'
+include ':common:lib_module'

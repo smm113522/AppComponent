@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion compileSdk
@@ -10,18 +9,7 @@ android {
         minSdkVersion minVersion
         targetSdkVersion targetSdk
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
-
     }
-
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
 
     dataBinding {
         enabled = true
@@ -45,7 +33,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    kapt 'com.alibaba:arouter-compiler:1.2.2'
 
     api 'com.alibaba:arouter-api:1.5.0'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -54,12 +41,23 @@ dependencies {
     api project(path: ':common:lib_style')
 
     api project(path: ':lib:lib_dynamicload')
-    /* rxjava */
-    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    api 'io.reactivex.rxjava2:rxjava:2.0.7'
+
     //QMUI *
     api 'com.qmuiteam:qmui:1.4.0' 
     implementation "com.android.support:multidex:1.0.1"
     api 'com.tencent.bugly:crashreport_upgrade:latest.release'
+
+    api 'android.arch.lifecycle:extensions:1.1.1'
+    api 'com.squareup.retrofit2:retrofit:2.5.0'
+    api 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    api 'io.reactivex.rxjava2:rxjava:2.1.16'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
+
+    api 'com.github.bumptech.glide:glide:4.9.0'
+
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
 
 }

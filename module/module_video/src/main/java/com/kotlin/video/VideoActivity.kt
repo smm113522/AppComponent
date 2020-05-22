@@ -6,7 +6,6 @@ package com.kotlin.video
 //import android.content.pm.ActivityInfo
 //import android.view.View
 //import com.code.base.BaseActivity
-//import com.code.utils.PermissionUtils
 //import com.shuyu.gsyvideoplayer.GSYVideoManager
 //import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 //import kotlinx.android.synthetic.main.activity_video.*

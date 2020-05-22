@@ -1,15 +1,11 @@
 package com.kotlin.app
 
-import android.annotation.TargetApi
-import android.app.Application
 import android.content.Context
-import android.os.Build
 import com.argusapm.android.api.Client
 import com.argusapm.android.core.Config
 import com.argusapm.android.network.cloudrule.RuleSyncRequest
 import com.argusapm.android.network.upload.CollectDataSyncUpload
-import com.code.base.BaseApp
-import com.tencent.bugly.beta.Beta
+import com.kotlin.code.base.BaseApp
 
 
 class App : BaseApp() {
@@ -42,7 +38,7 @@ class App : BaseApp() {
 
     override fun onTerminate() {
         super.onTerminate()
-        Beta.unInit()
+
     }
 
 }

@@ -1,16 +1,15 @@
 package com.kotlin.main
 
 import android.graphics.Color
-import com.code.base.BaseActivity
+import com.kotlin.code.base.BaseNoModelActivity
+import com.kotlin.main.databinding.ActivityMainBinding
 import com.kotlin.main.fragment.MainFragment
 import com.kotlin.main.fragment.OtherFragment
 import com.kotlin.main.view.bean.ItemBar
 import com.tencent.bugly.beta.Beta
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity() {
-
-    override fun getLayoutId(): Int = R.layout.activity_main
+class MainActivity : BaseNoModelActivity<ActivityMainBinding>() {
 
     var listBar = ArrayList<ItemBar>()
 
@@ -43,7 +42,11 @@ class MainActivity : BaseActivity() {
 
     }
 
+    override fun onCreate(): Int = R.layout.activity_main
 
+    override fun initData() {
+
+    }
 
 
 }

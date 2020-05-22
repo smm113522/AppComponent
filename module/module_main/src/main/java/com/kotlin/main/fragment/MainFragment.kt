@@ -1,25 +1,18 @@
 package com.kotlin.main.fragment
 
-import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.kotlin.code.utils.RouterPath
+import com.kotlin.code.base.BaseFragment
 import com.kotlin.main.R
-import com.kotlin.main.adapter.MainAdapter
+import com.kotlin.main.adapter.MainAdatpters
 import com.kotlin.main.bean.MainHome
+import com.kotlin.main.databinding.FragmentMainBinding
+import com.kotlin.main.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment() {
-
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
+class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
 
     companion object {
         fun newInstance(): MainFragment {
@@ -27,28 +20,37 @@ class MainFragment : Fragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initViewModel(): MainViewModel {
+        return ViewModelProviders.of(getActivity()!!).get(MainViewModel::class.java)
+    }
+
+    override fun onCreate(): Int = R.layout.fragment_main
+    var adapter: MainAdatpters? = null
+
+    override fun initView() {
         topbar.text = "控件"
         var gridLayoutManager = GridLayoutManager(activity, 4)
-        recyclerView.layoutManager = gridLayoutManager as RecyclerView.LayoutManager?
-
-        var listMain = ArrayList<MainHome>();
-//        listMain.add(MainHome(R.mipmap.ic_launcher,"图片",RouterPath.path_image_activity))
-        listMain.add(MainHome(R.mipmap.ic_launcher, "视频", RouterPath.path_video_activity))
-//        listMain.add(MainHome(R.mipmap.ic_launcher,"mvvm",RouterPath.path_mvvm_activity))
-//        listMain.add(MainHome(R.mipmap.ic_launcher,"pdf",RouterPath.path_pdf_activity))
-//        listMain.add(MainHome(R.mipmap.ic_launcher,"kotlin",RouterPath.path_kotlin_activity))
-//        listMain.add(MainHome(R.mipmap.ic_launcher,"host",RouterPath.path_replugin_activity))
-//        listMain.add(MainHome(R.mipmap.ic_launcher,"hotfix",RouterPath.path_hotfix_activity))
-//        listMain.add(MainHome(R.mipmap.ic_launcher,"mvp",RouterPath.path_mvp_activity))
-//        listMain.add(MainHome(R.mipmap.icon_tabbar_component_selected,"html",RouterPath.path_html_activity))
-//        listMain.add(MainHome(R.mipmap.icon_tabbar_component_selected,"aop",RouterPath.path_apt_activity))
-
-        var adapter = MainAdapter(listMain, activity!!.applicationContext)
-
+        recyclerView.layoutManager = gridLayoutManager
+//        var listMain = ArrayList<MainHome>();
+//        adapter = MainAdapter(listMain, activity!!.applicationContext)
+        adapter = MainAdatpters()
         recyclerView.adapter = adapter
+    }
 
+    override fun initData() {
+        dataBinding.model = viewModel
+        //数据请求成功通知
+        viewModel.getMianList().observe(this, object : Observer<ArrayList<MainHome>?> {
+
+            override fun onChanged(t: ArrayList<MainHome>?) {
+                adapter?.setNewData(t)
+            }
+        })
+
+        viewModel.requestData()
+    }
+
+    override fun showError(obj: Any?) {
     }
 
 

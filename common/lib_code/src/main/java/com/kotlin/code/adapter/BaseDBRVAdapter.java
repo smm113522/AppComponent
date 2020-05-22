@@ -43,7 +43,6 @@ public abstract class BaseDBRVAdapter<Data, DB extends ViewDataBinding> extends 
         this.variableId = variableId;
     }
 
-
     @NonNull
     @Override
     public BaseDBRVHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {

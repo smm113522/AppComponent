@@ -4,7 +4,9 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import com.kotlin.code.adapter.OnItemClickListener
 import com.kotlin.code.base.BaseFragment
+import com.kotlin.code.utils.NavigationUtil
 import com.kotlin.main.R
 import com.kotlin.main.adapter.MainAdatpters
 import com.kotlin.main.bean.MainHome
@@ -35,6 +37,18 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
 //        adapter = MainAdapter(listMain, activity!!.applicationContext)
         adapter = MainAdatpters()
         recyclerView.adapter = adapter
+
+        adapter?.setOnItemListener(object : OnItemClickListener<MainHome> {
+            override fun onItemClick(data: MainHome, position: Int) {
+                NavigationUtil.toActivity(data.auth!!)
+            }
+
+            override fun onItemLongClick(data: MainHome?, position: Int): Boolean {
+                return false
+            }
+
+        })
+
     }
 
     override fun initData() {

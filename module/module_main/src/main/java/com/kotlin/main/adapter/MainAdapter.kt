@@ -23,9 +23,9 @@ class MainAdapter(val datas: List<MainHome>, val context: Context) : RecyclerVie
     override fun onBindViewHolder(p0: MainHolder, p1: Int) {
         p0.itemText.text = datas.get(p1).title
         p0.iv_icon.setImageResource(datas.get(p1).icon)
-        p0.iv_icon.setOnClickListener({
+        p0.iv_icon.setOnClickListener {
             datas.get(p1).auth?.let { it1 -> NavigationUtil.toActivity(it1) }
-        });
+        };
     }
 
 

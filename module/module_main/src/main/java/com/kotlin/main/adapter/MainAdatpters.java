@@ -25,19 +25,14 @@ public class MainAdatpters extends BaseDBRVAdapter<MainHome, ItemMainBinding> {
      * @param imageView
      * @param url       图片地址
      */
-    @BindingAdapter({"imageUrl"})
-    public static void loadImage(ImageView imageView, String url) {
-        Glide.with(imageView.getContext()).load(url).into(imageView);
-    }
-
     @BindingAdapter("app:imageUrl")
     @JvmStatic
-    public void srcCompat(ImageView imageView, String url) {
+    public void loadImage(ImageView imageView, String url) {
         Glide.with(imageView.getContext()).load(url).into(imageView);
     }
     @BindingAdapter("app:imageUrl")
     @JvmStatic
-    public void srcCompat(ImageView imageView, Integer url) {
+    public void loadImage(ImageView imageView, Integer url) {
         imageView.setBackgroundResource(url);
     }
 

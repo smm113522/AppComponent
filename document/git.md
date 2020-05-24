@@ -12,3 +12,5 @@ git push
 
 
 git pull origin/kotlinApp
+git fetch --all
+git reset --hard origin/master

@@ -11,6 +11,8 @@ import com.kotlin.main.R;
 import com.kotlin.main.bean.MainHome;
 import com.kotlin.main.databinding.ItemMainBinding;
 
+import kotlin.jvm.JvmStatic;
+
 public class MainAdatpters extends BaseDBRVAdapter<MainHome, ItemMainBinding> {
 
     public MainAdatpters() {
@@ -27,4 +29,16 @@ public class MainAdatpters extends BaseDBRVAdapter<MainHome, ItemMainBinding> {
     public static void loadImage(ImageView imageView, String url) {
         Glide.with(imageView.getContext()).load(url).into(imageView);
     }
+
+    @BindingAdapter("app:imageUrl")
+    @JvmStatic
+    public void srcCompat(ImageView imageView, String url) {
+        Glide.with(imageView.getContext()).load(url).into(imageView);
+    }
+    @BindingAdapter("app:imageUrl")
+    @JvmStatic
+    public void srcCompat(ImageView imageView, Integer url) {
+        imageView.setBackgroundResource(url);
+    }
+
 }

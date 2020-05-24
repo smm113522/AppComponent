@@ -8,6 +8,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 
 android {
     compileSdkVersion compileSdk
@@ -15,13 +20,6 @@ android {
     defaultConfig {
         minSdkVersion minVersion
         targetSdkVersion targetSdk
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
-
     }
 
     dataBinding {

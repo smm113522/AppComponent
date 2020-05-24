@@ -27,6 +27,9 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
     }
 
     override fun onCreate(): Int = R.layout.fragment_main
+    //y原始方法java
+//    var adapter : MainAdapter? = null
+    // java 里面的使用
     var adapter: MainAdatpters? = null
 
     override fun initView() {

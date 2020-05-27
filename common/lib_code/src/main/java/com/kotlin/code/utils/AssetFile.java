@@ -60,6 +60,40 @@ public class AssetFile {
                 fos.write(buffer, 0, byteCount);
             }
             fos.flush();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                is.close();
+                fos.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 从assets目录中复制某文件内容
+     *
+     * @param file   复制到/data/data/package_name/files/目录下文件名
+     */
+    public void copyAssetsFileToAppFiles(File file) {
+        InputStream is = null;
+        FileOutputStream fos = null;
+        int buffsize = 1024;
+
+        try {
+            is = context.getAssets().open(assetFileName);
+//            fos = context.openFileOutput(newFileName, Context.MODE_PRIVATE);
+            fos = new FileOutputStream(file, true); // true will be same as Context.MODE_APPEND
+            int byteCount = 0;
+            byte[] buffer = new byte[buffsize];
+            while ((byteCount = is.read(buffer)) != -1) {
+                fos.write(buffer, 0, byteCount);
+            }
+            fos.flush();
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -35,6 +35,13 @@
             android:max="10000"
             android:layout_height="wrap_content" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#333"
+            android:id="@+id/bt_4j"
+            android:text="测试4j"/>
+
 
     </LinearLayout>
 </layout>

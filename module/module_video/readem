@@ -1,1 +1,21 @@
 https://p.codekk.com/detail/Android/yangchong211/YCScrollPager
+
+下载
+案例-1
+https://github.com/mrbinwin/mymovies
+案例。使用了lib 是
+
+https://github.com/proninyaroslav/libretorrent
+开始尝试
+def libtorrent4J_version = "1.2.0.22"
+ /* libtorrent wrapper */
+    implementation "org.libtorrent4j:libtorrent4j:$libtorrent4J_version"
+    implementation "org.libtorrent4j:libtorrent4j-android-arm:$libtorrent4J_version"
+    implementation "org.libtorrent4j:libtorrent4j-android-arm64:$libtorrent4J_version"
+    implementation "org.libtorrent4j:libtorrent4j-android-x86:$libtorrent4J_version"
+    implementation "org.libtorrent4j:libtorrent4j-android-x86_64:$libtorrent4J_version"
+不知道做什么的
+    implementation 'com.github.masterwok:simple-torrent-android:0.5.0'
+    implementation "com.github.TorrentStream:TorrentStream-Android:${torrentstreamVersion}"
+
+案例-2

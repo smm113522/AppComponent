@@ -1,10 +1,12 @@
 package com.kotlin.video
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kotlin.code.utils.RouterPath
+import com.kotlin.video.libtorrentj.TorrentjActivity
 import kotlinx.android.synthetic.main.activity_video.*
 import okhttp3.*
 import java.io.*
@@ -27,6 +29,11 @@ class DemoActivity : Activity() {
             val call: Call = okHttpClient.newCall(request)
             call.enqueue(callback)
         }
+        bt_4j.setOnClickListener {
+//            NavigationUtil.toActivity(RouterPath.path_4jTorrent_activity)
+            var intent = Intent(this, TorrentjActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     var callback = object : Callback {
@@ -36,7 +43,6 @@ class DemoActivity : Activity() {
 
         override fun onResponse(call: Call, response: Response) {
             val startsPoint = 0
-            // 保存文件到本地
             // 保存文件到本地
             var `is`: InputStream? = null
             var randomAccessFile: RandomAccessFile? = null

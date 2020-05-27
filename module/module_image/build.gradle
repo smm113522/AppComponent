@@ -61,7 +61,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     kapt 'com.alibaba:arouter-compiler:1.2.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     if (isModule.toBoolean()) {
@@ -71,4 +71,5 @@ dependencies {
     } else {
         api project(path: ':common:lib_code')
     }
+    implementation files('libs/commons-io-1.4.jar')
 }

@@ -17,12 +17,17 @@ import com.kotlin.video.libtorrentj.bean.Torrent
 import com.kotlin.video.libtorrentj.bean.TorrentMetaInfo
 import com.kotlin.video.libtorrentj.download.TorrentEngine
 import com.kotlin.video.libtorrentj.exception.DecodeException
-import okhttp3.*
-import org.libtorrent4j.Priority
+import org.libtorrent4j.AlertListener
+import org.libtorrent4j.SessionManager
+import org.libtorrent4j.TorrentInfo
+import org.libtorrent4j.alerts.AddTorrentAlert
+import org.libtorrent4j.alerts.Alert
+import org.libtorrent4j.alerts.AlertType
+import org.libtorrent4j.alerts.BlockFinishedAlert
 import java.io.File
-import java.io.IOException
-import java.util.*
+import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
+
 
 @Route(path = RouterPath.path_4jTorrent_activity)
 class TorrentjActivity : BaseNoModelActivity<ActivityToorentJBinding>() {
@@ -70,7 +75,7 @@ class TorrentjActivity : BaseNoModelActivity<ActivityToorentJBinding>() {
 //            TorrentEngine.getInstance().start()
 //
 //           donwLoad(torrent)
-
+//            PieceMap(source)
         }
         dataBinding.btDownload.setOnClickListener {
             var txt = dataBinding.etUrl.text.toString().trim()
@@ -81,6 +86,50 @@ class TorrentjActivity : BaseNoModelActivity<ActivityToorentJBinding>() {
 
 
         }
+    }
+
+    fun PieceMap(path:String) {
+
+        val torrentFile = File(path)
+
+        val s = SessionManager()
+
+        val signal = CountDownLatch(1)
+
+        s.addListener(object : AlertListener {
+            override fun types(): IntArray {
+                return IntArray(1)
+            }
+
+            override fun alert(alert: Alert<*>) {
+                val type = alert.type()
+                when (type) {
+                    AlertType.ADD_TORRENT -> {
+                        println("Torrent added")
+                        (alert as AddTorrentAlert).handle().resume()
+                    }
+                    AlertType.BLOCK_FINISHED -> {
+                        val a = alert as BlockFinishedAlert
+                        val p = (a.handle().status().progress() * 100).toInt()
+                        println("Progress: " + p + " for torrent name: " + a.torrentName())
+                        println(s.stats().totalDownload())
+                    }
+                    AlertType.TORRENT_FINISHED -> {
+                        println("Torrent finished")
+                        signal.countDown()
+                    }
+                }
+            }
+        })
+
+        s.start()
+
+        val ti = TorrentInfo(torrentFile)
+        s.download(ti, torrentFile.parentFile)
+
+        signal.await()
+
+        s.stop()
     }
 
     override fun initData() {

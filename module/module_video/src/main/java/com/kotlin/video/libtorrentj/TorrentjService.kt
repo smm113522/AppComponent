@@ -9,6 +9,7 @@ import com.kotlin.video.libtorrentj.bean.TorrentMetaInfo
 import com.kotlin.video.libtorrentj.download.TorrentEngine
 import com.kotlin.video.libtorrentj.exception.DecodeException
 import org.libtorrent4j.Priority
+import org.libtorrent4j.TorrentInfo
 import java.io.File
 import java.util.*
 import java.util.concurrent.Executors
@@ -68,8 +69,10 @@ class TorrentjService : Service() {
             TorrentEngine.getInstance().settings = SettingsManager.readEngineSettings(applicationContext)
             TorrentEngine.getInstance().start()
         }
-//        donwLoad(torrent)
-        TorrentEngine.getInstance().download(torrent)
+        donwLoad(torrent)
+//        TorrentEngine.getInstance().download(torrent)
+//        val ti = TorrentInfo(File(torrent.source))
+//        TorrentEngine.getInstance().download(ti,file)
 
         val tasksCount = TorrentEngine.getInstance().tasksCount()
 

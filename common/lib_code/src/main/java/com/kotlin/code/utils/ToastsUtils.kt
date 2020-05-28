@@ -10,10 +10,14 @@ import com.kotlin.code.R
 import com.kotlin.code.base.BaseApp
 
 object ToastsUtils {
-
+    var toast:Toast? = null
     @Synchronized
     fun showToast(text: String, toastBool: Boolean) {
-        val toast = Toast.makeText(BaseApp.getInstance(), text, Toast.LENGTH_SHORT)
+        if (toast == null) {
+            toast = Toast.makeText(BaseApp.getInstance(), text, Toast.LENGTH_SHORT)
+        }
+//        toast?.cancel()
+
         val view = LinearLayoutCompat.inflate(BaseApp.getInstance(), R.layout.toast_view_center, null)
 
         val imageView = view.findViewById<ImageView>(R.id.imv_toast)
@@ -26,9 +30,9 @@ object ToastsUtils {
         val textView = view.findViewById<TextView>(R.id.itv_toast_txt)
         textView.setText(text)
 
-        toast.view = view
-        toast.setGravity(Gravity.CENTER, 0, 0)
-        toast.show()
+        toast?.view = view
+        toast?.setGravity(Gravity.CENTER, 0, 0)
+        toast?.show()
     }
 
     /**

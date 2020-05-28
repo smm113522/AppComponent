@@ -5,10 +5,12 @@ import android.content.SharedPreferences
 import android.os.Environment
 import android.os.Handler
 import android.os.Looper
+import android.text.TextUtils
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kotlin.code.base.BaseNoModelActivity
 import com.kotlin.code.utils.AssetFile
 import com.kotlin.code.utils.RouterPath
+import com.kotlin.code.utils.ToastsUtils
 import com.kotlin.video.R
 import com.kotlin.video.databinding.ActivityToorentJBinding
 import com.kotlin.video.libtorrentj.bean.Torrent
@@ -39,8 +41,8 @@ class TorrentjActivity : BaseNoModelActivity<ActivityToorentJBinding>() {
             AssetFile(this.context).fromAsset("test1.torrent").copyAssetsFileToAppFiles(file)
             var source = file.absolutePath
 
-            var intent = Intent(this,TorrentjService::class.java)
-            intent.putExtra("source",source)
+            var intent = Intent(this, TorrentjService::class.java)
+            intent.putExtra("source", source)
             startService(intent)
 
 //            var torrentMetaInfo = TorrentMetaInfo(source)
@@ -71,7 +73,11 @@ class TorrentjActivity : BaseNoModelActivity<ActivityToorentJBinding>() {
 
         }
         dataBinding.btDownload.setOnClickListener {
-            var txt = dataBinding.etUrl
+            var txt = dataBinding.etUrl.text.toString().trim()
+            if (TextUtils.isEmpty(txt)) {
+                ToastsUtils.showToast("请输入地址",false)
+                return@setOnClickListener
+            }
 
 
         }

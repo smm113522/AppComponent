@@ -11,7 +11,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".libtorrentj.TorrentjActivity" />
 
+        <service
+            android:name=".libtorrentj.TorrentjService"
+            android:stopWithTask="false" />
+        <provider
+            android:name="com.kotlin.video.libtorrentj.MainFileProvider"
+            android:authorities="com.kotlin.video.fileprovider"
+            android:exported="true"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

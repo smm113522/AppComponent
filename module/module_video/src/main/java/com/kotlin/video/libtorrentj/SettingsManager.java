@@ -23,10 +23,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.preference.PreferenceManager;
-import android.support.v4.content.ContextCompat;
 
-
-import com.kotlin.video.R;
 import com.kotlin.video.libtorrentj.download.TorrentEngine;
 import com.kotlin.video.libtorrentj.utils.FileIOUtils;
 

@@ -49,7 +49,7 @@ class TorrentjService : Service() {
             priorities = ArrayList(Collections.nCopies(torrentMetaInfo.fileCount, Priority.DEFAULT))
         }
 
-        var torrent = Torrent(torrentMetaInfo.sha1Hash, "test1", priorities, sdCardDir.absolutePath + "/2", System.currentTimeMillis())
+        var torrent = Torrent(torrentMetaInfo.sha1Hash, "test1", priorities, file.absolutePath, System.currentTimeMillis())
 
         torrent.setSource(source);
         torrent.setSequentialDownload(true);//是否顺序下载

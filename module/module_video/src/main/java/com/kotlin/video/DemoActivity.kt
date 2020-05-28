@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.kotlin.code.utils.NavigationUtil
 import com.kotlin.code.utils.RouterPath
 import com.kotlin.video.libtorrentj.TorrentjActivity
 import kotlinx.android.synthetic.main.activity_video.*
@@ -30,9 +31,9 @@ class DemoActivity : Activity() {
             call.enqueue(callback)
         }
         bt_4j.setOnClickListener {
-//            NavigationUtil.toActivity(RouterPath.path_4jTorrent_activity)
-            var intent = Intent(this, TorrentjActivity::class.java)
-            startActivity(intent)
+            NavigationUtil.toActivity(RouterPath.path_4jTorrent_activity)
+//            var intent = Intent(this, TorrentjActivity::class.java)
+//            startActivity(intent)
         }
     }
 

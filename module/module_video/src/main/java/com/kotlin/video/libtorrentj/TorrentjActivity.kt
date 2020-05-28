@@ -32,6 +32,8 @@ class TorrentjActivity : BaseNoModelActivity<ActivityToorentJBinding>() {
 
         }
         dataBinding.btDownload.setOnClickListener {
+            var txt = dataBinding.etUrl
+
 
         }
     }

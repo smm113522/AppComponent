@@ -1,10 +1,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kotlin.video" >
+    package="com.kotlin.video">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application>
 
-        <activity android:name=".DemoActivity"/>
-        <activity android:name=".libtorrentj.TorrentjActivity"/>
+        <activity android:name=".DemoActivity" />
+        <activity android:name=".libtorrentj.TorrentjActivity" />
+
+        <service
+            android:name=".libtorrentj.TorrentjService"
+            android:stopWithTask="false" />
 
     </application>
 

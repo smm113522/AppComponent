@@ -31,6 +31,10 @@ object RouterPath {
     const val path_video_activity = "/video/activity"
     const val path_4jTorrent_activity = "/4jTorrent/activity"
     const val path_jTorrent_activity = "/jTorrent/activity"
+
+    const val path_fragment_activity = "/fragment/activity"
+    const val path_torrent_info_fragment = "/torrentinfo/fragment"
+
     // 首页
     const val path_main_activity = "/main/activity"
     // 图片处理

@@ -11,6 +11,7 @@
 
         <activity android:name=".DemoActivity" />
         <activity android:name=".libtorrentj.TorrentjActivity" />
+        <activity android:name=".ui.FragmentActvity"/>
 
         <service
             android:name=".libtorrentj.TorrentjService"

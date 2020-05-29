@@ -6,7 +6,9 @@ import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
+import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.kotlin.code.base.BaseNoModelActivity
 import com.kotlin.code.utils.AssetFile
 import com.kotlin.code.utils.RouterPath
@@ -32,19 +34,32 @@ import java.util.concurrent.Executors
 @Route(path = RouterPath.path_4jTorrent_activity)
 class TorrentjActivity : BaseNoModelActivity<ActivityToorentJBinding>() {
 
+    @JvmField
+    @Autowired
+    var localPath = ""
 
     override fun onCreate(): Int {
         return R.layout.activity_toorent_j
     }
 
     override fun initView() {
+        ARouter.getInstance().inject(this)
+
+        if (!TextUtils.isEmpty(localPath)) {
+            dataBinding.tvPath.setText(localPath)
+        }
+
         dataBinding.btCopy.setOnClickListener {
 
             var sdCardDir = Environment.getExternalStorageDirectory();//获取SDCard目录
             var file = File(sdCardDir, "test1.torrent")
 
             AssetFile(this.context).fromAsset("test1.torrent").copyAssetsFileToAppFiles(file)
+
             var source = file.absolutePath
+
+            dataBinding.tvPath.setText(source)
+
             var torrentMetaInfo = TorrentMetaInfo(source)
 
             var intent = Intent(this, TorrentjService::class.java)
@@ -78,18 +93,28 @@ class TorrentjActivity : BaseNoModelActivity<ActivityToorentJBinding>() {
 //           donwLoad(torrent)
 //            PieceMap(source)
         }
+        dataBinding.btInfo.setOnClickListener {
+            ARouter.getInstance().build(RouterPath.path_fragment_activity)
+                    .withString("fragmentPath", RouterPath.path_torrent_info_fragment)
+                    .navigation();
+        }
+
         dataBinding.btDownload.setOnClickListener {
             var txt = dataBinding.etUrl.text.toString().trim()
             if (TextUtils.isEmpty(txt)) {
-                ToastsUtils.showToast("请输入地址",false)
+                ToastsUtils.showToast("请输入地址", false)
                 return@setOnClickListener
             }
+        }
 
+        dataBinding.btInfo1.setOnClickListener {
 
         }
+
+
     }
 
-    fun PieceMap(path:String) {
+    fun PieceMap(path: String) {
 
         val torrentFile = File(path)
 

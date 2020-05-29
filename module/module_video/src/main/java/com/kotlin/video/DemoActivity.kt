@@ -57,7 +57,8 @@ class DemoActivity : Activity() {
 
         torrent_download.setOnClickListener {
             var path = et_url.text.toString().trim()
-            var torrentPath = "https://github.com/makkoncept/movie_torrents/blob/02e6ab67d9493790cbf309fd68ef80c9475cd4a1/torrents/April%20Rain%20(2014)bluray_1080p.torrent"
+//            var torrentPath = "https://github.com/makkoncept/movie_torrents/blob/02e6ab67d9493790cbf309fd68ef80c9475cd4a1/torrents/April%20Rain%20(2014)bluray_1080p.torrent"
+            var torrentPath = "https://yts.am/torrent/download/CE2CA44ECAB3A5D4CD7096925EB75B7984956FFD"
             if (TextUtils.isEmpty(path)){
                 toast("请输入")
                 return@setOnClickListener

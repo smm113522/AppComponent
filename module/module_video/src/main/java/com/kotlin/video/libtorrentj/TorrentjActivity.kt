@@ -96,6 +96,8 @@ class TorrentjActivity : BaseNoModelActivity<ActivityToorentJBinding>() {
         dataBinding.btInfo.setOnClickListener {
             ARouter.getInstance().build(RouterPath.path_fragment_activity)
                     .withString("fragmentPath", RouterPath.path_torrent_info_fragment)
+
+
                     .navigation();
         }
 
@@ -105,6 +107,8 @@ class TorrentjActivity : BaseNoModelActivity<ActivityToorentJBinding>() {
                 ToastsUtils.showToast("请输入地址", false)
                 return@setOnClickListener
             }
+
+
         }
 
         dataBinding.btInfo1.setOnClickListener {

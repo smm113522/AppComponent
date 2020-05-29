@@ -135,4 +135,10 @@ public class hello {
         }
         return null;
     }
+
+    public static File getFileByFileName(String fileName){
+        String root = Environment.getExternalStorageDirectory().getPath();
+        return new File(root, fileName);
+    }
+
 }

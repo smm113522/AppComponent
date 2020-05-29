@@ -123,7 +123,7 @@ class DemoActivity : Activity() {
                         var total = response.body()!!.contentLength()
                         `is` = response.body()!!.byteStream()
                         bis = BufferedInputStream(`is`)
-                        val file: File = getFile(fileName)
+                        val file: File = hello.getFileByFileName(fileName)
                         // 随机访问文件，可以指定断点续传的起始位置
                         randomAccessFile = RandomAccessFile(file, "rwd")
                         randomAccessFile.seek(startsPoint.toLong())
@@ -178,14 +178,8 @@ class DemoActivity : Activity() {
         })
     }
 
-
     companion object {
         private const val TORRENT = "demo"
-    }
-
-    private fun getFile(fileName: String): File {
-        val root = Environment.getExternalStorageDirectory().path
-        return File(root, fileName)
     }
 
     fun toast(txt:String){

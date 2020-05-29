@@ -56,6 +56,7 @@ class DemoActivity : Activity() {
         }
         magnet_download.setOnClickListener {
             var path = et_url.text.toString().trim()
+            var magnet = "magnet:?xt=urn:btih:1e6857170e58a6af357799a0aa35c476f35d5b27&dn=The+Little+Mermaid+%281989%29+720p+BrRip+x264+-+YIFY&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969"
             if (TextUtils.isEmpty(path)){
                 toast("请输入")
                 return@setOnClickListener

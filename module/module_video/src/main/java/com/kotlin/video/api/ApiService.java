@@ -3,7 +3,10 @@ package com.kotlin.video.api;
 
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -32,5 +35,10 @@ public interface ApiService {
     @GET("get_entry_by_timeline")
     Observable<String> jueJin(@Query("category") String category, @Query("limit") String limit,
                                   @Query("src") String src);
+
+    @GET("download/{id}")
+    Call<ResponseBody> downloadTorrentFile(
+            @Path("id") long id
+    );
 
 }

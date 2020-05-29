@@ -23,10 +23,6 @@ import java.util.concurrent.Executors
 @Route(path = RouterPath.path_video_activity)
 class DemoActivity : Activity() {
 
-//    val okHttpClient: OkHttpClient by lazy {
-//        OkHttpClient()
-//    }
-
     var murl: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,17 +35,10 @@ class DemoActivity : Activity() {
                 return@setOnClickListener
             }
 
-            //            val request: Request = Request.Builder()
-//                    .url(murl)
-//                    .build()
-//            val call: Call = okHttpClient.newCall(request)
-//            call.enqueue(callback)
             saveFileByUrl(progressBar, this, murl)
         }
         bt_4j.setOnClickListener {
             NavigationUtil.toActivity(RouterPath.path_4jTorrent_activity)
-//            var intent = Intent(this, TorrentjActivity::class.java)
-//            startActivity(intent)
         }
         bt_j_torrent.setOnClickListener {
             NavigationUtil.toActivity(RouterPath.path_jTorrent_activity)
@@ -68,10 +57,12 @@ class DemoActivity : Activity() {
 
         torrent_download.setOnClickListener {
             var path = et_url.text.toString().trim()
+            var torrentPath = "https://github.com/makkoncept/movie_torrents/blob/02e6ab67d9493790cbf309fd68ef80c9475cd4a1/torrents/April%20Rain%20(2014)bluray_1080p.torrent"
             if (TextUtils.isEmpty(path)){
                 toast("请输入")
                 return@setOnClickListener
             }
+            saveFileByUrl(progressBar,this,torrentPath)
 
         }
         player.setOnClickListener {
@@ -85,63 +76,11 @@ class DemoActivity : Activity() {
                     .navigation();
         }
 
-
     }
 
-    var callback = object : Callback {
-
-        override fun onFailure(call: Call, e: IOException) {
-            Toast.makeText(this@DemoActivity, "获取失败", Toast.LENGTH_SHORT).show()
-        }
-
-        override fun onResponse(call: Call, response: Response) {
-            var fileName = hello.getHeaderFileName(murl, response)
-            val startsPoint = 0
-            // 保存文件到本地
-            var `is`: InputStream? = null
-            var randomAccessFile: RandomAccessFile? = null
-            var bis: BufferedInputStream? = null
-
-            val buff = ByteArray(2048)
-            var len = 0
-            var downloadLength: Int = 0
-            try {
-                var total = response.body()!!.contentLength()
-                `is` = response.body()!!.byteStream()
-                bis = BufferedInputStream(`is`)
-                val file: File = getFile(fileName)
-                // 随机访问文件，可以指定断点续传的起始位置
-                randomAccessFile = RandomAccessFile(file, "rwd")
-                randomAccessFile.seek(startsPoint.toLong())
-                while (bis.read(buff).also { len = it } != -1) {
-                    randomAccessFile.write(buff, 0, len)
-
-                    downloadLength += len
-                    println(downloadLength)
-                    println(total)
-                    var progress = (downloadLength * 1.0f / total * 100)
-                    println(progress)
-                    Log.e(TORRENT, "progress=$progress")
-                    progressBar.progress = progress.toInt()
-                }
-                Toast.makeText(this@DemoActivity, "下载完成,地址-》" + file.absolutePath, Toast.LENGTH_SHORT).show()
-                progressBar.progress = 0
-                // 下载完成
-            } catch (e: Exception) {
-                e.printStackTrace()
-            } finally {
-                try {
-                    `is`?.close()
-                    bis?.close()
-                    randomAccessFile?.close()
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-        }
-
-    }
-
+    /**
+     * 保存文件，通过url
+     */
     fun saveFileByUrl(
             progressBar: ProgressBar,
             context: Context,

@@ -22,6 +22,7 @@ public class Api extends BaseApi {
         private static Api api = new Api();
         private final static ApiService apiService = api.initRetrofit(ApiService.BASE_URL)
                 .create(ApiService.class);
+
         private final static ApiService JueJinApiService = api.initRetrofit(ApiService.JUE_JIN_BASE_URL)
                 .create(ApiService.class);
     }

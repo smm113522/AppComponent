@@ -4,9 +4,13 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import com.kotlin.code.utils.Utils;
+import com.kotlin.video.api.Api;
+
+import org.apache.commons.io.IOUtils;
 
 import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
@@ -14,6 +18,7 @@ import java.util.UUID;
 
 import okhttp3.Call;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import okio.Buffer;
 
 import static com.tencent.bugly.beta.Beta.downloadListener;
@@ -88,7 +93,7 @@ public class hello {
      * Content-Disposition:attachment;filename=FileName.txt
      * Content-Disposition: attachment; filename*="UTF-8''%E6%9B%BF%E6%8D%A2%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.pdf"
      */
-    public static String getHeaderFileName(String path,Response response) {
+    public static String getHeaderFileName(String path, Response response) {
         String dispositionHeader = response.header("Content-Disposition");
         if (!TextUtils.isEmpty(dispositionHeader)) {
             dispositionHeader.replace("attachment;filename=", "");
@@ -106,7 +111,28 @@ public class hello {
         return uuid + "." + Utils.INSTANCE.parseSuffix(path);
     }
 
+    /**
+     * 保存torrent 文件
+     */
+    public static File savaTorrentFile(ResponseBody responseBody) {
+        if (responseBody == null) {
+            return null;
+        }
+        return savaTorrentFile(responseBody.byteStream());
+    }
 
+    public static File savaTorrentFile(InputStream inputStream) {
+        try {
+            final File tempFile = File.createTempFile(UUID.randomUUID().toString(), ".torrent");
 
-
+            tempFile.deleteOnExit();
+            try (FileOutputStream out = new FileOutputStream(tempFile)) {
+                IOUtils.copy(inputStream, out);
+            }
+            return tempFile;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

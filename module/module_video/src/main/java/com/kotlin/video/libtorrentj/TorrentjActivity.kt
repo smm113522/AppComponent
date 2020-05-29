@@ -45,6 +45,7 @@ class TorrentjActivity : BaseNoModelActivity<ActivityToorentJBinding>() {
 
             AssetFile(this.context).fromAsset("test1.torrent").copyAssetsFileToAppFiles(file)
             var source = file.absolutePath
+            var torrentMetaInfo = TorrentMetaInfo(source)
 
             var intent = Intent(this, TorrentjService::class.java)
             intent.putExtra("source", source)

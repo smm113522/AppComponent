@@ -3,76 +3,81 @@ https://p.codekk.com/detail/Android/yangchong211/YCScrollPager
 文件选择
 https://github.com/supertaohaili/FileChooser
 
-下载
+种子url ---> 本地文件xx.torrent ---> (里面会有多个文件情况)下载---> 视频可以播放(边下载边播放 流程度很重要)
+magnet:?xt=urn:btih:
+磁力链接---> 下载---> 视频可以播放(边下载边播放 流程度很重要)
+磁力链接---> 种子xxx.torrent ---> 下载---> 视频可以播放(边下载边播放 流程度很重要)
+
+torrent 下载 案例总结
 案例-1
-https://github.com/mrbinwin/mymovies
-案例。使用了lib 是
+    https://github.com/mrbinwin/mymovies
+    案例。使用了lib 是
+    https://github.com/aldenml/libtorrent4j
 
-https://github.com/proninyaroslav/libretorrent
-开始尝试
-    def libtorrent4J_version = "1.2.0.22"
-     /* libtorrent wrapper */
-    implementation "org.libtorrent4j:libtorrent4j:$libtorrent4J_version"
-    implementation "org.libtorrent4j:libtorrent4j-android-arm:$libtorrent4J_version"
-    implementation "org.libtorrent4j:libtorrent4j-android-arm64:$libtorrent4J_version"
-    implementation "org.libtorrent4j:libtorrent4j-android-x86:$libtorrent4J_version"
-    implementation "org.libtorrent4j:libtorrent4j-android-x86_64:$libtorrent4J_version"
-    /*不知道做什么的*/
-    implementation 'com.github.masterwok:simple-torrent-android:0.5.0'
-    implementation "com.github.TorrentStream:TorrentStream-Android:${torrentstreamVersion}"
+    开始尝试
+        def libtorrent4J_version = "1.2.0.22"
+         /* libtorrent wrapper */
+        implementation "org.libtorrent4j:libtorrent4j:$libtorrent4J_version"
+        implementation "org.libtorrent4j:libtorrent4j-android-arm:$libtorrent4J_version"
+        implementation "org.libtorrent4j:libtorrent4j-android-arm64:$libtorrent4J_version"
+        implementation "org.libtorrent4j:libtorrent4j-android-x86:$libtorrent4J_version"
+        implementation "org.libtorrent4j:libtorrent4j-android-x86_64:$libtorrent4J_version"
+        /*不知道做什么的*/
+        implementation 'com.github.masterwok:simple-torrent-android:0.5.0'
+        implementation "com.github.TorrentStream:TorrentStream-Android:${torrentstreamVersion}"
 
-使用情况demo
-https://github.com/mrbinwin/mymovies
-https://github.com/proninyaroslav/libretorrent（viewmodel使用）
+    使用情况demo
+    https://github.com/mrbinwin/mymovies
+    https://github.com/proninyaroslav/libretorrent（viewmodel使用）
 
 案例-2
-https://github.com/frostwire/frostwire-jlibtorrent
+    https://github.com/frostwire/frostwire-jlibtorrent
 
-下载地址https://github.com/frostwire/frostwire-jlibtorrent/releases
-jlibtorrent-1.2.5.0-javadoc.jar 2.42 MB
-jlibtorrent-1.2.5.0-sources.jar 407 KB
-jlibtorrent-1.2.5.0.jar 674 KB
-jlibtorrent-android-arm-1.2.5.0.jar 2.38 MB
-jlibtorrent-android-arm64-1.2.5.0.jar 2.43 MB
-jlibtorrent-android-x86-1.2.5.0.jar 2.74 MB
-jlibtorrent-android-x86_64-1.2.5.0.jar 2.7 MB
-jlibtorrent-linux-1.2.5.0.jar 5.65 MB
-jlibtorrent-macosx-1.2.5.0.jar 2.25 MB
-jlibtorrent-windows-1.2.5.0.jar 4.72 MB
+    下载地址https://github.com/frostwire/frostwire-jlibtorrent/releases
+    jlibtorrent-1.2.5.0-javadoc.jar 2.42 MB
+    jlibtorrent-1.2.5.0-sources.jar 407 KB
+    jlibtorrent-1.2.5.0.jar 674 KB
+    jlibtorrent-android-arm-1.2.5.0.jar 2.38 MB
+    jlibtorrent-android-arm64-1.2.5.0.jar 2.43 MB
+    jlibtorrent-android-x86-1.2.5.0.jar 2.74 MB
+    jlibtorrent-android-x86_64-1.2.5.0.jar 2.7 MB
+    jlibtorrent-linux-1.2.5.0.jar 5.65 MB
+    jlibtorrent-macosx-1.2.5.0.jar 2.25 MB
+    jlibtorrent-windows-1.2.5.0.jar 4.72 MB
 
-使用情况demo
-https://github.com/TorrentStream/TorrentStream-Android
-播放只支持vlc播放器
-目前使用 的是
-https://github.com/substitute05/VlcPlayer
+    使用情况demo
+    https://github.com/TorrentStream/TorrentStream-Android
+    播放只支持vlc播放器
+    目前使用 的是
+    https://github.com/substitute05/VlcPlayer
 
-其他播放器
-https://p.codekk.com/detail/Android/yangchaojiang/yjPlay
+    其他播放器
+    https://p.codekk.com/detail/Android/yangchaojiang/yjPlay
 
 案例-3
-thunder 的使用
-https://github.com/redstorm82/MiniThunder
-jniLibs/armeabi/
-通病是只有grmeabi so文件，其它so文件找不到。
-只能用grm处理手机编译。
+    thunder 的使用
+    https://github.com/redstorm82/MiniThunder
+    jniLibs/armeabi/
+    通病是只有grmeabi so文件，其它so文件找不到。
+    只能用grm处理手机编译。
 
-使用情况
-https://github.com/YuntaoWei/BtPlayer
+    使用情况
+    https://github.com/YuntaoWei/BtPlayer
 
 案例-4
-https://github.com/rakshasa/libtorrent
+    https://github.com/rakshasa/libtorrent
 
-案例 demo
-https://github.com/KhalidElSayed/Torrent-Movies
+    案例 demo
+    https://github.com/KhalidElSayed/Torrent-Movies
 
-vlc lib
-https://code.videolan.org/videolan/vlc-2.2
+    vlc lib
+    https://code.videolan.org/videolan/vlc-2.2
 
 案例-5
-web_torrent
-https://www.jianshu.com/p/47a6b36f88d4
-https://github.com/Davenchy/live-torrent
-https://github.com/webtorrent/webtorrent
+    web_torrent
+    https://www.jianshu.com/p/47a6b36f88d4
+    https://github.com/Davenchy/live-torrent
+    https://github.com/webtorrent/webtorrent
 
-可以使用
-https://github.com/webtorrent/webtorrent-desktop
+    可以使用
+    https://github.com/webtorrent/webtorrent-desktop

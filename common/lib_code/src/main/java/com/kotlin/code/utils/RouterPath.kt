@@ -27,6 +27,7 @@ object RouterPath {
     // 图片处理
     const val path_image_activity = "/image/activity"
     // 视频
+    const val path_4j_torrent_activity = "/4j_torrent/activity"
     const val path_player_activity = "/player/activity"
     const val path_video_activity = "/video/activity"
     const val path_4jTorrent_activity = "/4jTorrent/activity"

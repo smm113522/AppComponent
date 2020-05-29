@@ -14,6 +14,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.kotlin.code.utils.NavigationUtil
 import com.kotlin.code.utils.RouterPath
+import com.kotlin.code.utils.RouthUtils
 import kotlinx.android.synthetic.main.activity_video.*
 import okhttp3.*
 import java.io.*
@@ -46,6 +47,10 @@ class DemoActivity : Activity() {
         magnet_download.setOnClickListener {
             var path = et_url.text.toString().trim()
             var magnet = "magnet:?xt=urn:btih:1e6857170e58a6af357799a0aa35c476f35d5b27&dn=The+Little+Mermaid+%281989%29+720p+BrRip+x264+-+YIFY&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969"
+
+            var uri = "magnet:?xt=urn:btih:86d0502ead28e495c9e67665340f72aa72fe304e&dn=Frostwire.5.3.6.+%5BWindows%5D&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80&tr=udp%3A%2F%2Ftracker.istole.it%3A6969&tr=udp%3A%2F%2Fopen.demonii.com%3A1337";
+            var uri1 = "magnet:?xt=urn:btih:a83cc13bf4a07e85b938dcf06aa707955687ca7c";
+
             if (TextUtils.isEmpty(path)){
                 toast("请输入")
                 return@setOnClickListener
@@ -75,6 +80,10 @@ class DemoActivity : Activity() {
             ARouter.getInstance().build(RouterPath.path_player_activity)
                     .withString("url", path)
                     .navigation();
+        }
+
+        bt_4j_torrent.setOnClickListener {
+            NavigationUtil.toActivity(RouterPath.path_4j_torrent_activity)
         }
 
     }

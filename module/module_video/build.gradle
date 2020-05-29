@@ -91,6 +91,7 @@ dependencies {
     }
     implementation project(path: ':module:module_bt_jlibtorrent')
     implementation project(path: ':module:module_player')
+    implementation project(path: ':module:module_libtorrent4j')
     // 下载用的
 //    implementation files('libs/jlibtorrent-1.2.2.0.jar')
 //    implementation files('libs/jlibtorrent-android-arm64-1.2.2.0.jar')

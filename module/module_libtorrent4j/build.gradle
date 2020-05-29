@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.alibaba.arouter'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    api project(path: ':common:lib_code')
+    api project(path: ':lib:j_torrent_lib')
+    api project(path: ':lib:vlcplayer')
+
+
+    def libtorrent4J_version = "1.2.0.22"
+    /* libtorrent wrapper */
+    implementation "org.libtorrent4j:libtorrent4j:$libtorrent4J_version"
+    implementation "org.libtorrent4j:libtorrent4j-android-arm:$libtorrent4J_version"
+    implementation "org.libtorrent4j:libtorrent4j-android-arm64:$libtorrent4J_version"
+    implementation "org.libtorrent4j:libtorrent4j-android-x86:$libtorrent4J_version"
+    implementation "org.libtorrent4j:libtorrent4j-android-x86_64:$libtorrent4J_version"
+}

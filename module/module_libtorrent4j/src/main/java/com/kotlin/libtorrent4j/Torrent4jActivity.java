@@ -43,7 +43,8 @@ public class Torrent4jActivity extends BaseNoModelActivity<ActivityTorrent4jBind
             @Override
             public void onClick(View v) {
                 loaderManager.initLoader(1, null, torrentFileLoaderCallbacks);
-
+//                loaderManager.restartLoader()
+//                loaderManager.markForRedelivery();
             }
         });
     }

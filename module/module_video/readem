@@ -10,15 +10,48 @@ https://github.com/mrbinwin/mymovies
 
 https://github.com/proninyaroslav/libretorrent
 开始尝试
-def libtorrent4J_version = "1.2.0.22"
- /* libtorrent wrapper */
+    def libtorrent4J_version = "1.2.0.22"
+     /* libtorrent wrapper */
     implementation "org.libtorrent4j:libtorrent4j:$libtorrent4J_version"
     implementation "org.libtorrent4j:libtorrent4j-android-arm:$libtorrent4J_version"
     implementation "org.libtorrent4j:libtorrent4j-android-arm64:$libtorrent4J_version"
     implementation "org.libtorrent4j:libtorrent4j-android-x86:$libtorrent4J_version"
     implementation "org.libtorrent4j:libtorrent4j-android-x86_64:$libtorrent4J_version"
-不知道做什么的
+    /*不知道做什么的*/
     implementation 'com.github.masterwok:simple-torrent-android:0.5.0'
     implementation "com.github.TorrentStream:TorrentStream-Android:${torrentstreamVersion}"
 
+使用情况demo
+https://github.com/mrbinwin/mymovies
+https://github.com/proninyaroslav/libretorrent（viewmodel使用）
+
 案例-2
+https://github.com/frostwire/frostwire-jlibtorrent
+
+下载地址https://github.com/frostwire/frostwire-jlibtorrent/releases
+jlibtorrent-1.2.5.0-javadoc.jar 2.42 MB
+jlibtorrent-1.2.5.0-sources.jar 407 KB
+jlibtorrent-1.2.5.0.jar 674 KB
+jlibtorrent-android-arm-1.2.5.0.jar 2.38 MB
+jlibtorrent-android-arm64-1.2.5.0.jar 2.43 MB
+jlibtorrent-android-x86-1.2.5.0.jar 2.74 MB
+jlibtorrent-android-x86_64-1.2.5.0.jar 2.7 MB
+jlibtorrent-linux-1.2.5.0.jar 5.65 MB
+jlibtorrent-macosx-1.2.5.0.jar 2.25 MB
+jlibtorrent-windows-1.2.5.0.jar 4.72 MB
+
+使用情况demo
+https://github.com/TorrentStream/TorrentStream-Android
+
+其他播放器
+https://p.codekk.com/detail/Android/yangchaojiang/yjPlay
+
+案例-3
+thunder 的使用
+https://github.com/redstorm82/MiniThunder
+jniLibs/armeabi/
+通病是只有grmeabi so文件，其它so文件找不到。
+只能用grm处理手机编译。
+
+使用情况
+https://github.com/YuntaoWei/BtPlayer

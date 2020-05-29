@@ -1,0 +1,44 @@
+package com.kotlin.player;
+
+import android.app.Activity;
+
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.dueeeke.videocontroller.StandardVideoController;
+import com.kotlin.code.base.BaseNoModelActivity;
+import com.kotlin.code.utils.RouterPath;
+import com.kotlin.player.databinding.ActivityPlayerNormalBinding;
+
+
+
+@Route(path = "/player/activity")
+public class PlayerActivity extends BaseNoModelActivity<ActivityPlayerNormalBinding> {
+
+    @Autowired
+    public String url;
+
+    @Override
+    protected int onCreate() {
+        return R.layout.activity_player_normal;
+    }
+
+    @Override
+    protected void initView() {
+
+        ARouter.getInstance().inject(this);
+        dataBinding.player.setUrl(url); //设置视频地址
+
+        StandardVideoController controller = new StandardVideoController(this);
+        controller.addDefaultControlComponent("标题", true);
+        dataBinding.player.setVideoController(controller); //设置控制器
+
+        dataBinding.player.start(); //开始播放，不调用则不自动播放
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+}

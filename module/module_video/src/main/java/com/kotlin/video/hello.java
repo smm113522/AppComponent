@@ -1,12 +1,16 @@
 package com.kotlin.video;
 
 import android.os.Environment;
+import android.text.TextUtils;
+
+import com.kotlin.code.utils.Utils;
 
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
+import java.util.UUID;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -78,6 +82,30 @@ public class hello {
         File file = new File(root, "updateDemo.apk");
         return file.length();
     }
+
+    /**
+     * 解析文件头
+     * Content-Disposition:attachment;filename=FileName.txt
+     * Content-Disposition: attachment; filename*="UTF-8''%E6%9B%BF%E6%8D%A2%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.pdf"
+     */
+    public static String getHeaderFileName(String path,Response response) {
+        String dispositionHeader = response.header("Content-Disposition");
+        if (!TextUtils.isEmpty(dispositionHeader)) {
+            dispositionHeader.replace("attachment;filename=", "");
+            dispositionHeader.replace("filename*=utf-8", "");
+            String[] strings = dispositionHeader.split("; ");
+            if (strings.length > 1) {
+                dispositionHeader = strings[1].replace("filename=", "");
+                dispositionHeader = dispositionHeader.replace("\"", "");
+                return dispositionHeader;
+            }
+            String uuid = UUID.randomUUID().toString();  //转化为String对象
+            return uuid + "." + Utils.INSTANCE.parseSuffix(path);
+        }
+        String uuid = UUID.randomUUID().toString();  //转化为String对象
+        return uuid + "." + Utils.INSTANCE.parseSuffix(path);
+    }
+
 
 
 

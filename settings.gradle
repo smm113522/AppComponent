@@ -7,7 +7,9 @@ include ':app',
 //        'lib:lib_camera-card-crop',
 //        'lib:lib_image',
         'lib:lib_dynamicload',
-        // 功能
+        'lib:j_torrent_lib',
+        'lib:vlcplayer',
+// 功能
 //        'module:module_pdf',
 //        'module:module_apt',
 //        'module:module_host',
@@ -22,3 +24,5 @@ include ':app',
 
 include ':module:module_image'
 include ':common:lib_module'
+include ':module:module_bt_jlibtorrent'
+include ':module:module_player'

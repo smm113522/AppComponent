@@ -87,7 +87,10 @@ dependencies {
         api project(path: ':common:lib_code')
     } else {
         api project(path: ':common:lib_code')
+
     }
+    implementation project(path: ':module:module_bt_jlibtorrent')
+    implementation project(path: ':module:module_player')
     // 下载用的
 //    implementation files('libs/jlibtorrent-1.2.2.0.jar')
 //    implementation files('libs/jlibtorrent-android-arm64-1.2.2.0.jar')
@@ -105,4 +108,5 @@ dependencies {
     implementation 'commons-io:commons-io:2.5'//org.apache.commons.io.下的包
     // 播放用的
 //    implementation 'com.shuyu:GSYVideoPlayer:6.0.1'
+//    implementation 'com.ycjiang:VideoPlayModule-Lite:2.3.60'
 }

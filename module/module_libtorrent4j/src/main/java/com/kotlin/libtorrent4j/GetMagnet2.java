@@ -15,7 +15,8 @@ public class GetMagnet2 {
 
     public static void GetMagnet2() throws Throwable {
 
-        final String uri = "magnet:?xt=urn:btih:a83cc13bf4a07e85b938dcf06aa707955687ca7c";
+//        final String uri = "magnet:?xt=urn:btih:a83cc13bf4a07e85b938dcf06aa707955687ca7c";
+        final String uri = "magnet:?xt=urn:btih:88594aaacbde40ef3e2510c47374ec0aa396c08e&dn=bbb%5Fsunflower%5F1080p%5F30fps%5Fnormal.mp4&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&ws=http%3A%2F%2Fdistribution.bbb3d.renderfarming.net%2Fvideo%2Fmp4%2Fbbb%5Fsunflower%5F1080p%5F30fps%5Fnormal.mp4";
 
         final SessionManager s = new SessionManager();
 
@@ -56,7 +57,7 @@ public class GetMagnet2 {
         boolean r = signal.await(10, TimeUnit.SECONDS);
         if (!r) {
             System.out.println("DHT bootstrap timeout");
-            LogUtils.debug("DHT bootstrap timeout");
+            LogUtils.error("DHT bootstrap timeout");
             System.exit(0);
         }
 
@@ -79,7 +80,7 @@ public class GetMagnet2 {
                         LogUtils.debug("Success fetching magnet: " + index + "/" + count);
                     } else {
                         System.out.println("Failed to retrieve the magnet: " + index + "/" + count);
-                        LogUtils.debug("Failed to retrieve the magnet: " + index + "/" + count);
+                        LogUtils.error("Failed to retrieve the magnet: " + index + "/" + count);
                     }
                 }
             };
@@ -89,7 +90,7 @@ public class GetMagnet2 {
         }
 
         System.out.println("Press ENTER to exit");
-        LogUtils.debug("Press ENTER to exit");
+        LogUtils.error("Press ENTER to exit");
         System.in.read();
 
         s.stop();

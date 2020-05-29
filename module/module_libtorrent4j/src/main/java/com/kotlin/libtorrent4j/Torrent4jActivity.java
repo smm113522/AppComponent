@@ -4,10 +4,9 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.kotlin.code.base.BaseNoModelActivity;
-import com.kotlin.code.utils.RouterPath;
 import com.kotlin.libtorrent4j.databinding.ActivityTorrent4jBinding;
 
-@Route(path = RouterPath.path_4j_torrent_activity)
+@Route(path = "/4j_torrent/activity")
 public class Torrent4jActivity extends BaseNoModelActivity<ActivityTorrent4jBinding> {
 
     @Override

@@ -21,26 +21,14 @@
 package com.kotlin.libtorrent4j;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.AsyncTaskLoader;
 
-
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.UUID;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
 
-/*
- * Download torrent metadata file by torrent id
- *
- */
 public class TorrentFileLoader extends AsyncTaskLoader<File> {
 
     private static final String POSTFIX = ".torrent";

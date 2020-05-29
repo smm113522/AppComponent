@@ -60,6 +60,7 @@ public class Torrent4jActivity extends BaseNoModelActivity<ActivityTorrent4jBind
         @Override
         public Loader<File> onCreateLoader(int id, @Nullable Bundle bundle) {
             TorrentFileLoader torrentFileLoader = new TorrentFileLoader(Torrent4jActivity.this);
+            torrentFileLoader.forceLoad();
             return torrentFileLoader;
         }
 

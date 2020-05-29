@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
 import android.os.Looper
+import android.text.TextUtils
 import android.util.Log
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -22,9 +23,9 @@ import java.util.concurrent.Executors
 @Route(path = RouterPath.path_video_activity)
 class DemoActivity : Activity() {
 
-    val okHttpClient: OkHttpClient by lazy {
-        OkHttpClient()
-    }
+//    val okHttpClient: OkHttpClient by lazy {
+//        OkHttpClient()
+//    }
 
     var murl: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,11 +33,16 @@ class DemoActivity : Activity() {
         setContentView(R.layout.activity_video)
         murl = et_url.text.toString().trim()
         bt_download.setOnClickListener {
+            murl = et_url.text.toString().trim()
+            if (TextUtils.isEmpty(murl)){
+                toast("请输入")
+                return@setOnClickListener
+            }
+
             //            val request: Request = Request.Builder()
 //                    .url(murl)
 //                    .build()
 //            val call: Call = okHttpClient.newCall(request)
-//
 //            call.enqueue(callback)
             saveFileByUrl(progressBar, this, murl)
         }
@@ -48,6 +54,37 @@ class DemoActivity : Activity() {
         bt_j_torrent.setOnClickListener {
             NavigationUtil.toActivity(RouterPath.path_jTorrent_activity)
         }
+        magnet_download.setOnClickListener {
+            var path = et_url.text.toString().trim()
+            if (TextUtils.isEmpty(path)){
+                toast("请输入")
+                return@setOnClickListener
+            }
+            if (path.contains("magnet")){
+
+            }
+        }
+
+        torrent_download.setOnClickListener {
+            var path = et_url.text.toString().trim()
+            if (TextUtils.isEmpty(path)){
+                toast("请输入")
+                return@setOnClickListener
+            }
+
+        }
+        player.setOnClickListener {
+            var path = et_url.text.toString().trim()
+            if (TextUtils.isEmpty(path)){
+                toast("请输入")
+                return@setOnClickListener
+            }
+            ARouter.getInstance().build(RouterPath.path_player_activity)
+                    .withString("url", path)
+                    .navigation();
+        }
+
+
     }
 
     var callback = object : Callback {
@@ -208,6 +245,14 @@ class DemoActivity : Activity() {
     private fun getFile(fileName: String): File {
         val root = Environment.getExternalStorageDirectory().path
         return File(root, fileName)
+    }
+
+    fun toast(txt:String){
+        Toast.makeText(
+                this,
+                txt,
+                Toast.LENGTH_SHORT
+        ).show()
     }
 
 }

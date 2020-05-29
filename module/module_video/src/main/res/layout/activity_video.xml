@@ -7,47 +7,90 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/et_url"
             android:layout_width="match_parent"
+            android:gravity="top"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:text="http://9890.vod.myqcloud.com/9890_4e292f9a3dd011e6b4078980237cc3d3.f20.mp4">
 
         </EditText>
 
-        <Button
-            android:id="@+id/bt_download"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="下载">
+            android:orientation="horizontal">
 
-        </Button>
+            <Button
+                android:id="@+id/bt_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下载普通的http下载">
+
+            </Button>
+
+            <Button
+                android:id="@+id/magnet_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="magnet下载">
+
+            </Button>
+
+            <Button
+                android:id="@+id/torrent_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="torrent下载">
+
+            </Button>
+        </LinearLayout>
 
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            android:max="100"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:max="100" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#333"
             android:id="@+id/bt_4j"
-            android:text="测试4j"/>
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#333"
-            android:id="@+id/bt_j_torrent"
-            android:text="测试j_TorrentStream"/>
+            android:text="测试4j"
+            android:textColor="#333" />
 
+        <Button
+            android:id="@+id/bt_j_torrent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试j_TorrentStream"
+            android:textColor="#333" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/player"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="播放"
+                android:textColor="#333" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </layout>

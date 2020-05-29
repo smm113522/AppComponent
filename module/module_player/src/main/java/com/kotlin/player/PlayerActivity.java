@@ -1,19 +1,20 @@
 package com.kotlin.player;
 
-import android.app.Activity;
-
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dueeeke.videocontroller.StandardVideoController;
 import com.kotlin.code.base.BaseNoModelActivity;
-import com.kotlin.code.utils.RouterPath;
 import com.kotlin.player.databinding.ActivityPlayerNormalBinding;
 
 
 
 @Route(path = "/player/activity")
 public class PlayerActivity extends BaseNoModelActivity<ActivityPlayerNormalBinding> {
+
+    //        PlayAction("http://dlhls.cdn.zhanqi.tv/zqlive/35180_KUDhx.m3u8")
+//        PlayAction("http://220.161.87.62:8800/hls/0/index.m3u8")//直播
+//        PlayAction("http://vfx.mtime.cn/Video/2019/03/18/mp4/190318231014076505.mp4")
 
     @Autowired
     public String url;

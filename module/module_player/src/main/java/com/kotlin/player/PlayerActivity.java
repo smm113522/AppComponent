@@ -39,6 +39,18 @@ public class PlayerActivity extends BaseNoModelActivity<ActivityPlayerNormalBind
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        dataBinding.player.pause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dataBinding.player.release();
+    }
+
+    @Override
     protected void initData() {
 
     }

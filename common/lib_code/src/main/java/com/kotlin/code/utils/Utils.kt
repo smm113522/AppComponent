@@ -43,7 +43,7 @@ object Utils {
             val inputMethodManager =
                     activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(
-                    view!!.getWindowToken(),
+                    view.getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS
             )
         }

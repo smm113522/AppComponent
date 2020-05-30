@@ -31,11 +31,17 @@ public class PlayerActivity extends BaseNoModelActivity<ActivityPlayerNormalBind
         dataBinding.player.setUrl(url); //设置视频地址
 
         StandardVideoController controller = new StandardVideoController(this);
-        controller.addDefaultControlComponent("标题", true);
+        controller.addDefaultControlComponent("标题", false);
         dataBinding.player.setVideoController(controller); //设置控制器
 
         dataBinding.player.start(); //开始播放，不调用则不自动播放
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dataBinding.player.resume();
     }
 
     @Override

@@ -1,9 +1,6 @@
 package com.kotlin.video
 
-import android.app.Activity
 import android.content.Context
-import android.os.Bundle
-import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
@@ -12,40 +9,39 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.kotlin.code.base.BaseNoModelActivity
 import com.kotlin.code.utils.NavigationUtil
 import com.kotlin.code.utils.RouterPath
-import com.kotlin.code.utils.RouthUtils
-import kotlinx.android.synthetic.main.activity_video.*
+import com.kotlin.video.databinding.ActivityVideoBindingImpl
 import okhttp3.*
 import java.io.*
 import java.util.concurrent.Executors
 
 
 @Route(path = RouterPath.path_video_activity)
-class DemoActivity : Activity() {
+class DemoActivity : BaseNoModelActivity<ActivityVideoBindingImpl>() {
 
     var murl: String? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_video)
-        murl = et_url.text.toString().trim()
-        bt_download.setOnClickListener {
-            murl = et_url.text.toString().trim()
+
+    override fun initView() {
+        murl = dataBinding.etUrl.text.toString().trim()
+        dataBinding.btDownload.setOnClickListener {
+            murl = dataBinding.etUrl.text.toString().trim()
             if (TextUtils.isEmpty(murl)){
                 toast("请输入")
                 return@setOnClickListener
             }
 
-            saveFileByUrl(progressBar, this, murl)
+            saveFileByUrl(dataBinding.progressBar, this, murl)
         }
-        bt_4j.setOnClickListener {
+        dataBinding.bt4j.setOnClickListener {
             NavigationUtil.toActivity(RouterPath.path_4jTorrent_activity)
         }
-        bt_j_torrent.setOnClickListener {
+        dataBinding.btJTorrent.setOnClickListener {
             NavigationUtil.toActivity(RouterPath.path_jTorrent_activity)
         }
-        magnet_download.setOnClickListener {
-            var path = et_url.text.toString().trim()
+        dataBinding.magnetDownload.setOnClickListener {
+            var path = dataBinding.etUrl.text.toString().trim()
             var magnet = "magnet:?xt=urn:btih:1e6857170e58a6af357799a0aa35c476f35d5b27&dn=The+Little+Mermaid+%281989%29+720p+BrRip+x264+-+YIFY&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969"
 
             var uri = "magnet:?xt=urn:btih:86d0502ead28e495c9e67665340f72aa72fe304e&dn=Frostwire.5.3.6.+%5BWindows%5D&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80&tr=udp%3A%2F%2Ftracker.istole.it%3A6969&tr=udp%3A%2F%2Fopen.demonii.com%3A1337";
@@ -60,19 +56,19 @@ class DemoActivity : Activity() {
             }
         }
 
-        torrent_download.setOnClickListener {
-            var path = et_url.text.toString().trim()
+        dataBinding.torrentDownload.setOnClickListener {
+            var path = dataBinding.etUrl.text.toString().trim()
 //            var torrentPath = "https://github.com/makkoncept/movie_torrents/blob/02e6ab67d9493790cbf309fd68ef80c9475cd4a1/torrents/April%20Rain%20(2014)bluray_1080p.torrent"
             var torrentPath = "https://yts.am/torrent/download/CE2CA44ECAB3A5D4CD7096925EB75B7984956FFD"
             if (TextUtils.isEmpty(path)){
                 toast("请输入")
                 return@setOnClickListener
             }
-            saveFileByUrl(progressBar,this,torrentPath)
+            saveFileByUrl(dataBinding.progressBar,this,torrentPath)
 
         }
-        player.setOnClickListener {
-            var path = et_url.text.toString().trim()
+        dataBinding.player.setOnClickListener {
+            var path = dataBinding.etUrl.text.toString().trim()
             if (TextUtils.isEmpty(path)){
                 toast("请输入")
                 return@setOnClickListener
@@ -82,7 +78,7 @@ class DemoActivity : Activity() {
                     .navigation();
         }
 
-        bt_4j_torrent.setOnClickListener {
+        dataBinding.bt4jTorrent.setOnClickListener {
             NavigationUtil.toActivity(RouterPath.path_4j_torrent_activity)
         }
 
@@ -197,6 +193,12 @@ class DemoActivity : Activity() {
                 txt,
                 Toast.LENGTH_SHORT
         ).show()
+    }
+
+    override fun onCreate(): Int = R.layout.activity_video
+
+    override fun initData() {
+
     }
 
 }

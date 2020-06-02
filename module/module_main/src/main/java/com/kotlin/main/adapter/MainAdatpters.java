@@ -28,18 +28,18 @@ public class MainAdatpters extends BaseDBRVAdapter<MainHome, ItemMainBinding> {
     @Override
     public void onBindViewHolder(@NonNull BaseDBRVHolder holder, int position) {
         super.onBindViewHolder(holder, position);
-        EditText et = holder.itemView.findViewById(R.id.et_template);
-        et.addTextChangedListener(textWatcher);
-        et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (b){
-                    
-                }else {
-
-                }
-            }
-        });
+//        EditText et = holder.itemView.findViewById(R.id.et_template);
+//        et.addTextChangedListener(textWatcher);
+//        et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View view, boolean b) {
+//                if (b){
+//
+//                }else {
+//
+//                }
+//            }
+//        });
     }
 
     private TextWatcher textWatcher = new TextWatcher() {

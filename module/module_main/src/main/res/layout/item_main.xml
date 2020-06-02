@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:hint="ces"
+            android:visibility="gone"
             android:textColor="@color/chocolate"
             android:text="@{bean.title}" />
 

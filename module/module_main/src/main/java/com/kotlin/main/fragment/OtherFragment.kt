@@ -1,5 +1,6 @@
 package com.kotlin.main.fragment
 
+import android.support.v4.app.Fragment
 import com.kotlin.code.base.BaseNoModelFragment
 import com.kotlin.main.R
 import com.kotlin.main.databinding.FragmentOtherBinding
@@ -12,12 +13,12 @@ class OtherFragment : BaseNoModelFragment<FragmentOtherBinding>() {
         }
     }
 
+    var list = ArrayList<Fragment>()
+
     override fun onCreate(): Int = R.layout.fragment_other
 
     override fun initView() {
-        dataBinding.button.setOnClickListener {
 
-        }
     }
 
     override fun initData() {

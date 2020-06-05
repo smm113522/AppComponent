@@ -218,6 +218,10 @@ webar
 app 版本更新
 
 
+https://github.com/wildma/ScreenAdaptation
+
+https://p.codekk.com/detail/Android/wildma/AndroidNotes
+
 
 
 

@@ -34,8 +34,17 @@ stles
 	flutter run          // 项目运行
   ```
 
-### 4. 第
+### 4.   其他简单方法收集
 
+    debugShowCheckedModeBanner: false, // 去掉Debug
+
+
+
+单例模式
+https://juejin.im/post/5c83d5ac5188257de66337a9
+
+
+widgets
 
 
 

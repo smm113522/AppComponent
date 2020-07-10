@@ -44,4 +44,10 @@ object NavigationUtil {
                 .navigation()
     }
 
+    fun toFragment(path: String) {
+        ARouter.getInstance().build(RouterPath.path_other_activity)
+                .withString("url",path)
+                .navigation()
+    }
+
 }

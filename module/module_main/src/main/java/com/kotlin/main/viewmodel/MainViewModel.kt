@@ -17,13 +17,13 @@ public class MainViewModel : BaseViewModel() {
     fun getMianList(): MutableLiveData<ArrayList<MainHome>> {
         return mainList
     }
-
-
+    
     fun requestData() {
 
         var listMain = ArrayList<MainHome>();
 //        listMain.add(MainHome(R.mipmap.ic_launcher,"图片",RouterPath.path_image_activity))
-        listMain.add(MainHome(R.mipmap.ic_launcher, "视频", RouterPath.path_video_activity))
+        listMain.add(MainHome(R.mipmap.ic_launcher, "视频", RouterPath.path_video_activity,0))
+        listMain.add(MainHome(R.mipmap.ic_launcher, "抖音", RouterPath.path_recommend_fragment,1))
 //        listMain.add(MainHome(R.mipmap.ic_launcher,"mvvm",RouterPath.path_mvvm_activity))
 //        listMain.add(MainHome(R.mipmap.ic_launcher,"pdf",RouterPath.path_pdf_activity))
 //        listMain.add(MainHome(R.mipmap.ic_launcher,"kotlin",RouterPath.path_kotlin_activity))

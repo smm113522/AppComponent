@@ -30,6 +30,7 @@ object RouterPath {
     const val path_4j_torrent_activity = "/4j_torrent/activity"
     const val path_player_activity = "/player/activity"
     const val path_video_activity = "/video/activity"
+    const val path_recommend_fragment = "/recommend/fragment"
     const val path_4jTorrent_activity = "/4jTorrent/activity"
     const val path_jTorrent_activity = "/jTorrent/activity"
 
@@ -60,5 +61,6 @@ object RouterPath {
     const val path_service_activity = "/service/activity"
     // aop 部分
     const val path_apt_activity = "/apt/activity"
+    const val path_other_activity = "/other/activity"
 
 }

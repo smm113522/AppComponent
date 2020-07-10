@@ -26,7 +26,7 @@ public abstract class BaseFragment<VM extends BaseViewModel, DB extends ViewData
     protected DB initDataBinding(LayoutInflater inflater, int layoutId, ViewGroup container) {
         DB db = super.initDataBinding(inflater, layoutId, container);
         /**
-         * 将这两个初始化函数插在{@link BaseFragment#initDataBinding}
+         * 将这两个初始化函数插在{@link BasesFragment#initDataBinding}
          */
         viewModel = initViewModel();
         initObserve();

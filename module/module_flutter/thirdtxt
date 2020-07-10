@@ -32,6 +32,20 @@
   # 状态共享 https://github.com/rrousselGit/provider
   provider: ^4.0.3
 
+  cupertino_icons: 0.1.2 // 里面是icon
+  android 版本和flutter 版本
+    json_annotation: 2.0.0//Flutter中借用json_annotation实现序列化和反序列化
+    pull_to_refresh: 1.5.7// 下拉刷新
+    dio: 3.0.3  // 网络
+    flutter_swiper: 1.1.6      //
+    shared_preferences: 0.5.6  // 存储
+    sqflite: 1.1.0             // 数据库有关的
+    iwebview_flutter: 0.1.4  //网络有关的
+    flutter_html: 0.8.2      // html 有关的
 
+// 好的flutter 项目
  https://github.com/CoderMikeHe/flutter_wechat
+ flutter_wandroid-master
+ https://github.com/Tecode/flutter_book // 图书项目
 
+https://github.com/CarGuo/gsy_github_app_flutter // 里面较为充足 教程

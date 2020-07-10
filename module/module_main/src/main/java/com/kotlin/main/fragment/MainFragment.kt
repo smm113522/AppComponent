@@ -3,7 +3,6 @@ package com.kotlin.main.fragment
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.kotlin.code.adapter.OnItemClickListener
 import com.kotlin.code.base.BaseFragment
 import com.kotlin.code.utils.NavigationUtil
@@ -27,6 +26,7 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
     }
 
     override fun onCreate(): Int = R.layout.fragment_main
+
     //y原始方法java
 //    var adapter : MainAdapter? = null
     // java 里面的使用
@@ -43,7 +43,11 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
 
         adapter?.setOnItemListener(object : OnItemClickListener<MainHome> {
             override fun onItemClick(data: MainHome, position: Int) {
-                NavigationUtil.toActivity(data.auth!!)
+                if (data.type == 0) {
+                    NavigationUtil.toActivity(data.auth!!)
+                } else {
+                    NavigationUtil.toFragment(data.auth!!)
+                }
             }
 
             override fun onItemLongClick(data: MainHome?, position: Int): Boolean {

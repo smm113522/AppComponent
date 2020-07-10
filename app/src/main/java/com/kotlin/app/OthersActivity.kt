@@ -23,8 +23,8 @@ class OthersActivity : AppCompatActivity() {
     @Autowired
     @JvmField
     var url: String? = null
-
     var bundle: Bundle? = null
+    var fragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +38,12 @@ class OthersActivity : AppCompatActivity() {
             aRouter.with(bundle)
         }
 
-        val fragment: Fragment = aRouter.navigation() as Fragment
-
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.container, fragment)
-                .commitNow()
+        if (fragment == null) {
+            fragment = aRouter.navigation() as Fragment
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, fragment!!)
+                    .commitNow()
+        }
 
     }
 

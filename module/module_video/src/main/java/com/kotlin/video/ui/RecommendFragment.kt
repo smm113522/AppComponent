@@ -1,8 +1,10 @@
 package com.kotlin.video.ui
 
+import android.R.attr.name
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kotlin.code.base.BasesFragment
@@ -12,6 +14,7 @@ import com.kotlin.video.view.FullScreenVideoView
 import com.kotlin.video.view.OnViewPagerListener
 import com.kotlin.video.view.ViewPagerLayoutManager
 import kotlinx.android.synthetic.main.fragment_recommend.*
+
 
 @Route(path = "/recommend/fragment")
 class RecommendFragment : BasesFragment() {
@@ -70,10 +73,26 @@ class RecommendFragment : BasesFragment() {
     }
 
     /**
+     * 移除videoview父view
+     */
+    private fun dettachParentView(rootView: ViewGroup) {
+        //1.添加videoview到当前需要播放的item中,添加进item之前，保证ijkVideoView没有父view
+        val parent = videoView!!.parent
+        if(parent != null) {
+            var d = parent as ViewGroup
+            d.removeView(videoView)
+        }
+        rootView.addView(videoView, 0)
+    }
+
+    /**
      * 自动播放视频
      */
     private fun autoPlayVideo(position: Int, ivCover: ImageView?) {
-        val bgVideoPath = "android.resource://" + activity!!.packageName.toString() + "/" + R.raw.video1
+
+        val id: Int = activity!!.getApplication().getResources().getIdentifier("video" + position, "raw", activity!!.getApplication().getPackageName())
+
+        val bgVideoPath = "android.resource://" + activity!!.packageName.toString() + "/" + id
         videoView!!.setVideoPath(bgVideoPath)
         videoView!!.start()
         videoView!!.setOnPreparedListener { mp ->
@@ -93,11 +112,13 @@ class RecommendFragment : BasesFragment() {
     }
 
     private fun playCurVideo(position: Int) {
-        if (position == curPlayPos) {
-            return
-        }
+//        if (position == curPlayPos) {
+//            return
+//        }
         val itemView = viewPagerLayoutManager!!.findViewByPosition(position) ?: return
-
-        autoPlayVideo(curPlayPos, null)
+        val rootView = itemView.findViewById<ViewGroup>(R.id.rl_container)
+        // 添加视频到view 中去
+        dettachParentView(rootView)
+        autoPlayVideo(position, null)
     }
 }

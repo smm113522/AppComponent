@@ -39,9 +39,9 @@ class OthersActivity : AppCompatActivity() {
         }
 
         if (fragment == null) {
-            fragment = aRouter.navigation() as Fragment
+            fragment = aRouter.navigation() as Fragment?
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, fragment!!)
+                    .replace(R.id.framelayout, fragment!!)
                     .commitNow()
         }
 

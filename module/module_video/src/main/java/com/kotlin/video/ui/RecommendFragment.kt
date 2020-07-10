@@ -54,7 +54,12 @@ class RecommendFragment : BasesFragment() {
             }
 
         })
-
+        adapter?.addData("dddd1")
+        adapter?.addData("dddd2")
+        adapter?.addData("dddd3")
+        adapter?.addData("dddd4")
+        adapter?.addData("dddd5")
+        adapter?.addData("dddd6")
     }
 
     override fun onResume() {

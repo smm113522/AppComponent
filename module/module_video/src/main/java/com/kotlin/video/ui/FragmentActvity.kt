@@ -11,7 +11,7 @@ import com.kotlin.code.utils.RouterPath
 import com.kotlin.video.R
 import com.kotlin.video.databinding.ActivityFragmentBinding
 
-
+// 页面调整fragment 可以用的。。。
 @Route(path = RouterPath.path_fragment_activity)
 class FragmentActvity : BaseNoModelActivity<ActivityFragmentBinding>() {
 
@@ -38,4 +38,6 @@ class FragmentActvity : BaseNoModelActivity<ActivityFragmentBinding>() {
     override fun initData() {
 
     }
+
+
 }

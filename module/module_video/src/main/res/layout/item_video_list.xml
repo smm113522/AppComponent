@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="bean"
+            type="String" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl_container"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_height="200dp">
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="15sp"
+            android:text="@{bean}"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="10dp"
+            tools:text="xxxxx"/>
+
+    </RelativeLayout>
+</layout>

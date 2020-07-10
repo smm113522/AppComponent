@@ -1,78 +1,58 @@
 package com.kotlin.video.ui
 
-import android.R.attr.name
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.kotlin.code.adapter.OnItemClickListener
 import com.kotlin.code.base.BasesFragment
 import com.kotlin.video.R
-import com.kotlin.video.adapter.VideoItemAdapter
+import com.kotlin.video.adapter.VideoListAdapter
 import com.kotlin.video.view.FullScreenVideoView
-import com.kotlin.video.view.OnViewPagerListener
-import com.kotlin.video.view.ViewPagerLayoutManager
 import kotlinx.android.synthetic.main.fragment_recommend.*
 
-/**
- * 仿照抖音效果
- * https://www.jianshu.com/p/f1f452abc328
- */
-@Route(path = "/recommend/fragment")
-class RecommendFragment : BasesFragment() {
+// 列表 视频 + 播放 和小窗
+@Route(path = "/videolist/fragment")
+class VideoListFragment : BasesFragment() {
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_recommend
     }
 
-    private var adapter: VideoItemAdapter? = null
-    private var viewPagerLayoutManager: ViewPagerLayoutManager? = null
-
-    /** 当前播放视频位置  */
-    private var curPlayPos = 0
     private var videoView: FullScreenVideoView? = null
-
-    private var ivCurCover: ImageView? = null
+    private var adapter: VideoListAdapter? = null
+    private var linearLayoutManager: LinearLayoutManager? = null
 
     override fun initView(savedInstanceState: Bundle?) {
-        viewPagerLayoutManager = ViewPagerLayoutManager(activity)
-        recyclerview.setLayoutManager(viewPagerLayoutManager)
-        recyclerview.scrollToPosition(curPlayPos)
-        adapter = VideoItemAdapter()
+        linearLayoutManager = LinearLayoutManager(context)
+        recyclerview.layoutManager = linearLayoutManager
+        adapter = VideoListAdapter()
         recyclerview.adapter = adapter
-
-        videoView = FullScreenVideoView(activity)
-        viewPagerLayoutManager?.setOnViewPagerListener(object : OnViewPagerListener {
-
-            override fun onInitComplete() {
-                playCurVideo(curPlayPos)
-            }
-
-            override fun onPageRelease(isNext: Boolean, position: Int) {
-                if (ivCurCover != null) {
-                    ivCurCover!!.visibility = View.VISIBLE
-                }
-            }
-
-            override fun onPageSelected(position: Int, isBottom: Boolean) {
+        adapter?.setOnItemListener(object : OnItemClickListener<String> {
+            override fun onItemClick(data: String?, position: Int) {
                 playCurVideo(position)
+            }
+            override fun onItemLongClick(data: String?, position: Int): Boolean {
+                return false
             }
 
         })
+        videoView = FullScreenVideoView(activity)
+
         adapter?.addData("dddd1")
         adapter?.addData("dddd2")
         adapter?.addData("dddd3")
         adapter?.addData("dddd4")
         adapter?.addData("dddd5")
         adapter?.addData("dddd6")
-    }
+        adapter?.addData("dddd7")
+        adapter?.addData("dddd8")
 
-    override fun onResume() {
-        super.onResume()
+        playCurVideo(0)
 
-        //返回时，推荐页面可见，则继续播放视频
-        videoView!!.start()
     }
 
     /**
@@ -81,7 +61,7 @@ class RecommendFragment : BasesFragment() {
     private fun dettachParentView(rootView: ViewGroup) {
         //1.添加videoview到当前需要播放的item中,添加进item之前，保证ijkVideoView没有父view
         val parent = videoView!!.parent
-        if(parent != null) {
+        if (parent != null) {
             var d = parent as ViewGroup
             d.removeView(videoView)
         }
@@ -105,10 +85,10 @@ class RecommendFragment : BasesFragment() {
             object : CountDownTimer(200, 200) {
                 override fun onTick(millisUntilFinished: Long) {}
                 override fun onFinish() {
-                    if (ivCover != null) {
-                        ivCover.visibility = View.GONE
-                        ivCurCover = ivCover
-                    }
+//                    if (ivCover != null) {
+//                        ivCover.visibility = View.GONE
+//                        ivCurCover = ivCover
+//                    }
                 }
             }.start()
         }
@@ -118,7 +98,7 @@ class RecommendFragment : BasesFragment() {
 //        if (position == curPlayPos) {
 //            return
 //        }
-        val itemView = viewPagerLayoutManager!!.findViewByPosition(position) ?: return
+        val itemView = linearLayoutManager!!.findViewByPosition(position) ?: return
         val rootView = itemView.findViewById<ViewGroup>(R.id.rl_container)
         // 添加视频到view 中去
         dettachParentView(rootView)

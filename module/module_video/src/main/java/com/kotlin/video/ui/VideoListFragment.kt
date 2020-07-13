@@ -132,9 +132,13 @@ class VideoListFragment : BasesFragment() {
                     if (videoRootViewFl!!.visibility == View.VISIBLE) {
                         showXiao = true;
                     }
+
+                    var position = 0
                     if (videoView!!.isPlaying) {
+                        position = videoView!!.position
                         videoView!!.stop()
                     }
+
                     if (isFull) {
                         fullScreen?.setVisibility(View.VISIBLE);
                         removeVideoView();
@@ -144,6 +148,8 @@ class VideoListFragment : BasesFragment() {
                         fullScreen?.addView(videoView, ViewGroup.LayoutParams(-1, -1));
                         videoView?.setVideoPath(VIDEO_PATH);
 //                        videoView?.start();
+                        videoView!!.start()
+                        videoView!!.seekTo(position)
                         if (!videoView!!.isPlaying) {
                             videoView!!.resume()
                         }
@@ -157,10 +163,24 @@ class VideoListFragment : BasesFragment() {
                         if (showXiao){
                             videoRootViewFl!!.addView(videoView, ViewGroup.LayoutParams(-1, -1))
                             videoRootViewFl!!.visibility = View.VISIBLE
+                        }else{
+                            var v: View? = view.findViewById(R.id.item_imageview)
+                            if (v != null) v?.visibility = View.INVISIBLE
+                            v = view.findViewById(R.id.item_image_play)
+                            if (v != null) v?.visibility = View.INVISIBLE
+                            v = view.findViewById(R.id.item_video_root_fl)
+                            if (v != null) {
+                                v?.visibility = View.VISIBLE
+                                val fl = v as FrameLayout
+                                fl.removeAllViews()
+                                fl.addView(videoView, ViewGroup.LayoutParams(-1, -1))
+                            }
                         }
 
                         videoView?.setVideoPath(VIDEO_PATH);
 //                        videoView?.start();
+                        videoView!!.start()
+                        videoView!!.seekTo(position)
                         if (!videoView!!.isPlaying) {
                             videoView!!.resume()
                         }
@@ -171,12 +191,12 @@ class VideoListFragment : BasesFragment() {
         }
         videoView?.stop()
         var v: View? = view.findViewById(R.id.item_imageview)
-        if (v != null) v.visibility = View.INVISIBLE
+        if (v != null) v?.visibility = View.INVISIBLE
         v = view.findViewById(R.id.item_image_play)
-        if (v != null) v.visibility = View.INVISIBLE
+        if (v != null) v?.visibility = View.INVISIBLE
         v = view.findViewById(R.id.item_video_root_fl)
         if (v != null) {
-            v.visibility = View.VISIBLE
+            v?.visibility = View.VISIBLE
             val fl = v as FrameLayout
             fl.removeAllViews()
             fl.addView(videoView, ViewGroup.LayoutParams(-1, -1))

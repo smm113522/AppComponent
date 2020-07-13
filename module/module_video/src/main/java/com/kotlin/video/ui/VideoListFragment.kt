@@ -45,7 +45,7 @@ class VideoListFragment : BasesFragment() {
         adapter = VideoRecyclerAdapter(videoBeanList)
         recyclerview.adapter = adapter
 
-        videoView = MyVideoView(activity)
+//        videoView = MyVideoView(activity)
 
         videoRootViewFl = video_root_fl
         fullScreen = video_full_screen
@@ -87,9 +87,9 @@ class VideoListFragment : BasesFragment() {
                         videoView!!.setVideoPath(VIDEO_PATH)
                         videoView!!.start()
                         videoView!!.seekTo(position)
-                        //                        if (videoView.isPause()) {
-//                            videoView.resume();
-//                        }
+                        if (videoView!!.isPause()) {
+                            videoView!!.resume();
+                        }
                     }
                     fl.visibility = View.GONE
                 }
@@ -117,34 +117,55 @@ class VideoListFragment : BasesFragment() {
             videoBeanList.add(videoBean)
         }
     }
-
+    var showXiao = false;
     private fun showVideo(view: View, videoPath: String) {
         removeVideoView()
         if (videoRootViewFl!!.visibility == View.VISIBLE) {
             videoRootViewFl!!.removeAllViews()
             videoRootViewFl!!.visibility = View.GONE
+            showXiao = false
         }
         if (videoView == null) {
             videoView = MyVideoView(activity)
             videoView?.setListener(object : MyVideoView.IFullScreenListener {
                 override fun onClickFull(isFull: Boolean) {
-//                    if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
-//                        fullScreen.setVisibility(View.VISIBLE);
-//                        removeVideoView();
+                    if (videoRootViewFl!!.visibility == View.VISIBLE) {
+                        showXiao = true;
+                    }
+                    if (videoView!!.isPlaying) {
+                        videoView!!.stop()
+                    }
+                    if (isFull) {
+                        fullScreen?.setVisibility(View.VISIBLE);
+                        removeVideoView();
+                        videoRootViewFl?.removeAllViews()
 //                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//                        fullScreen.addView(videoView, new ViewGroup . LayoutParams (-1, -1));
-//                        videoView.setVideoPath(VIDEO_PATH);
-//                        videoView.start();
-//                    } else {
-//                        fullScreen.removeAllViews();
-//                        fullScreen.setVisibility(View.GONE);
+                        fullScreen?.removeAllViews()
+                        fullScreen?.addView(videoView, ViewGroup.LayoutParams(-1, -1));
+                        videoView?.setVideoPath(VIDEO_PATH);
+//                        videoView?.start();
+                        if (!videoView!!.isPlaying) {
+                            videoView!!.resume()
+                        }
+                    } else {
+                        fullScreen?.removeAllViews();
+                        fullScreen?.setVisibility(View.GONE);
 //                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 //                        if (lastView instanceof ViewGroup) {
 //                            ((ViewGroup) lastView).addView(videoView);
 //                        }
-//                        videoView.setVideoPath(VIDEO_PATH);
-//                        videoView.start();
-//                    }
+                        if (showXiao){
+                            videoRootViewFl!!.addView(videoView, ViewGroup.LayoutParams(-1, -1))
+                            videoRootViewFl!!.visibility = View.VISIBLE
+                        }
+
+                        videoView?.setVideoPath(VIDEO_PATH);
+//                        videoView?.start();
+                        if (!videoView!!.isPlaying) {
+                            videoView!!.resume()
+                        }
+
+                    }
                 }
             })
         }

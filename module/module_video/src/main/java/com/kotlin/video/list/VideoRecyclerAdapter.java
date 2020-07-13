@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.kotlin.video.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public class VideoRecyclerAdapter extends RecyclerView.Adapter<VideoRecyclerAdap
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final VideoBean videoBean = mList.get(position);
-        Glide.with(holder.itemView.getContext()).load(videoBean.mImageId).crossFade().into(holder.mImageView);
+        Glide.with(holder.itemView.getContext()).load(videoBean.mImageId).into(holder.mImageView);
         holder.mImageViewPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

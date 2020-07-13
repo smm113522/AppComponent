@@ -1,17 +1,17 @@
 package com.kotlin.video.ui
 
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.FrameLayout
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.kotlin.code.adapter.OnItemClickListener
 import com.kotlin.code.base.BasesFragment
 import com.kotlin.video.R
-import com.kotlin.video.adapter.VideoListAdapter
-import com.kotlin.video.view.FullScreenVideoView
+import com.kotlin.video.list.MyVideoView
+import com.kotlin.video.list.VideoBean
+import com.kotlin.video.list.VideoRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_recommend.*
 
 // 列表 视频 + 播放 和小窗
@@ -22,86 +22,183 @@ class VideoListFragment : BasesFragment() {
         return R.layout.fragment_recommend
     }
 
-    private var videoView: FullScreenVideoView? = null
-    private var adapter: VideoListAdapter? = null
+    private var videoPosition = -1
+    private val videoBeanList: ArrayList<VideoBean> = ArrayList()
+    private var videoView: MyVideoView? = null
+    private var adapter: VideoRecyclerAdapter? = null
     private var linearLayoutManager: LinearLayoutManager? = null
+
+    private var videoRootViewFl: FrameLayout? = null
+    private var fullScreen: FrameLayout? = null
+    private var lastView: View? = null
+    private val imageIds = intArrayOf(R.drawable.hzw_a, R.drawable.hzw_b,
+            R.drawable.hzw_d, R.drawable.hzw_e, R.drawable.hzw_f, R.drawable.hzw_h,
+            R.drawable.hzw_i, R.drawable.hzw_j, R.drawable.hzw_k)
+
+    private var VIDEO_PATH = "http://dn-chunyu.qbox.me/fwb/static/images/home/video/video_aboutCY_A.mp4"
 
     override fun initView(savedInstanceState: Bundle?) {
         linearLayoutManager = LinearLayoutManager(context)
         recyclerview.layoutManager = linearLayoutManager
-        adapter = VideoListAdapter()
+        initData()
+
+        adapter = VideoRecyclerAdapter(videoBeanList)
         recyclerview.adapter = adapter
-        adapter?.setOnItemListener(object : OnItemClickListener<String> {
-            override fun onItemClick(data: String?, position: Int) {
-                playCurVideo(position)
-            }
-            override fun onItemLongClick(data: String?, position: Int): Boolean {
-                return false
-            }
 
+        videoView = MyVideoView(activity)
+
+        videoRootViewFl = video_root_fl
+        fullScreen = video_full_screen
+
+        adapter?.setListener(object : VideoRecyclerAdapter.OnClickPlayListener {
+            override fun onPlayClick(view: View, videoPath: String) {
+                showVideo(view, videoPath)
+            }
         })
-        videoView = FullScreenVideoView(activity)
+        recyclerview.addOnChildAttachStateChangeListener(object : RecyclerView.OnChildAttachStateChangeListener {
+            override fun onChildViewAttachedToWindow(view: View) {
+                if (videoPosition == -1 || videoRootViewFl!!.getVisibility() != View.VISIBLE) {
+                    return
+                }
+                if (videoPosition == recyclerview.getChildAdapterPosition(view)) {
+                    videoPosition = -1
+                    showVideo(view, VIDEO_PATH)
+                }
+            }
 
-        adapter?.addData("dddd1")
-        adapter?.addData("dddd2")
-        adapter?.addData("dddd3")
-        adapter?.addData("dddd4")
-        adapter?.addData("dddd5")
-        adapter?.addData("dddd6")
-        adapter?.addData("dddd7")
-        adapter?.addData("dddd8")
-
-        playCurVideo(0)
+            override fun onChildViewDetachedFromWindow(view: View) {
+                if (videoView == null || videoRootViewFl!!.getVisibility() == View.VISIBLE) return
+                var v = view.findViewById<View>(R.id.item_video_root_fl)
+                if (v != null) {
+                    val fl = v as FrameLayout
+                    videoPosition = recyclerview.getChildAdapterPosition(view)
+                    if (fl.childCount > 0) {
+                        fl.removeAllViews()
+                        var position = 0
+                        if (videoView!!.isPlaying) {
+                            position = videoView!!.position
+                            videoView!!.stop()
+                        }
+                        videoRootViewFl!!.setVisibility(View.VISIBLE)
+                        videoRootViewFl!!.removeAllViews()
+//                        lastView = videoRootViewFl
+                        lastView = view
+                        videoRootViewFl!!.addView(videoView, ViewGroup.LayoutParams(-1, -1))
+                        videoView!!.setVideoPath(VIDEO_PATH)
+                        videoView!!.start()
+                        videoView!!.seekTo(position)
+                        //                        if (videoView.isPause()) {
+//                            videoView.resume();
+//                        }
+                    }
+                    fl.visibility = View.GONE
+                }
+                v = view.findViewById(R.id.item_imageview)
+                if (v != null) {
+                    if (v.visibility != View.VISIBLE) {
+                        v.visibility = View.VISIBLE
+                    }
+                }
+                v = view.findViewById(R.id.item_image_play)
+                if (v != null) {
+                    if (v.visibility != View.VISIBLE) {
+                        v.visibility = View.VISIBLE
+                    }
+                }
+            }
+        })
 
     }
 
-    /**
-     * 移除videoview父view
-     */
-    private fun dettachParentView(rootView: ViewGroup) {
-        //1.添加videoview到当前需要播放的item中,添加进item之前，保证ijkVideoView没有父view
-        val parent = videoView!!.parent
-        if (parent != null) {
-            var d = parent as ViewGroup
-            d.removeView(videoView)
+    private fun initData() {
+        var videoBean: VideoBean
+        for (i in 0..99) {
+            videoBean = VideoBean(imageIds[i % imageIds.size], VIDEO_PATH)
+            videoBeanList.add(videoBean)
         }
-        rootView.addView(videoView, 0)
     }
 
-    /**
-     * 自动播放视频
-     */
-    private fun autoPlayVideo(position: Int, ivCover: ImageView?) {
-
-        val id: Int = activity!!.getApplication().getResources().getIdentifier("video" + position, "raw", activity!!.getApplication().getPackageName())
-
-        val bgVideoPath = "android.resource://" + activity!!.packageName.toString() + "/" + id
-        videoView!!.setVideoPath(bgVideoPath)
-        videoView!!.start()
-        videoView!!.setOnPreparedListener { mp ->
-            mp.isLooping = true
-
-            //延迟取消封面，避免加载视频黑屏
-            object : CountDownTimer(200, 200) {
-                override fun onTick(millisUntilFinished: Long) {}
-                override fun onFinish() {
-//                    if (ivCover != null) {
-//                        ivCover.visibility = View.GONE
-//                        ivCurCover = ivCover
+    private fun showVideo(view: View, videoPath: String) {
+        removeVideoView()
+        if (videoRootViewFl!!.visibility == View.VISIBLE) {
+            videoRootViewFl!!.removeAllViews()
+            videoRootViewFl!!.visibility = View.GONE
+        }
+        if (videoView == null) {
+            videoView = MyVideoView(activity)
+            videoView?.setListener(object : MyVideoView.IFullScreenListener {
+                override fun onClickFull(isFull: Boolean) {
+//                    if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
+//                        fullScreen.setVisibility(View.VISIBLE);
+//                        removeVideoView();
+//                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//                        fullScreen.addView(videoView, new ViewGroup . LayoutParams (-1, -1));
+//                        videoView.setVideoPath(VIDEO_PATH);
+//                        videoView.start();
+//                    } else {
+//                        fullScreen.removeAllViews();
+//                        fullScreen.setVisibility(View.GONE);
+//                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//                        if (lastView instanceof ViewGroup) {
+//                            ((ViewGroup) lastView).addView(videoView);
+//                        }
+//                        videoView.setVideoPath(VIDEO_PATH);
+//                        videoView.start();
 //                    }
                 }
-            }.start()
+            })
         }
+        videoView?.stop()
+        var v: View? = view.findViewById(R.id.item_imageview)
+        if (v != null) v.visibility = View.INVISIBLE
+        v = view.findViewById(R.id.item_image_play)
+        if (v != null) v.visibility = View.INVISIBLE
+        v = view.findViewById(R.id.item_video_root_fl)
+        if (v != null) {
+            v.visibility = View.VISIBLE
+            val fl = v as FrameLayout
+            fl.removeAllViews()
+            fl.addView(videoView, ViewGroup.LayoutParams(-1, -1))
+            VIDEO_PATH = videoPath
+            videoView!!.setVideoPath(videoPath)
+            videoView!!.start()
+        }
+        lastView = view
     }
 
-    private fun playCurVideo(position: Int) {
-//        if (position == curPlayPos) {
-//            return
+    private fun removeVideoView() {
+        var v: View
+        lastView?.let {
+            v = it.findViewById(R.id.item_imageview)
+            if (v != null) v.visibility = View.VISIBLE
+            v = it.findViewById(R.id.item_image_play)
+            if (v != null) v.visibility = View.VISIBLE
+            v = it.findViewById(R.id.item_video_root_fl)
+            if (v != null) {
+                val ll = v as FrameLayout
+                ll.removeAllViews()
+                v.setVisibility(View.GONE)
+            }
+        }
+//        if (lastView != null) {
+//            v = lastView!!.findViewById(R.id.item_imageview)
+//            if (v != null) v.visibility = View.VISIBLE
+//            v = lastView!!.findViewById(R.id.item_image_play)
+//            if (v != null) v.visibility = View.VISIBLE
+//            v = lastView!!.findViewById(R.id.item_video_root_fl)
+//            if (v != null) {
+//                val ll = v as FrameLayout
+//                ll.removeAllViews()
+//                v.setVisibility(View.GONE)
+//            }
 //        }
-        val itemView = linearLayoutManager!!.findViewByPosition(position) ?: return
-        val rootView = itemView.findViewById<ViewGroup>(R.id.rl_container)
-        // 添加视频到view 中去
-        dettachParentView(rootView)
-        autoPlayVideo(position, null)
     }
+
+    override fun onDestroy() {
+        if (videoView != null) {
+            videoView!!.stop()
+        }
+        super.onDestroy()
+    }
+
 }

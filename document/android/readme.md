@@ -87,4 +87,7 @@ okhttp 的使用
     
     https://github.com/yoyoyaobin/PreventKeyboardBlockUtil
 
+应用列表 | fir.im 中api 版本查询，然后更新
+http://api.bq04.com/apps/latest/com.seedling?id=5e12f2e0f945482c6d15cfe2&type=android&api_token=278e69d6bb804ae7dd190926750e86b7
 
+livedata

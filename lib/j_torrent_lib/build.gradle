@@ -21,7 +21,7 @@ apply plugin: 'com.android.library'
 group='com.github.TorrentStream'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion compileSdk
 
     defaultConfig {
         minSdkVersion 15

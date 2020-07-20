@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
-import androidx.recyclerview.widget.ConcatAdapter;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.kotlin.image.adapter.GrideAdapter;
@@ -28,7 +27,7 @@ public class ImageActivity extends AppCompatActivity {
         mRecyclerview = findViewById(R.id.recyclerview);
         adapter1 = new GrideAdapter();
         adapter2 = new ImageAdapter();
-        ConcatAdapter adapter = new ConcatAdapter(adapter1,adapter2);
-        mRecyclerview.setAdapter(adapter);
+//        ConcatAdapter adapter = new ConcatAdapter(adapter1, adapter2);
+//        mRecyclerview.setAdapter(adapter);
     }
 }

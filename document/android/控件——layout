@@ -1,3 +1,5 @@
 
 include 重复使用view
 merge 的使用，减少layout 中view 的参差关系。
+
+ConcatAdapter 的使用

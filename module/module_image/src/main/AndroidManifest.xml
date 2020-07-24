@@ -1,2 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kotlin.image" />
+    package="com.kotlin.image" >
+
+
+    <application>
+        <activity android:name=".ImageActivity"/>
+    </application>
+
+</manifest>

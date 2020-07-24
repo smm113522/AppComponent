@@ -6,10 +6,11 @@ import android.support.v7.widget.RecyclerView;
 
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.kotlin.code.utils.RouterPath;
 import com.kotlin.image.adapter.GrideAdapter;
 import com.kotlin.image.adapter.ImageAdapter;
 
-@Route(path = "/image/activity")
+@Route(path = RouterPath.path_image_activity)
 public class ImageActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerview;

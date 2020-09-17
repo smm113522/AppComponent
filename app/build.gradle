@@ -77,7 +77,7 @@ dependencies {
     kapt 'com.alibaba:arouter-compiler:1.2.2'
 
     if (isModule.toBoolean()){
-        implementation project(path: ':common:lib_style')
+        implementation project(path: ':common:lib_common')
     } else {
         implementation project(path: ':common:lib_module')
     }

@@ -1,31 +1,8 @@
+
+rootProject.name = "AppComponent2"
+
 include ':app',
-        //底层
-        'common:lib_common',
-        'common:lib_style',
-        'common:lib_code',
-        // lib 使用
-//        'lib:lib_camera-card-crop',
-//        'lib:lib_image',
-        'lib:lib_dynamicload',
-        'lib:j_torrent_lib',
-        'lib:vlcplayer',
-// 功能
-//        'module:module_pdf',
-//        'module:module_apt',
-//        'module:module_host',
-//        'module:module_hotfix',
-//        'module:module_news',
-//        'module:module_mvvm',
-//        'module:module_mvp',
+        ':lib:lin_code'
 
-        'module:module_video',
-//        'module:module_html',
-        'module:module_main'
-
-include ':module:module_image'
-include ':common:lib_module'
-include ':module:module_bt_jlibtorrent'
-include ':module:module_player'
-include ':module:module_libtorrent4j'
-include ':module:module_location'
-include ':module:module_flutter'
+include ':module:module_ui',
+        ':module:module_recyclerview'

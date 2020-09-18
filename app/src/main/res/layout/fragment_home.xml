@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.kotlin.app.ui.home.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_take_photograph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="照相" />
+
+        <Button
+            android:id="@+id/bt_take_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="视频" />
+
+        <Button
+            android:id="@+id/bt_take_small_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小视频" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_photograph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相册" />
+
+        <Button
+            android:id="@+id/bt_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所有视频" />
+
+        <Button
+            android:id="@+id/bt_photograph_cut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="裁剪" />
+
+        <Button
+            android:id="@+id/bt_photograph_look"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="裁剪" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xxxxxxxxxxx"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="xxxxxxxxxxx"/>
+
+
+</LinearLayout>

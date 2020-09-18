@@ -1,4 +1,0 @@
-<resources>
-    <string name="app_name">视频</string>
-    <string name="listen_failed_error" formatted="false">Could not listen %1$s:%2$d, type: %3$s (error: %4$s)</string>
-</resources>

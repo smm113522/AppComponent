@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--night 模式下的情况 -->
+    <color name="tv_font_color">@color/cardview_dark_background</color>
+</resources>

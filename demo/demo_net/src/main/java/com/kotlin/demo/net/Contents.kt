@@ -1,8 +1,8 @@
 package com.kotlin.demo.net
 
-class Contents {
+object Contents {
 
-    val  HTTPS = "http://59.111.89.141:8769/"
+    const val HTTPS = "http://59.111.89.141:8769/"
 
 
 }

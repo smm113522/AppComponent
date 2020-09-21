@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kotlin.module_ui">
-
+    package="com.kotlin.demo.net">
 
     <application>
-        <activity android:name=".DemoUiActivity">
-            
+        <activity android:name=".NetLiveActivity">
+
         </activity>
+
     </application>
 </manifest>

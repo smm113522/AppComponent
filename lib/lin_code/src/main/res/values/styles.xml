@@ -5,7 +5,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:fontFamily">@fonts/WeChatSansSS-Bold</item>
+<!--        <item name="android:fontFamily">@fonts/WeChatSansSS-Bold</item>-->
+        <!-- 设置全局的字体样式 -->
+        <item name="android:fontFamily">@font/pop_font</item>
     </style>
 
 </resources>

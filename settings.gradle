@@ -1,4 +1,4 @@
-
+include ':demo:demo_tools'
 rootProject.name = "AppComponent2"
 
 include ':app',
@@ -6,3 +6,5 @@ include ':app',
 
 include ':module:module_ui',
         ':module:module_recyclerview'
+
+include ':demo:demo_net'

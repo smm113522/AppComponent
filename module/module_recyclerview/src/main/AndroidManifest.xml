@@ -2,8 +2,10 @@
     package="com.kotlin.recyclerview">
 
     <application>
-
         <activity android:name=".RecyclerListActivity">
+
+        </activity>
+        <activity android:name=".ShopActivity">
 
         </activity>
     </application>

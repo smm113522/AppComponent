@@ -125,3 +125,20 @@ data class Author(
 ) : Parcelable
 ```
 
+ liveData {
+            while (true) {
+            // 发送
+                emit(System.currentTimeMillis())
+                // 延时
+                delay(1000)
+            }
+        }
+ emitSource(dataSource.fetchWeather())
+           private val viewmodel: LiveDataViewModel by viewModels { LiveDataVMFactory }
+
+viewModelScope.launch {
+            dataSource.fetchNewData()
+        }
+lifecycleScope.launch {
+            // Run
+        }

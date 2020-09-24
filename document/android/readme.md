@@ -91,3 +91,62 @@ okhttp 的使用
 http://api.bq04.com/apps/latest/com.seedling?id=5e12f2e0f945482c6d15cfe2&type=android&api_token=278e69d6bb804ae7dd190926750e86b7
 
 livedata
+## mvvm
+
+ BindFragment : Fragment(R.layout.fragment_blank) {
+
+    // Scoped to the lifecycle of the fragment's view (between onCreateView and onDestroyView)
+    private var fragmentBlankBinding: FragmentBlankBinding? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentBlankBinding.bind(view)
+        fragmentBlankBinding = binding
+        binding.textViewFragment.text = getString(string.hello_from_vb_bindfragment)
+    }
+
+    override fun onDestroyView() {
+        // Consider not storing the binding instance in a field, if not needed.
+        fragmentBlankBinding = null
+        super.onDestroyView()
+    }
+
+     // Scoped to the lifecycle of the fragment's view (between onCreateView and onDestroyView)
+        private var fragmentBlankBinding: FragmentBlankBinding? = null
+
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
+            // Inflate the layout for this fragment
+            val binding = FragmentBlankBinding.inflate(inflater, container, false)
+            fragmentBlankBinding = binding
+            binding.textViewFragment.text = getString(R.string.hello_from_vb_inflatefragment)
+            return binding.root
+        }
+
+        override fun onDestroyView() {
+            // Consider not storing the binding instance in a field, if not needed.
+            fragmentBlankBinding = null
+            super.onDestroyView()
+        }
+
+  binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+ ##
+
+ import java.util.concurrent.Executors
+
+ private val IO_EXECUTOR = Executors.newSingleThreadExecutor()
+
+ /**
+  * Utility method to run blocks on a dedicated background thread, used for io/database work.
+  */
+ fun ioThread(f : () -> Unit) {
+     IO_EXECUTOR.execute(f)
+ }
+
+
+#

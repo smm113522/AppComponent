@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,6 +43,7 @@ public class PagerActivity extends AppCompatActivity {
 
         ArrayList<View> list = new ArrayList<>();
         list.add(imageView);
+        list.add(imageView1);
         adaper.setList(list);
 
         mViewpager.setAdapter(adaper);
@@ -68,6 +70,7 @@ public class PagerActivity extends AppCompatActivity {
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
             container.addView(list.get(position));
+//            container.addView(list.get(position), LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
             return list.get(position);
         }
 

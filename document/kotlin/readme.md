@@ -1,11 +1,11 @@
-## 基础知识
+ 基础知识
 
 
 
-## 进阶基础
+进阶基础
 
 
-## 其他尝试
+其他尝试
 
 一般是扩展使用
 
@@ -141,4 +141,8 @@ viewModelScope.launch {
         }
 lifecycleScope.launch {
             // Run
-        }
+}
+
+https://developer.android.google.cn/kotlin/ktx
+
+在fragment使用这个extensions的时候，会找不到那个控件，解决办法 onViewCreated 进行

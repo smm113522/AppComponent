@@ -146,3 +146,17 @@ lifecycleScope.launch {
 https://developer.android.google.cn/kotlin/ktx
 
 在fragment使用这个extensions的时候，会找不到那个控件，解决办法 onViewCreated 进行
+
+
+    fragment 切换
+    private fun changeFragment(to : Fragment){
+        if (mCurrentFragment != to) {
+            val transaction = supportFragmentManager.beginTransaction()
+            if (to.isAdded)
+                transaction.hide(mCurrentFragment).show(to)
+            else
+                transaction.hide(mCurrentFragment).add(R.id.content, to)
+            transaction.commit()
+            mCurrentFragment = to
+        }
+    }

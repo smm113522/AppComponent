@@ -1,3 +1,5 @@
+include ':demo:demo-retrofit'
+include ':lib:lib_net'
 include ':demo:demo_tools'
 rootProject.name = "AppComponent2"
 

@@ -39,6 +39,7 @@ class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
                 throw new ResultException(resultResponse.getReturnCode(), resultResponse.getReturnMsg());
             }
         } finally {
+            value.close();
         }
     }
 

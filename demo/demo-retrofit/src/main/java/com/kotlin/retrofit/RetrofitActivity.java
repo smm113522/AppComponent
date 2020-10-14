@@ -23,7 +23,7 @@ public class RetrofitActivity extends AppCompatActivity {
         // 道来异常处理。
         // 把 数据转换成live data 数据 。还得报错正确和错误的数据不一致的情况
         LiveData<BodyBean<UserInfo>> liveData = LiveApi.Companion.get().login("15122805490",
-                "", "2", "12345");
+                "", "2", "123456");
         liveData.observe(this, userInfoBodyBean -> {
             if (userInfoBodyBean.getReturnCode().equals("200")) {
                 System.out.println(userInfoBodyBean.getReturnData().getNickname());

@@ -7,10 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
+import com.kotlin.demo.net.retrofit.bean.BannerBean;
+import com.kotlin.demo.net.retrofit.bean.BaseResponse;
 import com.kotlin.retrofit.databinding.ActivityRetrofitBinding;
+import com.kotlin.retrofit.livadeta.LiveApi;
 import com.kotlin.retrofit.live.daolai.BodyBean;
-import com.kotlin.retrofit.live.daolai.LiveApi;
 import com.kotlin.retrofit.live.daolai.UserInfo;
+
+import java.util.List;
 
 public class RetrofitActivity extends AppCompatActivity {
 
@@ -22,21 +26,21 @@ public class RetrofitActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_retrofit);
         // 道来异常处理。
         // 把 数据转换成live data 数据 。还得报错正确和错误的数据不一致的情况
-        LiveData<BodyBean<UserInfo>> liveData = LiveApi.Companion.get().login("15122805490",
-                "", "2", "123456");
-        liveData.observe(this, userInfoBodyBean -> {
-            if (userInfoBodyBean.getReturnCode().equals("200")) {
-                System.out.println(userInfoBodyBean.getReturnData().getNickname());
-            }else {
-                System.out.println(userInfoBodyBean.getReturnMsg());
-            }
-        });
+//        LiveData<BodyBean<UserInfo>> liveData = LiveApi.Companion.get().login("15122805490",
+//                "", "2", "123456");
+//        liveData.observe(this, userInfoBodyBean -> {
+//            if (userInfoBodyBean.getReturnCode().equals("200")) {
+//                System.out.println(userInfoBodyBean.getReturnData().getNickname());
+//            }else {
+//                System.out.println(userInfoBodyBean.getReturnMsg());
+//            }
+//        });
 
         // refrofit 转 live bean 数据
-//        LiveData<BaseResponse<List<BannerBean>>> liveData = LiveApi.Companion.get().bannerLiveList();
-//        liveData.observe(this, listBaseResponse -> {
-//            System.out.println(listBaseResponse.getErrorMsg());
-//        });
+        LiveData<BaseResponse<List<BannerBean>>> liveData = LiveApi.Companion.get().bannerLiveList();
+        liveData.observe(this, listBaseResponse -> {
+            System.out.println(listBaseResponse.getErrorMsg());
+        });
 
 
         // 道来，异常处理，自定义获取数据，然后返回来数据

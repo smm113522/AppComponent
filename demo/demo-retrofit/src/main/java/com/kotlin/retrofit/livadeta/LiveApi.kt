@@ -20,8 +20,8 @@ interface LiveApi {
             return Retrofit.Builder()
                 .baseUrl("https://www.wanandroid.com/")
                 .client(clientBuilder.build())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .build()
                 .create(LiveApi::class.java)
         }

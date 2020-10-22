@@ -38,6 +38,7 @@ class RecyclerListActivity : AppCompatActivity(R.layout.activity_recyclerview) {
         adapter!!.setEmptyView(R.layout.empty_view)
         adapter!!.setAnimationWithDefault(BaseQuickAdapter.AnimationType.AlphaIn);
 
+
     }
 
 

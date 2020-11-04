@@ -1,0 +1,11 @@
+http://bbs.itcast.cn/thread-83609-1-1.html
+
+
+GeoHash核心原理解析
+http://www.open-open.com/lib/view/open1417940079964.html
+
+http://blog.jobbole.com/80633/
+
+
+开源的东西
+https://github.com/huxq17/SwipeCardsView

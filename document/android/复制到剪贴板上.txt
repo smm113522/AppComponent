@@ -1,0 +1,5 @@
+ ClipboardManager cmb = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                        cmb.setText((goodsName + goodsWapUrl + "(" + getString(R.string.app_name) + ")").trim());
+
+
+ÃÌº”ºÙÃ˘∞Â…œ°£

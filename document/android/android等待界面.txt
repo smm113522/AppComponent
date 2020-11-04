@@ -1,0 +1,10 @@
+WaitingDots
+https://github.com/tajchert/WaitingDots
+
+
+android-shapeLoadingView
+https://github.com/zzz40500/android-shapeLoadingView
+
+
+CircleProgress
+https://github.com/Fichardu/CircleProgress

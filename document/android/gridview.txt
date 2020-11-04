@@ -1,0 +1,8 @@
+android:verticalSpacing="35px" <!-- grid元素之间的竖直间隔 -->
+    android:horizontalSpacing="5px"  <!--grid元素之间的水平间隔  -->
+
+
+http://blog.csdn.net/flowingflying/article/details/6265206
+
+
+基础知识的掌握

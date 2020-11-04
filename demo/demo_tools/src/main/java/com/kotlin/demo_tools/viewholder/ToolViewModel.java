@@ -3,8 +3,6 @@ package com.kotlin.demo_tools.viewholder;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.kotlin.demo_tools.adapter.ToolsAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +13,10 @@ public class ToolViewModel extends ViewModel {
         return list;
     }
 
-    public void refreshData(){
+    public void refreshData(int page){
+        if (page == 1){
+            list.setValue(null);
+        }
         ArrayList lists = new ArrayList();
         lists.add("ddddd23dd");
         lists.add("ddddd23dd");

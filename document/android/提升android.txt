@@ -1,0 +1,30 @@
+线程池
+在
+java.util.concurrent;
+包中
+
+private static ThreadPoolExecutor threadPool = new ThreadPoolExecutor(6,
+			30, 30L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
+
+ThreadPoolExecutor 创建 
+
+只想execute 方法
+
+创建runable
+
+
+线程池newFixedThreadPool的使用 
+http://blog.csdn.net/java2000_net/article/details/2972352
+http://www.itzhai.com/the-executorservice-common-method-newfixedthreadpool-of-create-fixed-size-thread-pool.html
+
+coresize 和maxsise 的使用
+
+11，内存泄漏和内存遗漏
+内存溢出和内存泄漏
+
+内存溢出 out of memory，是指程序在申请内存时，没有足够的内存空间供其使用，出现out of memory；比如申请了一个integer,但给它存了long才能存下的数，那就是内存溢出。
+
+内存泄露 memory leak，是指程序在申请内存后，无法释放已申请的内存空间，一次内存泄露危害可以忽略，但内存泄露堆积后果很严重，无论多少内存,迟早会被占光。
+
+memory leak会最终会导致out of memory！
+

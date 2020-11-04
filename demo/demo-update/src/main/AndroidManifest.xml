@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kotlin.retrofit">
+    package="com.kotlin.update">
 
     <application>
-        <activity android:name=".RetrofitActivity"/>
+        <activity android:name=".UpDataTestActivity" />
     </application>
 </manifest>

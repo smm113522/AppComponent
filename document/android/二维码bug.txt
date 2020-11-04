@@ -1,0 +1,16 @@
+1.扫描成功后，无法重复扫描
+
+解决方法，写一个方法，让 在 handle 中 为空，然后重新 生产出来
+
+handler = null;
+		handler = new CaptureActivityHandler(this, decodeFormats,
+				characterSet);;
+
+
+handleDecode 为成功的方法
+
+是线程结束的时间节点。
+
+
+2.二维码中有 扫描二维码和生产二维码和条形码的方法。。
+提供了参考

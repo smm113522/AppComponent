@@ -1,0 +1,87 @@
+1，播放器
+
+vitamio ，个人免费，公司付费
+
+git 第三方
+
+阿里云 播放器  付费
+
+
+2，推流 器
+
+https://github.com/liuxang/LivePublisher
+http://git.oschina.net/bimingcong/LivePusher
+
+这个需要自己写流媒体 的服务器
+
+阿里云 推流到自己的服务器上。
+
+
+
+错误信息
+http://stackoverflow.com/questions/29756188/java-finished-with-non-zero-exit-value-2-android-gradle
+
+finished with non-zero exit value 1
+可能有重复的图片或者v4 或者v7的jar包
+http://www.jianshu.com/p/7211d3b7540f
+
+finished with non-zero exit value 2
+http://www.jianshu.com/p/4768fe43079a
+
+finished with non-zero exit value 3
+
+看上的地址
+
+ /*阿里云播放器*/
+        String businessId = "video_live";
+        final String accessKeyId = "7dy4fM0WxuUKicK4";
+        final String accessKeySecret = "ACzQ3TGUuN01cLbubqKSEDZ2CnOPdv";
+        AliVcMediaPlayer.init(getApplicationContext(), businessId, new AccessKeyCallback() {
+            public AccessKey getAccessToken() {
+                return new AccessKey(accessKeyId, accessKeySecret);
+            }
+        });
+----------------------------------------------------------
+http://blog.csdn.net/u011840744/article/details/51941920
+
+
+view 可以移动的处理
+-----------------------------------------------------------
+ 解决NestedScrollView 嵌套 RecyclerView出现的滑动冲突问题 
+
+http://blog.csdn.net/yaochangliang159/article/details/50540276
+
+<android.support.v4.widget.NestedScrollView
+<android.support.v7.widget.RecyclerView
+
+
+或者
+
+ RecyclerView添加Header的正确方式 
+、http://blog.csdn.net/qibin0506/article/details/49716795
+
+--------------------------
+
+http://www.zhihu.com/question/35422150/answer/62695696
+怎样实现SwipeRefreshLayout的自动刷新？类似知乎安卓版一打开页面就自动刷新加载的效果。 
+---------------------------------------------------------
+http://www.jianshu.com/p/4535442d568f
+NestedScrollView 嵌套 ListView 实现滑动折叠效果
+------------------------------------------------------------------
+http://www.jianshu.com/p/723b389b0405
+获取视频第一张图片
+有些视频可以写不可以
+不知道为什么
+-----------------------------------------------------
+http://www.2cto.com/kf/201602/488428.html
+朋友圈滚动播放视频功能
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0130/3927.html
+
+
+https://github.com/danylovolokh/VideoPlayerManager
+
+目前没有看懂
+一看明天，已经添加项目
+在utils中
+
+------------------------------------------------------------------------------

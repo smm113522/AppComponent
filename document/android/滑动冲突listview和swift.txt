@@ -1,0 +1,51 @@
+做了个项目，用了support包里的SwipeRefreshLayout和RecyclerView。两者一起使用有一点点小问题，有时候拉着拉着，列表还没拉玩就出来刷新的图标了，在华为荣耀上尤为明显。
+
+可以这样做：
+http://www.cnblogs.com/csonezp/p/5050324.html
+
+
+这个是listview 的
+
+http://my.oschina.net/djone/blog/408110
+
+
+我自己写的并且测试过的没有问题的。
+ recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int firstVisibleItem) {
+                super.onScrollStateChanged(recyclerView, firstVisibleItem);
+                View firstView = recyclerView.getChildAt(firstVisibleItem);
+
+                // 当firstVisibleItem是第0位。如果firstView==null说明列表为空，需要刷新;或者top==0说明已经到达列表顶部, 也需要刷新
+                if (firstVisibleItem == 0 && (firstView == null || firstView.getTop() == 0)) {
+                    swipeRefreshLayout.setEnabled(true);
+                } else {
+                    swipeRefreshLayout.setEnabled(false);
+                }
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+            }
+        });
+
+
+或者 不好用，用listivew好用
+ mgr = new GridLayoutManager(this,2);
+        recyclerView.setLayoutManager(mgr);
+        //设置适配器
+        adapter = new ShopListAdapter(this);
+        recyclerView.setAdapter(adapter);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                swipeRefreshLayout.setEnabled(mgr.findFirstVisibleItemPosition() == 0);
+            }
+        });
+

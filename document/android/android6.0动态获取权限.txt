@@ -1,0 +1,30 @@
+http://www.open-open.com/lib/view/open1447236259272.html#articleHeader2
+
+对Android版本做判断，然后对Android 6.0 做特殊处理，代码如下
+
+final public static int REQUEST_CODE_ASK_CALL_PHONE = 123;
+public void onCall(String mobile){
+	   this.mMobile = mobile;
+	   if (Build.VERSION.SDK_INT >= 23) {
+		   int checkCallPhonePermission = ContextCompat.checkSelfPermission(mContext,Manifest.permission.CALL_PHONE);
+		   if(checkCallPhonePermission != PackageManager.PERMISSION_GRANTED){
+			   ActivityCompat.requestPermissions(mContext,new String[]{Manifest.permission.CALL_PHONE},REQUEST_CODE_ASK_CALL_PHONE);
+			   return;
+		   }else{
+			   //上面已经写好的拨号方法
+			   callDirectly(mobile);
+		   }
+	   } else {
+		   //上面已经写好的拨号方法
+		   callDirectly(mobile);
+	   }
+   }
+
+
+http://www.w2bc.com/article/android-6-0-runtime-permission
+
+
+
+图片处理
+
+http://blog.sina.com.cn/s/blog_88be6cd00102uzu8.html

@@ -1,0 +1,138 @@
+android mvp
+
+是什么？
+
+
+
+最简单demo
+Android MVP模式 
+http://blog.csdn.net/qq_16430735/article/details/49620017
+
+
+demo的开始
+浅谈 MVP in Android 
+http://blog.csdn.net/lmj623565791/article/details/46596109
+
+
+Netty - 放牛的人 - ITeye技术网站
+Java NIO框架Netty教程（一） – Hello Netty - kobejayandy的专栏 - 博客频道 - CSDN.NET
+netty_百度搜索
+
+
+
+-----------------------------------------
+新
+retrofig 的实践
+http://square.github.io/retrofit/
+
+retrofig + okhttp
+
+http://www.open-open.com/lib/view/open1453552147323.html
+基础 的方法的使用
+和get 和post 方法需要上传的东西
+和参数比对。
+------------------------------------------
+十周是红色的。背景是白色的
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="6dp" />
+            <stroke android:color="@color/title_color" android:width="1dp" />
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+    <item android:state_enabled="true" android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <stroke android:color="@color/title_color" android:width="1dp" />
+            <corners android:radius="6dp" />
+            <solid android:color="@color/login_button_focused" />
+        </shape>
+    </item>
+</selector>
+
+org.json.JSONObject的!json.isNull("XXX")
+net.sf.json.JSONObject的json.containsKey("XXX")
+
+
+
+
+
+----------------------------------------------------
+
+textview 显示html 带图片的显示问题
+
+
+------------------------------------------------------------
+
+mLocClient.stop()方法后，定位依然没有被关闭！导致不停的在回调定位的监听（你这么厉害怎么不上天呢！），百度api里没有对应问题的解决方案，
+
+网上查了下很多人都遇到这种情况。
+
+解决方案有两种：
+
+1：去掉option.setScanSpan(10000);这个设置。
+
+2：调用mLocClient.unRegisterLocationListener方法。
+
+两种方法亲测都可以成功达到想要的效果。
+
+但是第一种方案不知道会造成什么影响，没有去测试过，所以放弃。
+
+第二种方案取消监听，病从根治，也算是一个完美结局。
+
+文／许先森的许（简书作者）
+原文链接：http://www.jianshu.com/p/adfef7415fe2
+著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
+
+
+----------------------------------------------------------------------
+eidttext 获取焦点
+
+
+这三个属性必须同时设置：
+
+ private EditText passwde = null;   
+passwde.setFocusable(true);   
+passwde.setFocusableInTouchMode(true);   
+passwde.requestFocus();  
+--------------------------------------------------------------------------------
+
+
+realm 技术
+
+{rp_state=used, key=ec766de02f51e19b65e2be22c0876de6}
+
+ip
+通过ip地址可以获得当前的城市。
+
+------------------------------------------------------------------
+glide 中 target 方法
+
+http://blog.csdn.net/shangmingchao/article/details/51038529
+
+-----------------------------------------------------------------------
+AutoLayout - 自动适配所有机型的分辨率，来自鸿雁大神，推荐大家使用
+http://www.open-open.com/lib/view/open1456840121843.html
+
+ https://github.com/hongyangAndroid/AndroidAutoLayout
+-----------------------------------------------------------
+
+https://github.com/Yasic/QQBubbleView
+
+利用三阶贝塞尔曲线模仿QQ空间直播时右下角的礼物冒泡特效
+
+------------------------------------------------------------
+
+https://github.com/Huyamin150/-dampView-springingView
+带有阻尼效果（橡皮筋效果）跳动的Loading动画
+
+------------------------------------------------------------
+
+
+
+
+
+
+
+

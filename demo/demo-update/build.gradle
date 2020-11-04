@@ -19,13 +19,14 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -37,7 +38,6 @@ android {
 
     sourceSets {
         main {
-            assets.srcDirs = ['src/main/assets', 'src/main/assets/']
             jniLibs.srcDirs = ['libs']
 
             if (isModule.toBoolean()) {
@@ -52,40 +52,28 @@ android {
         }
     }
 
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    dataBinding{
+    dataBinding {
         enabled true
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
-
+    api project(path: ':lib:lin_code')
     api 'com.alibaba:arouter-api:1.5.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     kapt 'com.alibaba:arouter-compiler:1.2.0'
-    if (isModule.toBoolean()) {
-        api project(path: ':lib:lin_code')
-    }
-
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
-
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'androidx.paging:paging-runtime-ktx:2.1.1'
-
-    def work_version = "1.0.0-beta02"
-    implementation "android.arch.work:work-runtime:$work_version"
-
-//    implementation 'com.blankj:utilcode:1.22.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.blankj:utilcodex:1.29.0'
+
 }

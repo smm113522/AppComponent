@@ -1,11 +1,14 @@
+include ':demo:demo-skin'
+include ':demo:demo-hilt'
 include ':demo:demo-update'
 include ':demo:demo-retrofit'
-include ':lib:lib_net'
+
 include ':demo:demo_tools'
 rootProject.name = "AppComponent2"
 
 include ':app',
-        ':lib:lin_code'
+        ':lib:lin_code',
+        ':lib:lib_net'
 
 include ':module:module_ui',
         ':module:module_recyclerview'

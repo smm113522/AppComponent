@@ -65,7 +65,6 @@ dependencies {
     if (isModule.toBoolean()) {
         api project(path: ':lib:lin_code')
     }
-    implementation 'com.shuyu:gsyVideoPlayer-java:7.1.6'
-
+//    testInstrumentationRunner "org.robolectric:robolectric:4.4"
 
 }

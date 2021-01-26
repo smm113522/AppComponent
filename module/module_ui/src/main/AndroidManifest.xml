@@ -2,7 +2,8 @@
     package="com.kotlin.module_ui">
 
 
-    <application>
+    <application
+        android:name=".App">
         <activity android:name=".DemoUiActivity">
             
         </activity>
